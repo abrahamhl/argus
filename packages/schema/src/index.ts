@@ -83,10 +83,16 @@ export interface Evidence {
 
 export interface Finding {
   id: string;
+  findingId: string;
+  ruleId: string;
+  ruleVersion: string;
+  target: string;
   targetId: string;
   runId: string;
   title: string;
   description: string;
+  technicalExplanation: string;
+  remediation: string;
   severity: Severity;
   confidence: Confidence;
   evidenceIds: string[];
@@ -97,6 +103,8 @@ export interface Opportunity {
   title: string;
   supportingFindingIds: string[];
   confidence: Confidence;
+  technicalSignificance: string;
+  businessSignificance: string;
   businessArea: string;
   technicalArea: string;
   serviceCategory: OpportunityCategory;
@@ -125,4 +133,65 @@ export interface Proof {
   status: 'NEW' | 'RESOLVED' | 'IMPROVED' | 'UNCHANGED' | 'REGRESSED' | 'UNKNOWN';
   beforeEvidenceIds: string[];
   afterEvidenceIds: string[];
+}
+
+export type DataMode = 'LIVE' | 'FIXTURE' | 'DEMO';
+
+export type InspectionStatus = 'STARTED' | 'COMPLETED' | 'FAILED' | 'PARTIAL';
+
+export interface CollectorSummary {
+  collector: string;
+  version: string;
+  status: 'SUCCESS' | 'FAILED' | 'PARTIAL';
+  observationCount: number;
+  errorCount: number;
+  durationMs: number;
+}
+
+export interface InspectionWarning {
+  code: string;
+  message: string;
+  severity: 'INFO' | 'WARNING';
+  context?: Record<string, any>;
+}
+
+export interface InspectionError {
+  code: string;
+  message: string;
+  phase: 'VALIDATION' | 'COLLECTION' | 'ANALYSIS' | 'RULE_EVALUATION';
+  fatal: boolean;
+  stack?: string;
+  context?: Record<string, any>;
+}
+
+export interface InspectionResultV1 {
+  schemaVersion: string;
+  runId: string;
+
+  target: {
+    input: string;
+    normalized: string;
+    hostname: string;
+    organisationLabel?: string;
+    policyMode: string;
+    sensitiveCategory?: string;
+  };
+
+  status: {
+    state: InspectionStatus;
+    startedAt: string;
+    completedAt: string;
+    durationMs: number;
+  };
+
+  observations: Observation[];
+  evidence: Evidence[];
+  findings: Finding[];
+  opportunities: Opportunity[];
+
+  collectorSummary: CollectorSummary[];
+  warnings: InspectionWarning[];
+  errors: InspectionError[];
+
+  dataMode: DataMode;
 }

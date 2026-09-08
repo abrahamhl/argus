@@ -1,0 +1,147 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "run_fixture_zero_001",
+  "target": {
+    "input": "https://example.edu",
+    "normalized": "https://example.edu/",
+    "hostname": "example.edu",
+    "policyMode": "PUBLIC_PASSIVE"
+  },
+  "status": {
+    "state": "COMPLETED",
+    "startedAt": "2026-09-08T00:00:00.000Z",
+    "completedAt": "2026-09-08T00:00:04.123Z",
+    "durationMs": 4123
+  },
+  "observations": [
+    {
+      "id": "obs_dns_005",
+      "runId": "run_fixture_zero_001",
+      "targetId": "tgt_example_edu",
+      "type": "DNS_A",
+      "source": "example.edu",
+      "collector": "dns",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-08T00:00:01.234Z",
+      "rawValue": {
+        "address": "93.184.216.34",
+        "family": 4,
+        "ttl": 86400
+      }
+    },
+    {
+      "id": "obs_http_005",
+      "runId": "run_fixture_zero_001",
+      "targetId": "tgt_example_edu",
+      "type": "HTTP_RESPONSE",
+      "source": "https://example.edu",
+      "collector": "http",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-08T00:00:03.456Z",
+      "rawValue": {
+        "statusCode": 200,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-frame-options": "DENY",
+          "x-content-type-options": "nosniff",
+          "content-security-policy": "default-src 'self'",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "geolocation=(), microphone=()"
+        },
+        "redirectChain": []
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evd_dns_005",
+      "targetId": "tgt_example_edu",
+      "runId": "run_fixture_zero_001",
+      "type": "DNS_A",
+      "source": "example.edu",
+      "collector": "dns",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-08T00:00:01.234Z",
+      "rawValue": {
+        "address": "93.184.216.34",
+        "family": 4,
+        "ttl": 86400
+      },
+      "normalizedValue": {
+        "address": "93.184.216.34",
+        "family": 4,
+        "ttl": 86400
+      },
+      "confidence": "VERIFIED",
+      "sha256": "f6a7b8c9d0e1"
+    },
+    {
+      "id": "evd_http_005",
+      "targetId": "tgt_example_edu",
+      "runId": "run_fixture_zero_001",
+      "type": "HTTP_RESPONSE",
+      "source": "https://example.edu",
+      "collector": "http",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-08T00:00:03.456Z",
+      "rawValue": {
+        "statusCode": 200,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-frame-options": "DENY",
+          "x-content-type-options": "nosniff",
+          "content-security-policy": "default-src 'self'",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "geolocation=(), microphone=()"
+        },
+        "redirectChain": []
+      },
+      "normalizedValue": {
+        "statusCode": 200,
+        "headers": {
+          "content-type": "text/html; charset=UTF-8",
+          "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+          "x-frame-options": "DENY",
+          "x-content-type-options": "nosniff",
+          "content-security-policy": "default-src 'self'",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "permissions-policy": "geolocation=(), microphone=()"
+        },
+        "redirectChain": []
+      },
+      "confidence": "VERIFIED",
+      "sha256": "a7b8c9d0e1f2"
+    }
+  ],
+  "findings": [],
+  "opportunities": [],
+  "collectorSummary": [
+    {
+      "collector": "dns",
+      "version": "0.1.0",
+      "status": "SUCCESS",
+      "observationCount": 1,
+      "errorCount": 0,
+      "durationMs": 234
+    },
+    {
+      "collector": "http",
+      "version": "0.1.0",
+      "status": "SUCCESS",
+      "observationCount": 1,
+      "errorCount": 0,
+      "durationMs": 2222
+    }
+  ],
+  "warnings": [
+    {
+      "code": "NO_RULE_ENGINE",
+      "message": "No rule engine connected. Findings evaluation skipped.",
+      "severity": "INFO"
+    }
+  ],
+  "errors": [],
+  "dataMode": "FIXTURE"
+}

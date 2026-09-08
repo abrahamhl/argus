@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1.0.0",
+  "runId": "run_fixture_blocked_001",
+  "target": {
+    "input": "http://localhost:3000",
+    "normalized": "http://localhost:3000/",
+    "hostname": "localhost",
+    "policyMode": "PUBLIC_PASSIVE"
+  },
+  "status": {
+    "state": "FAILED",
+    "startedAt": "2026-09-08T00:00:00.000Z",
+    "completedAt": "2026-09-08T00:00:00.123Z",
+    "durationMs": 123
+  },
+  "observations": [],
+  "evidence": [],
+  "findings": [],
+  "opportunities": [],
+  "collectorSummary": [],
+  "warnings": [],
+  "errors": [
+    {
+      "code": "TARGET_VALIDATION_FAILED",
+      "message": "Localhost not allowed",
+      "phase": "VALIDATION",
+      "fatal": true
+    }
+  ],
+  "dataMode": "DEMO"
+}
