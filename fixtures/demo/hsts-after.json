@@ -1,0 +1,25 @@
+{
+  "observations": [
+    {
+      "id": "obs_http_remediated_001",
+      "runId": "run_demo_retest",
+      "targetId": "tgt_demo_business",
+      "type": "HTTP_RESPONSE",
+      "source": "https://demo-business.local",
+      "collector": "argus-http-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-08T14:00:00.000Z",
+      "rawValue": {
+        "status": 200,
+        "url": "https://demo-business.local",
+        "redirected": false,
+        "headers": {
+          "content-type": "text/html; charset=utf-8",
+          "content-length": "4521",
+          "server": "nginx/1.18.0",
+          "strict-transport-security": "max-age=31536000; includeSubDomains"
+        }
+      }
+    }
+  ]
+}

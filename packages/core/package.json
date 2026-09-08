@@ -9,6 +9,7 @@
     "test": "node --test dist/**/*.test.js"
   },
   "dependencies": {
-    "@argus/schema": "workspace:*"
+    "@argus/schema": "workspace:*",
+    "@argus/collectors": "workspace:*"
   }
 }

@@ -1,69 +1,61 @@
 # ARGUS
+> Evidence & Opportunity Control Plane
 
-**Evidence & Opportunity Control Plane**
+ARGUS is a strict, deterministic intelligence pipeline designed to verify external organizational security posture. Unlike traditional vulnerability scanners that hallucinate findings or output massive volumes of unactionable noise, ARGUS relies exclusively on **cryptographically hashed, reproducible evidence**.
 
-OBSERVE → PROVE → DECIDE → FIX → VERIFY
+## The ARGUS Doctrine
+1. **Observe:** Collect raw network state passively (HTTP headers, DNS records).
+2. **Prove:** Irreversibly hash the raw observation into an immutable `Evidence` object.
+3. **Decide:** Apply pure, deterministic rules (no AI) to generate a `Finding`.
+4. **Fix:** Map findings to clear `Opportunities` for remediation.
+5. **Verify:** Execute a discrete Retest run and compare `evd_before` to `evd_after`.
 
-ARGUS turns heterogeneous digital signals into traceable evidence, correlated findings, understandable decisions, remediation actions and measurable before/after proof. It is designed to act as an intelligence control plane that bridges the gap between deep technical telemetry and local commercial utility.
+**AI is intentionally excluded from the evidence and decision path.** It is relegated strictly to the presentation and remediation layers, ensuring zero false positives in core analysis.
 
----
-
-## 60-Second Demo
+## Golden Demo (60 Seconds)
+ARGUS includes a deterministic, offline demo that proves the Retest lifecycle. 
 
 ```bash
-# 1. Start ARGUS
-argus start
+# Enable package manager and install dependencies
+corepack enable
+pnpm install
 
-# 2. Enter target domain
-> [ NEW TARGET ] example.com
+# Build the workspace
+pnpm build
 
-# 3. Observe the pipeline
-> PUBLIC INSPECTION STARTED...
-> COLLECTING HTTP SIGNALS...
-> NORMALIZING TO EVIDENCE...
-> CORRELATING FINDINGS...
-> MAPPING TO COMMERCIAL OPPORTUNITIES...
-
-# 4. Results
-[ OPPORTUNITY ] Verbeter de Website Beveiliging (HSTS)
-Category:       SECURITY_HARDENING
-Complexity:     LOW
-Business Value: Trust & Privacy
+# Run the deterministic demonstration
+pnpm demo
 ```
 
-*(Terminal UI demonstration coming soon)*
+## Architecture
 
----
+```mermaid
+graph TD
+    A[Target] -->|collectHttp| B[Observation]
+    B -->|hash| C[Evidence]
+    C -->|evaluate| D[Finding]
+    D -->|map| E[Opportunity]
+    E -->|retest| F[Proof]
+    
+    subgraph Core Engine
+    C
+    D
+    end
+    
+    subgraph Presentation
+    E
+    F
+    end
+```
 
-## How ARGUS is Different
+## Project Structure (pnpm workspace)
+- `@argus/schema`: Pure type contracts. No logic.
+- `@argus/core`: Deterministic rule engine and assessment logic.
+- `@argus/collectors`: Edge adapters (HTTP, DNS) for capturing observations.
+- `@argus/console`: CLI Operator UX.
+- `@argus/web`: Evidence presentation PWA (Offline-first).
 
-| Feature | Traditional Scanner | OSINT Framework | Kali Linux Environment | ARGUS |
-| :--- | :--- | :--- | :--- | :--- |
-| **Collection** | Automated active probing | Broad public data scraping | Manual/scripted specialist tools | Normalizes output from multiple deterministic collectors & adapters |
-| **Specialist Testing** | Built-in | None | Best-in-class | **Delegated** (via Adapter SDK to external tools) |
-| **Normalization** | Proprietary formats | Varies | Raw output | **Strict typed Evidence schema** with cryptographic hashes |
-| **Cross-tool Correlation**| Limited | Basic graph linking | Manual | **First-class Engine** combining evidence from multiple sources |
-| **Operator Workflow** | Scan & PDF | Data hoarding | Ad-hoc | **Target -> Evidence -> Finding -> Opportunity -> Retest** |
-| **Remediation & Retest** | Rarely verifiable | N/A | N/A | **Cryptographic Before/After Proof generation** |
-| **Client Presentation** | Technical jargon | Analyst reports | Terminal screenshots | **Dutch/Spanish plain-language opportunities** |
-
----
-
-## Architectural Principles
-
-- **Local-First:** ARGUS runs locally. No mandatory cloud accounts. No Docker required for bootstrap.
-- **Evidence Immutability:** Observations are converted to Evidence. Evidence is hashed and immutable.
-- **Deterministic Assessment:** AI is an optional analyst adapter, never in the critical path of fact-gathering.
-- **Package Discipline:** Strictly `pnpm` only. Zero casual dependencies.
-- **Clear Demarcation:** `Engineer Mode` for traces and hashes; `Client Mode` for plain-language Dutch commercial opportunities.
-
-## Documentation
-
-- [Architecture](ARCHITECTURE.md)
-- [Dependency Policy](DEPENDENCY_POLICY.md)
-- [License Strategy](LICENSE_STRATEGY.md)
-- [Security](SECURITY.md)
-- [Threat Model](THREAT_MODEL.md)
-
----
-*ARGUS is operational software.*
+## Security boundaries
+- **Public Passive Only:** ARGUS does not generate intrusive traffic.
+- **Local-First Processing:** Evidence mapping and rules run locally.
+- **No Telemetry:** Zero external analytics or telemetry dependencies.

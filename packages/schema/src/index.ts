@@ -135,6 +135,33 @@ export interface Proof {
   afterEvidenceIds: string[];
 }
 
+export type AssessmentType =
+  | 'OWNER_AUTHORIZED'
+  | 'SELF_ASSESSMENT'
+  | 'PUBLIC_PASSIVE_REVIEW'
+  | 'PROFESSIONAL_AUDIT'
+  | 'RESEARCH';
+
+export type ScopeStatus = 'ACTIVE' | 'EXPIRED' | 'REVOKED';
+
+export interface AuthorizationScope {
+  scopeId: string;
+  targetId: string;
+  assessmentType: AssessmentType;
+  allowedDomains: string[];
+  allowedCollectors: string[];
+  authorizationBasis: string;
+  operatorAcknowledgment: string;
+  createdAt: string;
+  expiresAt?: string;
+  status: ScopeStatus;
+  restrictions: {
+    passiveOnly: boolean;
+    publicDataOnly: boolean;
+    noActiveProbing: boolean;
+  };
+}
+
 export type DataMode = 'LIVE' | 'FIXTURE' | 'DEMO';
 
 export type InspectionStatus = 'STARTED' | 'COMPLETED' | 'FAILED' | 'PARTIAL';

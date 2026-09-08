@@ -5,7 +5,8 @@
   "scripts": {
     "build": "pnpm -r run build",
     "test": "pnpm -r run test",
-    "lint": "pnpm -r run lint"
+    "lint": "pnpm -r run lint",
+    "demo": "pnpm --filter @argus/console start demo"
   },
   "devDependencies": {
     "typescript": "^5.5.0",

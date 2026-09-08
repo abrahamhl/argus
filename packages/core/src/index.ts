@@ -4,3 +4,5 @@ export * from './inspector.js';
 export * from './assessment.js';
 export * from './retest.js';
 export * from './api.js';
+export { observationToEvidence } from './engine.js';
+export * from './authorization.js';

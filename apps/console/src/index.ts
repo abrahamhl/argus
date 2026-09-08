@@ -1,114 +1,111 @@
 import * as readline from 'node:readline/promises';
-import { collectHttp } from '@argus/collectors';
-import { observationToEvidence, hashValue } from '@argus/core';
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { inspectPublicTarget, observationToEvidence } from '@argus/core';
 import { Finding, Opportunity } from '@argus/schema';
+// @ts-ignore - The types will work after build
+import { runRules, mapFindingsToOpportunities } from '@argus/core/dist/assessment.js'; 
 
-// Correlation Rules
-function evaluateSecurityHeaders(evidenceList: any[]): Finding[] {
-  const findings: Finding[] = [];
-  
-  for (const ev of evidenceList) {
-    if (ev.type === 'HTTP_RESPONSE') {
-      const headers = ev.normalizedValue.headers;
-      if (!headers['strict-transport-security']) {
-        findings.push({
-          id: `fnd_${hashValue('hsts_missing' + ev.id).slice(0, 12)}`,
-          targetId: ev.targetId,
-          runId: ev.runId,
-          title: 'Missing HSTS Header',
-          description: 'The HTTP Strict-Transport-Security response header is missing.',
-          severity: 'MEDIUM',
-          confidence: 'VERIFIED',
-          evidenceIds: [ev.id]
-        });
-      }
-    }
-  }
-  return findings;
+function printFinding(f: Finding) {
+  console.log(`FINDING`);
+  console.log(`${f.title}`);
+  console.log(`Confidence: ${f.confidence}`);
+  console.log(`Severity: ${f.severity}`);
+  console.log(`Evidence IDs: ${f.evidenceIds.join(', ')}\n`);
 }
 
-// Opportunity Mapper
-function mapFindingsToOpportunities(findings: Finding[]): Opportunity[] {
-  const opportunities: Opportunity[] = [];
-  
-  for (const f of findings) {
-    if (f.title === 'Missing HSTS Header') {
-      opportunities.push({
-        id: `opp_${hashValue('hsts_opp' + f.id).slice(0, 12)}`,
-        title: 'Verbeter de Website Beveiliging (HSTS)',
-        supportingFindingIds: [f.id],
-        confidence: f.confidence,
-        businessArea: 'Trust & Privacy',
-        technicalArea: 'HTTP Headers',
-        serviceCategory: 'SECURITY_HARDENING',
-        retestAvailable: true,
-        needsClientAccess: true,
-        estimatedComplexity: 'LOW',
-        clientExplanationKey: 'hsts_missing_nl'
-      });
-    }
-  }
-  return opportunities;
+function printOpportunity(opp: Opportunity) {
+  console.log(`OPPORTUNITY`);
+  console.log(`${opp.title}`);
+  console.log(`Complexity: ${opp.estimatedComplexity}`);
+  console.log(`Business value: ${opp.businessArea}\n`);
+  console.log(`REMEDIATION`);
+  console.log(`Apply appropriate hardening\n`);
 }
 
-async function main() {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
-
+async function runDemo() {
   console.clear();
   console.log('ARGUS');
-  console.log('Evidence & Opportunity Control Plane');
-  console.log('-----------------------------------------');
-  console.log('[ NEW TARGET ]\n');
+  console.log('Evidence & Opportunity Control Plane\n');
+
+  console.log(`TARGET\ndemo-business.local\n`);
   
-  const targetUrl = await rl.question('Enter Target URL (e.g., https://example.com): ');
+  const beforePath = resolve(process.cwd(), 'fixtures/demo/missing-hsts-before.json');
+  const afterPath = resolve(process.cwd(), 'fixtures/demo/hsts-after.json');
   
-  console.log('\n> PUBLIC INSPECTION STARTED...');
+  const beforeData = JSON.parse(readFileSync(beforePath, 'utf8'));
+  const afterData = JSON.parse(readFileSync(afterPath, 'utf8'));
+
+  // RUN A
+  console.log('RUN A — BASELINE');
+  const evBefore = observationToEvidence(beforeData.observations[0], (x) => x);
+  const findingsA = runRules([evBefore]);
+  const oppsA = mapFindingsToOpportunities(findingsA);
+
+  console.log(`HTTP observed`);
+  console.log(`Evidence generated`);
   
-  const runId = `run_${Date.now()}`;
-  const targetId = `tgt_${hashValue(targetUrl).slice(0, 12)}`;
-  
-  console.log('> COLLECTING HTTP SIGNALS...');
-  const observations = await collectHttp(targetUrl, runId, targetId);
-  
-  console.log('> NORMALIZING TO EVIDENCE...');
-  const evidenceList = observations.map(obs => 
-    observationToEvidence(obs, (raw) => raw) // identity normalize for now
-  );
-  
-  console.log('> CORRELATING FINDINGS...');
-  const findings = evaluateSecurityHeaders(evidenceList);
-  
-  console.log('> MAPPING TO COMMERCIAL OPPORTUNITIES...');
-  const opportunities = mapFindingsToOpportunities(findings);
-  
-  console.log('\n=========================================');
-  console.log('                 RESULTS                 ');
-  console.log('=========================================');
-  
-  console.log(`OBSERVATIONS:  ${observations.length}`);
-  console.log(`EVIDENCE:      ${evidenceList.length}`);
-  console.log(`FINDINGS:      ${findings.length}`);
-  console.log(`OPPORTUNITIES: ${opportunities.length}`);
-  
-  console.log('\n--- OPPORTUNITIES ---');
-  if (opportunities.length === 0) {
-    console.log('No actionable opportunities found.');
-  } else {
-    opportunities.forEach(opp => {
-      console.log(`\n[ OPPORTUNITY ] ${opp.title}`);
-      console.log(`Category:       ${opp.serviceCategory}`);
-      console.log(`Complexity:     ${opp.estimatedComplexity}`);
-      console.log(`Business Value: ${opp.businessArea}`);
-    });
+  if (findingsA.length > 0) {
+    printFinding(findingsA[0]);
+    if (oppsA.length > 0) {
+      printOpportunity(oppsA[0]);
+    }
   }
+
+  // RUN B
+  console.log('RUN B — RETEST');
+  const evAfter = observationToEvidence(afterData.observations[0], (x) => x);
+  const findingsB = runRules([evAfter]);
   
-  console.log('\n-----------------------------------------');
-  console.log('ARGUS RUN COMPLETED. (Type /help for commands)');
+  console.log(`HTTP observed`);
+  
+  if (findingsB.length === 0) {
+    console.log(`HSTS present\n`);
+    console.log('PROOF');
+    console.log('RESOLVED\n');
+  } else {
+    console.log('PROOF\nUNCHANGED');
+  }
+}
+
+async function runLive() {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  console.clear();
+  console.log('ARGUS');
+  console.log('Evidence & Opportunity Control Plane\n');
+  const targetUrl = await rl.question('TARGET: ');
+  console.log('\nRUN — LIVE INSPECTION');
+  
+  const result = await inspectPublicTarget(targetUrl, {
+    evaluateFindings: async (evidence) => runRules(evidence),
+    mapOpportunities: async (findings) => mapFindingsToOpportunities(findings)
+  });
+  
+  console.log('EVIDENCE');
+  result.evidence.forEach(ev => {
+    console.log(`[+] ${ev.id}`);
+  });
+  
+  console.log('\nFINDINGS');
+  if (result.findings.length === 0) console.log('None detected.');
+  result.findings.forEach((f: any) => printFinding(f));
+  
+  console.log('OPPORTUNITIES');
+  if (result.opportunities.length === 0) console.log('None detected.');
+  result.opportunities.forEach((o: any) => printOpportunity(o));
   
   rl.close();
 }
 
-main().catch(console.error);
+async function main() {
+  if (process.argv.includes('demo')) {
+    await runDemo();
+  } else {
+    await runLive();
+  }
+}
+
+main().catch(err => {
+  console.error('\n[ERROR]', err.message);
+  process.exit(1);
+});
