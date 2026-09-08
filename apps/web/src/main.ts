@@ -284,7 +284,10 @@ if (app) {
     if (tab === "exec") {
       container.innerHTML = `
         <div class="exec-brief">
-          <div class="exec-title font-mono">EXECUTIVE BRIEF: ${demoData.domain}</div>
+          <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+            <div class="exec-title font-mono">EXECUTIVE BRIEF: ${demoData.domain}</div>
+            <button class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-color: var(--text-muted); color: var(--text-muted);" onclick="window.print()">[ EXPORT PDF ]</button>
+          </div>
           <div class="exec-text">
             Our passive intelligence gathering indicates a significant gap in perimeter security and regulatory compliance. 
             We identified forgotten digital assets ("Shadow IT") publicly exposing pre-production data, alongside missing foundational security controls.
