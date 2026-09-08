@@ -306,3 +306,42 @@ input[type="url"]:focus {
 .mt-2 { margin-top: 2rem; }
 .text-cyan { color: var(--accent-cyan); }
 .font-mono { font-family: var(--font-mono); }
+
+/* Shadow IT Terminal */
+.shadow-terminal {
+  background: #000;
+  border: 1px solid var(--accent-cyan-dim);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--success);
+  height: 150px;
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+.shadow-terminal-line { margin-bottom: 0.25rem; }
+.shadow-terminal-line.new { animation: typeLine 0.1s ease-out; }
+@keyframes typeLine { from { opacity: 0; transform: translateX(-5px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Executive Brief */
+.exec-brief {
+  background: var(--bg-surface);
+  border-left: 4px solid var(--danger);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.exec-title { font-size: 1.2rem; margin-bottom: 0.5rem; color: #fff; }
+.exec-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.6; }
+
+/* Legal/Financial Widget */
+.legal-widget {
+  background: rgba(255, 51, 102, 0.05);
+  border: 1px solid rgba(255, 51, 102, 0.2);
+  padding: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.legal-cost { color: var(--danger); font-size: 1.5rem; font-weight: bold; font-family: var(--font-mono); }
+
