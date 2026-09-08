@@ -88,6 +88,8 @@ export interface OpportunitySummary {
  * - NO compliance certifications (GDPR, NIS2, etc.)
  * - If zero findings: say exactly that, don't claim "secure"
  */
+export * from './rules.js';
+
 export function generateClientAssessment(
   inspection: InspectionResultV1,
   organisationLabel?: string

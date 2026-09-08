@@ -177,21 +177,14 @@ export async function inspectPublicTarget(
       try {
         const { collectHttp } = await import('@argus/collectors');
 
-        const validateRedirect = async (redirectUrl: string): Promise<boolean> => {
-          const result = await policy.validate(redirectUrl);
-          return result.allowed;
-        };
-
-        const httpResult = await collectHttp(target, runId, targetId, {
-          validateRedirect
-        });
-        observations.push(...httpResult.observations);
+        const httpObservations = await collectHttp(target, runId, targetId);
+        observations.push(...httpObservations);
 
         collectorSummary.push({
           collector: 'http',
           version: '0.1.0',
           status: 'SUCCESS',
-          observationCount: httpResult.observations.length,
+          observationCount: httpObservations.length,
           errorCount: 0,
           durationMs: Date.now() - httpStartTime
         });

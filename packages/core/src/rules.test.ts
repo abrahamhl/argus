@@ -8,9 +8,9 @@ import {
   canonical,
   stableFindingId,
   redact,
-  redactEvidence
-} from './rules.js';
-import { mapFindingsToOpportunities } from './opportunities.js';
+  redactEvidence,
+  mapFindingsToOpportunities
+} from './assessment.js';
 
 const TARGET = 'tgt_example';
 const RUN = 'run_deterministic';
