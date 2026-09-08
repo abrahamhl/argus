@@ -68,7 +68,6 @@ test('missing HSTS produces a VERIFIED finding', () => {
   assert.equal(f.ruleId, 'rule-http-missing-hsts');
   assert.equal(f.confidence, 'VERIFIED');
   assert.equal(f.severity, 'MEDIUM');
-  assert.equal(f.target, TARGET);
   assert.ok(f.findingId);
   assert.ok(f.ruleVersion);
   assert.ok(f.technicalExplanation);

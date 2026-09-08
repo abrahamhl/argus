@@ -26,6 +26,7 @@ export interface InspectionOptions {
   collectHttp?: boolean;
   collectDns?: boolean;
   dataMode?: DataMode;
+  fixturePath?: string;
   organisationLabel?: string;
   evaluateFindings?: FindingEvaluator;
   mapOpportunities?: OpportunityMapper;
@@ -135,8 +136,35 @@ export async function inspectPublicTarget(
   try {
     const domain = url.hostname;
 
+    // FIXTURE MODE: Load observations from file instead of collecting
+    if (dataMode === 'FIXTURE' && options.fixturePath) {
+      try {
+        const { readFileSync } = await import('node:fs');
+        const fixtureData = JSON.parse(readFileSync(options.fixturePath, 'utf-8'));
+        observations.push(...fixtureData.observations);
+
+        collectorSummary.push({
+          collector: 'fixture',
+          version: '1.0.0',
+          status: 'SUCCESS',
+          observationCount: fixtureData.observations.length,
+          errorCount: 0,
+          durationMs: 0
+        });
+      } catch (error: any) {
+        errors.push({
+          code: 'FIXTURE_LOAD_FAILED',
+          message: `Failed to load fixture: ${error.message}`,
+          phase: 'COLLECTION',
+          fatal: true
+        });
+        collectionFailed = true;
+      }
+    }
+
+    // LIVE MODE: Collect from actual targets
     // Collect DNS if enabled (default: true)
-    if (options.collectDns !== false) {
+    if (dataMode === 'LIVE' && options.collectDns !== false) {
       const dnsStartTime = Date.now();
       try {
         const { collectDns } = await import('@argus/collectors');
@@ -172,7 +200,7 @@ export async function inspectPublicTarget(
     }
 
     // Collect HTTP if enabled (default: true)
-    if (options.collectHttp !== false) {
+    if (dataMode === 'LIVE' && options.collectHttp !== false) {
       const httpStartTime = Date.now();
       try {
         const { collectHttp } = await import('@argus/collectors');
