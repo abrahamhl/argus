@@ -1,0 +1,6 @@
+{
+  "id": "usr_local_123",
+  "name": "Local Test User",
+  "role": "admin",
+  "capabilities": ["read", "write"]
+}
