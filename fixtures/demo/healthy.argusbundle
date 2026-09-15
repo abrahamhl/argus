@@ -1,0 +1,67 @@
+{
+  "schemaVersion": "1.0.0",
+  "argusVersion": "0.1.0",
+  "os": "win32 10.0.26200",
+  "runtime": "Node.js v22.22.2",
+  "collectorVersions": {
+    "http": "0.1.0",
+    "dns": "0.1.0"
+  },
+  "policyManifest": {
+    "mode": "STRICT",
+    "sensitiveCategory": "STANDARD"
+  },
+  "target": {
+    "input": "http://example.com",
+    "normalized": "http://example.com/",
+    "hostname": "example.com"
+  },
+  "run": {
+    "id": "run_mock_offline",
+    "timestamp": "2026-09-15T23:01:09.770Z",
+    "durationMs": 100
+  },
+  "observations": [],
+  "evidence": [
+    {
+      "id": "evd_2",
+      "targetId": "target_1",
+      "runId": "run_mock_offline",
+      "type": "HTTP_RESPONSE",
+      "source": "example.com",
+      "collector": "http",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.772Z",
+      "rawValue": {
+        "status": 200,
+        "url": "https://example.com/",
+        "redirected": false,
+        "headers": {
+          "strict-transport-security": "max-age=31536000",
+          "content-security-policy": "default-src 'self'",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-frame-options": "DENY"
+        }
+      },
+      "normalizedValue": {
+        "status": 200,
+        "url": "https://localhost/",
+        "redirected": false,
+        "headers": {
+          "strict-transport-security": "max-age=31536000",
+          "content-security-policy": "default-src 'self'",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "strict-origin-when-cross-origin",
+          "x-frame-options": "DENY"
+        }
+      },
+      "confidence": "VERIFIED",
+      "sha256": "51a688d9607acd08eac8371fe46906ae720b061621241f86ec4785652d0d6738"
+    }
+  ],
+  "findings": [],
+  "opportunities": [],
+  "proofs": [],
+  "bundleHash": "04ba8207c01d69f60b6dad66a9918d8cc8c0581282dd0e859a95c2ff88f35221"
+}

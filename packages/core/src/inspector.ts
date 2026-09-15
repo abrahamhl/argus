@@ -29,7 +29,7 @@ export interface InspectionOptions {
   fixturePath?: string;
   organisationLabel?: string;
   evaluateFindings?: FindingEvaluator;
-  mapOpportunities?: OpportunityMapper;
+  mapOpportunities?: AsyncOpportunityMapper;
 }
 
 /**
@@ -45,7 +45,7 @@ export type FindingEvaluator = (
  * Extension point for opportunity mapping.
  * Implementations analyze findings and produce opportunities.
  */
-export type OpportunityMapper = (
+export type AsyncOpportunityMapper = (
   findings: Finding[],
   context: EvaluationContext
 ) => Promise<Opportunity[]>;
@@ -241,9 +241,9 @@ export async function inspectPublicTarget(
     // Convert observations to evidence
     for (const obs of observations) {
       const evd: Evidence = {
-        id: `evd_${hashValue(obs.id + obs.observedAt).slice(0, 12)}`,
-        targetId: obs.targetId,
-        runId: obs.runId,
+        id: `evd_${hashValue(obs.id + runId).slice(0, 12)}`,
+        targetId: targetId,
+        runId,
         type: obs.type,
         source: obs.source,
         collector: obs.collector,
@@ -252,7 +252,7 @@ export async function inspectPublicTarget(
         rawValue: obs.rawValue,
         normalizedValue: obs.rawValue,
         confidence: 'VERIFIED',
-        sha256: hashValue(JSON.stringify(obs.rawValue))
+        sha256: hashValue(obs.rawValue)
       };
       evidence.push(evd);
     }

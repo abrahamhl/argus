@@ -1,111 +1,110 @@
-import * as readline from 'node:readline/promises';
-import { readFileSync } from 'node:fs';
+#!/usr/bin/env node
+import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { inspectPublicTarget, observationToEvidence } from '@argus/core';
-import { Finding, Opportunity } from '@argus/schema';
-// @ts-ignore - The types will work after build
-import { runRules, mapFindingsToOpportunities } from '@argus/core/dist/assessment.js'; 
+import { inspectPublicTarget, runRules, mapFindingsToOpportunities, saveBundle, loadBundle, createBundle, compareRuns } from '@argus/core';
 
-function printFinding(f: Finding) {
-  console.log(`FINDING`);
-  console.log(`${f.title}`);
-  console.log(`Confidence: ${f.confidence}`);
-  console.log(`Severity: ${f.severity}`);
-  console.log(`Evidence IDs: ${f.evidenceIds.join(', ')}\n`);
+async function assess(url: string) {
+  if (!url) throw new Error('Missing target URL');
+  console.log(`[ARGUS] Assessing ${url}...`);
+  const result = await inspectPublicTarget(url, {
+    evaluateFindings: async (evidence) => runRules(evidence),
+    mapOpportunities: async (findings) => mapFindingsToOpportunities(findings)
+  });
+  const bundle = createBundle(result);
+  const filename = `argus-${bundle.target.hostname}-${Date.now()}.argusbundle`;
+  saveBundle(bundle, filename);
+  console.log(`[ARGUS] Assessment complete. Saved to ${filename}`);
 }
 
-function printOpportunity(opp: Opportunity) {
-  console.log(`OPPORTUNITY`);
-  console.log(`${opp.title}`);
-  console.log(`Complexity: ${opp.estimatedComplexity}`);
-  console.log(`Business value: ${opp.businessArea}\n`);
-  console.log(`REMEDIATION`);
-  console.log(`Apply appropriate hardening\n`);
-}
-
-async function runDemo() {
-  console.clear();
-  console.log('ARGUS');
-  console.log('Evidence & Opportunity Control Plane\n');
-
-  console.log(`TARGET\ndemo-business.local\n`);
-  
-  const beforePath = resolve(process.cwd(), 'fixtures/demo/missing-hsts-before.json');
-  const afterPath = resolve(process.cwd(), 'fixtures/demo/hsts-after.json');
-  
-  const beforeData = JSON.parse(readFileSync(beforePath, 'utf8'));
-  const afterData = JSON.parse(readFileSync(afterPath, 'utf8'));
-
-  // RUN A
-  console.log('RUN A — BASELINE');
-  const evBefore = observationToEvidence(beforeData.observations[0], (x) => x);
-  const findingsA = runRules([evBefore]);
-  const oppsA = mapFindingsToOpportunities(findingsA);
-
-  console.log(`HTTP observed`);
-  console.log(`Evidence generated`);
-  
-  if (findingsA.length > 0) {
-    printFinding(findingsA[0]);
-    if (oppsA.length > 0) {
-      printOpportunity(oppsA[0]);
-    }
-  }
-
-  // RUN B
-  console.log('RUN B — RETEST');
-  const evAfter = observationToEvidence(afterData.observations[0], (x) => x);
-  const findingsB = runRules([evAfter]);
-  
-  console.log(`HTTP observed`);
-  
-  if (findingsB.length === 0) {
-    console.log(`HSTS present\n`);
-    console.log('PROOF');
-    console.log('RESOLVED\n');
-  } else {
-    console.log('PROOF\nUNCHANGED');
+function inspect(bundlePath: string) {
+  if (!bundlePath) throw new Error('Missing bundle path');
+  const bundle = loadBundle(bundlePath);
+  console.log(`[ARGUS] BUNDLE: ${bundle.bundleHash}`);
+  console.log(`Target: ${bundle.target.hostname}`);
+  console.log(`Run ID: ${bundle.run.id}`);
+  console.log(`Date: ${bundle.run.timestamp}`);
+  console.log(`Findings: ${bundle.findings.length}`);
+  for (const f of bundle.findings) {
+    console.log(`  - [${f.severity}] ${f.title}`);
   }
 }
 
-async function runLive() {
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-  console.clear();
-  console.log('ARGUS');
-  console.log('Evidence & Opportunity Control Plane\n');
-  const targetUrl = await rl.question('TARGET: ');
-  console.log('\nRUN — LIVE INSPECTION');
+async function retest(bundlePath: string, url: string) {
+  if (!bundlePath) throw new Error('Missing bundle path');
+  if (!url) throw new Error('Missing target URL');
   
-  const result = await inspectPublicTarget(targetUrl, {
+  console.log(`[ARGUS] Retesting ${url} against baseline ${bundlePath}...`);
+  const baseline = loadBundle(bundlePath);
+  
+  const result = await inspectPublicTarget(url, {
     evaluateFindings: async (evidence) => runRules(evidence),
     mapOpportunities: async (findings) => mapFindingsToOpportunities(findings)
   });
   
-  console.log('EVIDENCE');
-  result.evidence.forEach(ev => {
-    console.log(`[+] ${ev.id}`);
-  });
+  const retestBundle = createBundle(result);
+  retestBundle.proofs = compareRuns(baseline, retestBundle);
   
-  console.log('\nFINDINGS');
-  if (result.findings.length === 0) console.log('None detected.');
-  result.findings.forEach((f: any) => printFinding(f));
+  const filename = `argus-retest-${retestBundle.target.hostname}-${Date.now()}.argusbundle`;
+  saveBundle(retestBundle, filename);
   
-  console.log('OPPORTUNITIES');
-  if (result.opportunities.length === 0) console.log('None detected.');
-  result.opportunities.forEach((o: any) => printOpportunity(o));
-  
-  rl.close();
-}
-
-async function main() {
-  if (process.argv.includes('demo')) {
-    await runDemo();
-  } else {
-    await runLive();
+  console.log(`[ARGUS] Retest complete. Saved to ${filename}`);
+  console.log(`\nPROOFS:`);
+  for (const p of retestBundle.proofs) {
+    console.log(`  - ${p.originalFindingId} -> ${p.status}`);
   }
 }
 
-main().catch(err => {
-  console.error('\n[ERROR]', err.message);
-  process.exit(1);
-});
+function verify(bundlePath: string) {
+  if (!bundlePath) throw new Error('Missing bundle path');
+  try {
+    const bundle = loadBundle(bundlePath);
+    console.log(`[ARGUS] VERIFIED: Bundle ${bundlePath} is cryptographically valid.`);
+    console.log(`Hash: ${bundle.bundleHash}`);
+  } catch (err: any) {
+    console.error(`[ARGUS] INTEGRITY FAILURE: ${err.message}`);
+    process.exit(1);
+  }
+}
+
+function printHelp() {
+  console.log(`ARGUS Deterministic CLI
+  
+Usage:
+  argus assess <url>             Run inspection and generate an .argusbundle
+  argus inspect <bundle>         Read and print bundle contents
+  argus retest <bundle> <url>    Run a new inspection against a baseline bundle
+  argus verify <bundle>          Verify cryptographic integrity of a bundle
+  argus help                     Print this help message
+  `);
+}
+
+async function main() {
+  const args = process.argv.slice(2);
+  const cmd = args[0];
+
+  try {
+    switch (cmd) {
+      case 'assess':
+        await assess(args[1]);
+        break;
+      case 'inspect':
+        inspect(args[1]);
+        break;
+      case 'retest':
+        await retest(args[1], args[2]);
+        break;
+      case 'verify':
+        verify(args[1]);
+        break;
+      case 'help':
+      default:
+        printHelp();
+        break;
+    }
+  } catch (err: any) {
+    console.error(`\n[ERROR] ${err.message}`);
+    process.exit(1);
+  }
+}
+
+main();

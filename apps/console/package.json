@@ -2,6 +2,9 @@
   "name": "@argus/console",
   "version": "0.1.0",
   "main": "dist/index.js",
+  "bin": {
+    "argus": "dist/index.js"
+  },
   "type": "module",
   "scripts": {
     "build": "tsc",

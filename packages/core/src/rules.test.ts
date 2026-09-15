@@ -292,8 +292,8 @@ test('empty findings produce no opportunities', () => {
 
 // --- rule registry -----------------------------------------------------------
 
-test('all ten deterministic rules are registered', () => {
-  assert.equal(RULES.length, 10);
+test('all deterministic rules are registered', () => {
+  assert.equal(RULES.length, 11);
   assert.deepEqual(RULES.map((r) => r.id).sort(), [
     'rule-dns-dmarc-p-none',
     'rule-dns-missing-caa',
@@ -304,6 +304,7 @@ test('all ten deterministic rules are registered', () => {
     'rule-http-missing-frame-protection',
     'rule-http-missing-hsts',
     'rule-http-missing-referrer-policy',
-    'rule-http-missing-x-content-type-options'
+    'rule-http-missing-x-content-type-options',
+    'rule-http-redirect-loop'
   ].sort());
 });

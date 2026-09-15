@@ -1,0 +1,483 @@
+[0;32m========================================[0m
+[0;32m  ARGUS OSINT Deep Scanner[0m
+[0;32m  Anti-Fingerprint + Legal Violations[0m
+[0;32m========================================[0m
+
+
+[1;33m[1/83][0m Escaneando: Restaurante Botín
+  URL: https://botin.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[2/83][0m Escaneando: Hotel Ritz Madrid
+  URL: https://mandarinoriental.com/es/madrid/hotel-ritz
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[3/83][0m Escaneando: Clínica Dental Estetic
+  URL: https://clinicadentalestetic.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[4/83][0m Escaneando: Despacho Garrigues
+  URL: https://garrigues.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[5/83][0m Escaneando: Casa del Libro Gran Vía
+  URL: https://casadellibro.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[6/83][0m Escaneando: Gimnasio Metropolitan
+  URL: https://clubmetropolitan.net
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[7/83][0m Escaneando: Cervecería Alemana
+  URL: https://lacerveceriaalemana.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[8/83][0m Escaneando: Hotel Villa Real
+  URL: https://derbyhotels.com/hotel-villa-real-madrid
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (2/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en derbyhotels.com...
+  [0;31m⚠[0m  Score: 110 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 1 | High: 2 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[9/83][0m Escaneando: Óptica 2000 Goya
+  URL: https://optica2000.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[10/83][0m Escaneando: Peluquería Llongueras
+  URL: https://llongueras.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[11/83][0m Escaneando: Restaurante La Barraca
+  URL: https://labarraca.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[12/83][0m Escaneando: Clínica Ruber Internacional
+  URL: https://ruberinternacional.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[13/83][0m Escaneando: Hotel Only YOU Atocha
+  URL: https://onlyyouhotels.com/atocha
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[14/83][0m Escaneando: Joyería Suárez
+  URL: https://joyeriasuarez.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[15/83][0m Escaneando: Asesoría Fiscal Madrid
+  URL: https://asesoriafiscalmadrid.com
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (2/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en asesoriafiscalmadrid.com...
+  [0;31m⚠[0m  Score: 110 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 1 | High: 2 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[16/83][0m Escaneando: Restaurante Amazónico
+  URL: https://amazonico.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[17/83][0m Escaneando: CrossFit Chamberí
+  URL: https://crossfitchamberi.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[18/83][0m Escaneando: Hotel Círculo Gran Vía
+  URL: https://circulogranvia.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[19/83][0m Escaneando: Farmacia Central
+  URL: https://farmaciacentral-madrid.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[20/83][0m Escaneando: Clínica Fisioterapia Retiro
+  URL: https://fisiomadretiro.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[21/83][0m Escaneando: Restaurante Sobrino de Botín
+  URL: https://botin.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[22/83][0m Escaneando: Librería Types
+  URL: https://types.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[23/83][0m Escaneando: Hotel Emperador
+  URL: https://hotelemperadormadrid.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[24/83][0m Escaneando: Centro Médico Ruber
+  URL: https://ruber.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[25/83][0m Escaneando: Restaurante DiverXO
+  URL: https://diverxo.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[26/83][0m Escaneando: Despacho Uría Menéndez
+  URL: https://uria.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[27/83][0m Escaneando: Gimnasio Holmes Place
+  URL: https://holmesplace.com/es/madrid
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[28/83][0m Escaneando: Restaurante Lakasa
+  URL: https://lakasa.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[29/83][0m Escaneando: Óptica Universitaria
+  URL: https://opticauniversitaria.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[30/83][0m Escaneando: Clínica Baviera Madrid
+  URL: https://clinicabaviera.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[31/83][0m Escaneando: Hotel NH Collection Madrid Suecia
+  URL: https://nh-hotels.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[32/83][0m Escaneando: Peluquería Marco Aldany
+  URL: https://marcoaldany.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[33/83][0m Escaneando: Restaurante Ten Con Ten
+  URL: https://tenconten.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[34/83][0m Escaneando: Joyería Carrera y Carrera
+  URL: https://carreraycarrera.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[35/83][0m Escaneando: Asesoría Montero y Asociados
+  URL: https://asesoriamontero.es
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (2/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en asesoriamontero.es...
+  [0;31m⚠[0m  Score: 130 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 1 | High: 3 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[36/83][0m Escaneando: Restaurante La Terraza del Casino
+  URL: https://casinodemadrid.es/restaurantes/la-terraza
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[37/83][0m Escaneando: CrossFit Madrid Centro
+  URL: https://crossfitmadridcentro.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[38/83][0m Escaneando: Hotel Palacio de los Duques
+  URL: https://palaciodelosduques.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[39/83][0m Escaneando: Farmacia Internacional
+  URL: https://farmaciainternacional.net
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[40/83][0m Escaneando: Clínica Menorca
+  URL: https://clinicamenorca.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[41/83][0m Escaneando: Restaurante Coque
+  URL: https://restaurantecoque.com
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (6/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en restaurantecoque.com...
+  [0;31m⚠[0m  Score: 110 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 1 | High: 2 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[42/83][0m Escaneando: Librería Antonio Machado
+  URL: https://libreriaantoniomachado.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[43/83][0m Escaneando: Hotel Único Madrid
+  URL: https://unicohotelmadrid.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (1/6) - SKIP
+
+[1;33m[44/83][0m Escaneando: Centro Médico ABC
+  URL: https://centromedicoabc.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[45/83][0m Escaneando: Restaurante Ramón Freixa
+  URL: https://ramonfreixamadrid.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[46/83][0m Escaneando: Despacho Cuatrecasas
+  URL: https://cuatrecasas.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[47/83][0m Escaneando: Gimnasio David Lloyd
+  URL: https://davidlloyd.es/madrid
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[48/83][0m Escaneando: Restaurante Atrio
+  URL: https://restauranteatrio.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[49/83][0m Escaneando: Óptica Alain Afflelou
+  URL: https://alainafflelou.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[50/83][0m Escaneando: Clínica La Luz
+  URL: https://clinicalalu z.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[51/83][0m Escaneando: Hotel Villa Magna
+  URL: https://rosewoodhotels.com/villa-magna-madrid
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[52/83][0m Escaneando: Peluquería Cheska
+  URL: https://pelucheska.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[53/83][0m Escaneando: Restaurante Sacha
+  URL: https://restaurantesacha.com
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (2/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en restaurantesacha.com...
+  [0;31m⚠[0m  Score: 150 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 1 | High: 4 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[54/83][0m Escaneando: Joyería Tous
+  URL: https://tous.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[55/83][0m Escaneando: Asesoría Auren
+  URL: https://auren.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[56/83][0m Escaneando: Restaurante El Club Allard
+  URL: https://elcluballard.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[57/83][0m Escaneando: CrossFit Salamanca
+  URL: https://crossfitsalamanca.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[58/83][0m Escaneando: Hotel Fenix Gran Meliá
+  URL: https://melia.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[59/83][0m Escaneando: Farmacia Coliseum
+  URL: https://farmaciacoliseum.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[60/83][0m Escaneando: Clínica Universidad Navarra
+  URL: https://cun.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[61/83][0m Escaneando: Restaurante Punto MX
+  URL: https://puntomx.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[62/83][0m Escaneando: Librería Cervantes
+  URL: https://libreriacervantes.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[63/83][0m Escaneando: Hotel Wellington
+  URL: https://hotel-wellington.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[64/83][0m Escaneando: Centro Médico Sanitas La Moraleja
+  URL: https://sanitas.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[65/83][0m Escaneando: Restaurante Casa Lucio
+  URL: https://casalucio.es
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (2/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en casalucio.es...
+  [0;31m⚠[0m  Score: 110 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 1 | High: 2 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[66/83][0m Escaneando: Despacho Clifford Chance
+  URL: https://cliffordchance.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[67/83][0m Escaneando: Gimnasio Víctor Ullate
+  URL: https://victorullate.com
+  [1;33m→[0m Verificando actividad online...
+  [0;32m✓[0m Actividad confirmada (4/6)
+  [1;33m→[0m Analizando cumplimiento legal...
+[1;33m[LEGAL][0m Detectando incumplimientos en victorullate.com...
+  [0;31m⚠[0m  Score: 210 | Urgencia: URGENTE
+  [0;31m⚠[0m  Critical: 3 | High: 3 | Medium: 3
+  [0;32m✓[0m Guardado
+
+
+[1;33m[68/83][0m Escaneando: Restaurante Kabuki Wellington
+  URL: https://kabukiwellington.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[69/83][0m Escaneando: Óptica Soloptical
+  URL: https://soloptical.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[70/83][0m Escaneando: Clínica Cemtro
+  URL: https://cemtro.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[71/83][0m Escaneando: Hotel Iberostar Las Letras
+  URL: https://iberostar.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[72/83][0m Escaneando: Peluquería Rossano Ferretti
+  URL: https://rossanoferretti.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[73/83][0m Escaneando: Restaurante Zalacaín
+  URL: https://zalacain.eu
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[74/83][0m Escaneando: Joyería Rabat
+  URL: https://rabat.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[75/83][0m Escaneando: Asesoría Grant Thornton
+  URL: https://grantthornton.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[76/83][0m Escaneando: Restaurante Viridiana
+  URL: https://viridiana.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[77/83][0m Escaneando: CrossFit Arganzuela
+  URL: https://crossfitarganzuela.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[78/83][0m Escaneando: Hotel Westin Palace
+  URL: https://westinpalacemadrid.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[79/83][0m Escaneando: Farmacia Gran Vía
+  URL: https://farmaciagrvia.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[80/83][0m Escaneando: Clínica IMQ
+  URL: https://imq.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[81/83][0m Escaneando: Restaurante Sandó
+  URL: https://sando.es
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[82/83][0m Escaneando: Librería La Central
+  URL: https://lacentral.com
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[1;33m[83/83][0m Escaneando: Hotel Four Seasons
+  URL: https://fourseasons.com/madrid
+  [1;33m→[0m Verificando actividad online...
+  [0;31m✗[0m Actividad baja (0/6) - SKIP
+
+[0;32m========================================[0m
+[0;32m  ESCANEO COMPLETADO[0m
+[0;32m========================================[0m
+
+📊 Empresas escaneadas: 7
+🔴 Urgencia URGENTE: 7
+🟡 Urgencia ALTA: 0
+0
+
+📄 Archivo: leads_madrid_centro_OSINT_DEEP.csv
+
+[0;31m🚨 TOP 5 MÁS URGENTES:[0m
+
+  • Gimnasio Víctor Ullate
+  • Restaurante Sacha
+  • Asesoría Montero y Asociados
+  • Restaurante Coque
+  • Restaurante Casa Lucio
+
+[0;32m✅ Listo para ventas[0m

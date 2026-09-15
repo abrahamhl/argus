@@ -1,0 +1,45 @@
+name: ARGUS CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        version: 9.1.0
+
+    - name: Frozen Install
+      run: pnpm install --frozen-lockfile
+
+    - name: Dependency Audit
+      run: pnpm audit --prod
+
+    - name: Build
+      run: pnpm run build
+      
+    - name: Run Tests (Unit, Integration, E2E)
+      run: pnpm test
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Gitleaks Secret Scan
+      uses: gitleaks/gitleaks-action@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

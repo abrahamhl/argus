@@ -129,10 +129,39 @@ export interface Proof {
   id: string;
   targetId: string;
   retestRunId: string;
+  baselineRunId: string;
   originalFindingId: string;
-  status: 'NEW' | 'RESOLVED' | 'IMPROVED' | 'UNCHANGED' | 'REGRESSED' | 'UNKNOWN';
+  status: 'RESOLVED' | 'UNCHANGED' | 'REGRESSED' | 'UNKNOWN';
   beforeEvidenceIds: string[];
   afterEvidenceIds: string[];
+}
+
+export interface ArgusBundle {
+  schemaVersion: string;
+  argusVersion: string;
+  os: string;
+  runtime: string;
+  collectorVersions: Record<string, string>;
+  policyManifest: {
+    mode: string;
+    sensitiveCategory?: string;
+  };
+  target: {
+    input: string;
+    normalized: string;
+    hostname: string;
+  };
+  run: {
+    id: string;
+    timestamp: string;
+    durationMs: number;
+  };
+  observations: Observation[];
+  evidence: Evidence[];
+  findings: Finding[];
+  opportunities: Opportunity[];
+  proofs: Proof[];
+  bundleHash: string;
 }
 
 export type AssessmentType =

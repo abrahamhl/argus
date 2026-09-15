@@ -1,0 +1,11 @@
+{
+    "schema_version": 2,
+    "commit": "363c92b53d4cab64fc4389e11261c0f01a5ece7a",
+    "indexed_at": "2026-09-08T11:13:15Z",
+    "project": "C-Users-2fabr-ARGUS",
+    "nodes": 665,
+    "edges": 958,
+    "original_size": 1769472,
+    "compressed_size": 250152,
+    "compression_level": 9
+}

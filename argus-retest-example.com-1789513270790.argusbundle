@@ -1,0 +1,536 @@
+{
+  "schemaVersion": "1.0.0",
+  "argusVersion": "0.1.0",
+  "os": "win32 10.0.26200",
+  "runtime": "Node.js v22.22.2",
+  "collectorVersions": {
+    "http": "0.1.0",
+    "dns": "0.1.0"
+  },
+  "policyManifest": {
+    "mode": "PUBLIC_PASSIVE"
+  },
+  "target": {
+    "input": "http://example.com",
+    "normalized": "http://example.com/",
+    "hostname": "example.com"
+  },
+  "run": {
+    "id": "run_1faffdc90b745cc5",
+    "timestamp": "2026-09-15T23:01:09.916Z",
+    "durationMs": 873
+  },
+  "observations": [
+    {
+      "id": "obs_dns_dns_a_example.com_1789513269943_rsnshjxxfv",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_A",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        "104.20.23.154",
+        "172.66.147.243"
+      ]
+    },
+    {
+      "id": "obs_dns_dns_aaaa_example.com_1789513269948_zd8xm4uhcyk",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_AAAA",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        "2606:4700:10::6814:179a",
+        "2606:4700:10::ac42:93f3"
+      ]
+    },
+    {
+      "id": "obs_dns_dns_ns_example.com_1789513270038_7n9gkdl4fwc",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_NS",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        "elliott.ns.cloudflare.com",
+        "hera.ns.cloudflare.com"
+      ]
+    },
+    {
+      "id": "obs_dns_dns_mx_example.com_1789513270242_965capctjc7",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_MX",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        {
+          "exchange": "",
+          "priority": 0
+        }
+      ]
+    },
+    {
+      "id": "obs_dns_dns_caa_example.com_1789513270448_lvvf8oiefon",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_CAA",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": null
+    },
+    {
+      "id": "obs_dns_dns_txt_example.com_1789513270475_je9gc2srhh",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_TXT",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": {
+        "raw": [
+          [
+            "_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9"
+          ],
+          [
+            "v=spf1 -all"
+          ]
+        ],
+        "spf": {
+          "version": "spf1",
+          "mechanisms": [
+            "-all"
+          ]
+        }
+      }
+    },
+    {
+      "id": "obs_dns_dns_dmarc_example.com_1789513270503_p63rsyu20y",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "DNS_DMARC",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": {
+        "raw": [
+          [
+            "v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s"
+          ]
+        ],
+        "dmarc": {
+          "v": "DMARC1",
+          "p": "reject",
+          "sp": "reject",
+          "adkim": "s",
+          "aspf": "s"
+        }
+      }
+    },
+    {
+      "id": "obs_http_http://example.com_1789513270787",
+      "runId": "run_1faffdc90b745cc5",
+      "targetId": "tgt_f0e6a6a97042",
+      "type": "HTTP_RESPONSE",
+      "source": "http",
+      "collector": "argus-http-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:10.503Z",
+      "rawValue": {
+        "status": 200,
+        "url": "http://example.com/",
+        "redirected": false,
+        "headers": {
+          "age": "9129",
+          "allow": "GET, HEAD",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a3bb408a38b366a4-AMS",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "text/html",
+          "date": "Tue, 15 Sep 2026 23:01:13 GMT",
+          "last-modified": "Tue, 15 Sep 2026 16:59:31 GMT",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked"
+        }
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "id": "evd_71e9a685b9fc",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_A",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        "104.20.23.154",
+        "172.66.147.243"
+      ],
+      "normalizedValue": [
+        "104.20.23.154",
+        "172.66.147.243"
+      ],
+      "confidence": "VERIFIED",
+      "sha256": "ba824bc69cc6ad2eca991f09a0a2af48fd200c5c61c1fde52451b1cb35a397c1"
+    },
+    {
+      "id": "evd_c967f2bbedff",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_AAAA",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        "2606:4700:10::6814:179a",
+        "2606:4700:10::ac42:93f3"
+      ],
+      "normalizedValue": [
+        "2606:4700:10::6814:179a",
+        "2606:4700:10::ac42:93f3"
+      ],
+      "confidence": "VERIFIED",
+      "sha256": "0118bd900082d0e3d02e1ae6c1743bb452121bcb7faf134ce5a7d4e5ebf5ec17"
+    },
+    {
+      "id": "evd_9402676d484f",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_NS",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        "elliott.ns.cloudflare.com",
+        "hera.ns.cloudflare.com"
+      ],
+      "normalizedValue": [
+        "elliott.ns.cloudflare.com",
+        "hera.ns.cloudflare.com"
+      ],
+      "confidence": "VERIFIED",
+      "sha256": "39de17fb4a8ae60f929db4ecc815f9e0dd9ab41295de859464f6ac07d768068c"
+    },
+    {
+      "id": "evd_d6ee520bf0f3",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_MX",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": [
+        {
+          "exchange": "",
+          "priority": 0
+        }
+      ],
+      "normalizedValue": [
+        {
+          "exchange": "",
+          "priority": 0
+        }
+      ],
+      "confidence": "VERIFIED",
+      "sha256": "46af4fc4fd82611a1dfaf7d5ccce761468baa5bed26e679349a1ff62a9748f14"
+    },
+    {
+      "id": "evd_20cb1b5db2f6",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_CAA",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": null,
+      "normalizedValue": null,
+      "confidence": "VERIFIED",
+      "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b"
+    },
+    {
+      "id": "evd_ce6371000c3a",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_TXT",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": {
+        "raw": [
+          [
+            "_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9"
+          ],
+          [
+            "v=spf1 -all"
+          ]
+        ],
+        "spf": {
+          "version": "spf1",
+          "mechanisms": [
+            "-all"
+          ]
+        }
+      },
+      "normalizedValue": {
+        "raw": [
+          [
+            "_k2n1y4vw3qtb4skdx9e7dxt97qrmmq9"
+          ],
+          [
+            "v=spf1 -all"
+          ]
+        ],
+        "spf": {
+          "version": "spf1",
+          "mechanisms": [
+            "-all"
+          ]
+        }
+      },
+      "confidence": "VERIFIED",
+      "sha256": "52b6fb0549541b055f4dac52037ba9d21a22aa7299446947dc04d8e9e55e2b7d"
+    },
+    {
+      "id": "evd_c7204c7b915a",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "DNS_DMARC",
+      "source": "dns",
+      "collector": "argus-dns-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:09.938Z",
+      "rawValue": {
+        "raw": [
+          [
+            "v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s"
+          ]
+        ],
+        "dmarc": {
+          "v": "DMARC1",
+          "p": "reject",
+          "sp": "reject",
+          "adkim": "s",
+          "aspf": "s"
+        }
+      },
+      "normalizedValue": {
+        "raw": [
+          [
+            "v=DMARC1;p=reject;sp=reject;adkim=s;aspf=s"
+          ]
+        ],
+        "dmarc": {
+          "v": "DMARC1",
+          "p": "reject",
+          "sp": "reject",
+          "adkim": "s",
+          "aspf": "s"
+        }
+      },
+      "confidence": "VERIFIED",
+      "sha256": "01aba5e1bd9d7ae6bc1c043b28c3dc0843a22524ee123c306e62d0297763d350"
+    },
+    {
+      "id": "evd_5cb429658a93",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "type": "HTTP_RESPONSE",
+      "source": "http",
+      "collector": "argus-http-collector",
+      "collectorVersion": "0.1.0",
+      "observedAt": "2026-09-15T23:01:10.503Z",
+      "rawValue": {
+        "status": 200,
+        "url": "http://example.com/",
+        "redirected": false,
+        "headers": {
+          "age": "9129",
+          "allow": "GET, HEAD",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a3bb408a38b366a4-AMS",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "text/html",
+          "date": "Tue, 15 Sep 2026 23:01:13 GMT",
+          "last-modified": "Tue, 15 Sep 2026 16:59:31 GMT",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked"
+        }
+      },
+      "normalizedValue": {
+        "status": 200,
+        "url": "http://example.com/",
+        "redirected": false,
+        "headers": {
+          "age": "9129",
+          "allow": "GET, HEAD",
+          "cf-cache-status": "HIT",
+          "cf-ray": "a3bb408a38b366a4-AMS",
+          "connection": "keep-alive",
+          "content-encoding": "gzip",
+          "content-type": "text/html",
+          "date": "Tue, 15 Sep 2026 23:01:13 GMT",
+          "last-modified": "Tue, 15 Sep 2026 16:59:31 GMT",
+          "server": "cloudflare",
+          "transfer-encoding": "chunked"
+        }
+      },
+      "confidence": "VERIFIED",
+      "sha256": "6e47eec49b7575b15ea75c79920d728f3b9fa26080c48679fd63c86755ceca21"
+    }
+  ],
+  "findings": [
+    {
+      "id": "fnd_2ea403ade6de",
+      "findingId": "fnd_2ea403ade6de",
+      "ruleId": "rule-http-missing-hsts",
+      "ruleVersion": "1.0.0",
+      "target": "http",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "title": "Missing HSTS Header",
+      "description": "The HTTP Strict-Transport-Security header is not present.",
+      "technicalExplanation": "HSTS prevents protocol downgrade attacks and cookie hijacking by forcing browsers to use HTTPS.",
+      "remediation": "Add Strict-Transport-Security: max-age=31536000; includeSubDomains header to all HTTPS responses.",
+      "severity": "MEDIUM",
+      "confidence": "VERIFIED",
+      "evidenceIds": [
+        "evd_5cb429658a93"
+      ]
+    },
+    {
+      "id": "fnd_61de6903b33d",
+      "findingId": "fnd_61de6903b33d",
+      "ruleId": "rule-http-missing-csp",
+      "ruleVersion": "1.0.0",
+      "target": "http",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "title": "Missing Content-Security-Policy",
+      "description": "The Content-Security-Policy header is not configured.",
+      "technicalExplanation": "CSP mitigates XSS attacks by controlling which resources can be loaded.",
+      "remediation": "Add Content-Security-Policy header with appropriate directives (e.g., default-src 'self').",
+      "severity": "MEDIUM",
+      "confidence": "VERIFIED",
+      "evidenceIds": [
+        "evd_5cb429658a93"
+      ]
+    },
+    {
+      "id": "fnd_91ab4af4583b",
+      "findingId": "fnd_91ab4af4583b",
+      "ruleId": "rule-http-missing-x-content-type-options",
+      "ruleVersion": "1.0.0",
+      "target": "http",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "title": "Missing X-Content-Type-Options",
+      "description": "X-Content-Type-Options: nosniff is not set.",
+      "technicalExplanation": "Prevents browsers from MIME-sniffing responses away from declared content type.",
+      "remediation": "Add X-Content-Type-Options: nosniff header.",
+      "severity": "LOW",
+      "confidence": "VERIFIED",
+      "evidenceIds": [
+        "evd_5cb429658a93"
+      ]
+    },
+    {
+      "id": "fnd_40b652fae993",
+      "findingId": "fnd_40b652fae993",
+      "ruleId": "rule-http-missing-referrer-policy",
+      "ruleVersion": "1.0.0",
+      "target": "http",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "title": "Missing Referrer-Policy",
+      "description": "Referrer-Policy header is not configured.",
+      "technicalExplanation": "Controls how much referrer information is sent with requests.",
+      "remediation": "Add Referrer-Policy: strict-origin-when-cross-origin or no-referrer.",
+      "severity": "LOW",
+      "confidence": "VERIFIED",
+      "evidenceIds": [
+        "evd_5cb429658a93"
+      ]
+    },
+    {
+      "id": "fnd_163aa8e9d399",
+      "findingId": "fnd_163aa8e9d399",
+      "ruleId": "rule-http-missing-frame-protection",
+      "ruleVersion": "1.0.0",
+      "target": "http",
+      "targetId": "tgt_f0e6a6a97042",
+      "runId": "run_1faffdc90b745cc5",
+      "title": "Missing Frame Protection",
+      "description": "X-Frame-Options header is not set.",
+      "technicalExplanation": "Prevents clickjacking attacks by controlling iframe embedding.",
+      "remediation": "Add X-Frame-Options: DENY or SAMEORIGIN header.",
+      "severity": "MEDIUM",
+      "confidence": "VERIFIED",
+      "evidenceIds": [
+        "evd_5cb429658a93"
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp_sec_1789513270789",
+      "title": "Verbeter de Website Beveiliging",
+      "supportingFindingIds": [
+        "fnd_163aa8e9d399",
+        "fnd_2ea403ade6de",
+        "fnd_40b652fae993",
+        "fnd_61de6903b33d",
+        "fnd_91ab4af4583b"
+      ],
+      "confidence": "VERIFIED",
+      "technicalSignificance": "5 security headers missing or misconfigured",
+      "businessSignificance": "Protects customer data and builds trust through modern security practices",
+      "businessArea": "Customer Trust & Privacy",
+      "technicalArea": "HTTP Security Headers",
+      "serviceCategory": "SECURITY_HARDENING",
+      "retestAvailable": true,
+      "needsClientAccess": false,
+      "estimatedComplexity": "LOW",
+      "clientExplanationKey": "security.headers.missing"
+    }
+  ],
+  "proofs": [
+    {
+      "id": "prf_ffa1643d2ca9",
+      "targetId": "example.com",
+      "retestRunId": "run_1faffdc90b745cc5",
+      "baselineRunId": "run_mock_offline",
+      "originalFindingId": "finding_1",
+      "status": "UNCHANGED",
+      "beforeEvidenceIds": [
+        "evd_1"
+      ],
+      "afterEvidenceIds": [
+        "evd_5cb429658a93"
+      ]
+    }
+  ],
+  "bundleHash": "bdbdb2d69ad97507b292873c79fea293b7b9dcbd2f79c811888296631a599ba7"
+}

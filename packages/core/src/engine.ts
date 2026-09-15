@@ -32,13 +32,15 @@ export function observationToEvidence(
 
 export interface Rule {
   id: string;
-  evaluate: (evidence: Evidence[]) => Finding[];
+  version: string;
+  evaluate: (evidence: Evidence[], targetId: string) => Finding[];
 }
 
 export function evaluateRules(evidence: Evidence[], rules: Rule[]): Finding[] {
   const findings: Finding[] = [];
+  const targetId = evidence.length > 0 ? evidence[0].targetId : 'unknown';
   for (const rule of rules) {
-    findings.push(...rule.evaluate(evidence));
+    findings.push(...rule.evaluate(evidence, targetId));
   }
   return findings;
 }

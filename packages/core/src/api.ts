@@ -6,7 +6,7 @@
  */
 
 import type { InspectionResultV1 } from '@argus/schema';
-import { inspectPublicTarget, type FindingEvaluator, type OpportunityMapper } from './inspector.js';
+import { inspectPublicTarget, type FindingEvaluator, type AsyncOpportunityMapper } from './inspector.js';
 import type { SensitiveCategory } from './policy.js';
 
 export interface InspectRequestV1 {
@@ -18,7 +18,7 @@ export interface InspectRequestV1 {
 
   // Optional rule engine integration
   evaluateFindings?: FindingEvaluator;
-  mapOpportunities?: OpportunityMapper;
+  mapOpportunities?: AsyncOpportunityMapper;
 }
 
 export interface InspectOptionsV1 {

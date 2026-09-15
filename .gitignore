@@ -1,45 +1,10 @@
-# Dependencies
 node_modules/
-.pnpm-store/
-
-# Build outputs
 dist/
 *.tsbuildinfo
-
-# Environment
 .env
-.env.local
-.env.*.local
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-
-# Test coverage
+.env.*
+!.env.example
+.local_data/db/
 coverage/
-.nyc_output/
-
-# Temporary files
-*.tmp
-.cache/
-
-# ARGUS specific
-.argus/
-*.argus.json
-
-# Keep examples but ignore generated data
-examples/**/*.json
-!examples/**/*.fixture.json
+.DS_Store
+*.log

@@ -1,7 +1,10 @@
-export * from './crypto.js';
-export * from './policy.js';
+export * from './engine.js';
+export * from './rules.js';
 export * from './inspector.js';
 export * from './assessment.js';
+export * from './crypto.js';
+export * from './bundle.js';
+export * from './policy.js';
 export * from './retest.js';
 export * from './api.js';
 export { observationToEvidence } from './engine.js';

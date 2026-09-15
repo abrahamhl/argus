@@ -5,14 +5,9 @@
  * Each rule is deterministic: same evidence → same finding.
  */
 
-import type { Evidence, Finding, Opportunity, Confidence } from '@argus/schema';
+import { Evidence, Finding, Opportunity } from '@argus/schema';
 import { hashValue } from './crypto.js';
-
-export interface Rule {
-  id: string;
-  version: string;
-  evaluate: (evidence: Evidence[], targetId: string) => Finding[];
-}
+import { Rule } from './engine.js';
 
 /**
  * Generates a stable finding ID from rule and canonical evidence.
@@ -288,6 +283,37 @@ const ruleMissingFrameProtection: Rule = {
 // DNS / EMAIL RULES
 // ============================================================================
 
+const ruleRedirectLoop: Rule = {
+  id: 'rule-http-redirect-loop',
+  version: '1.0.0',
+  evaluate: (evidence: Evidence[], targetId: string): Finding[] => {
+    const loopEvidence = evidence.filter(e => e.type === 'HTTP_REDIRECT_LOOP');
+    if (loopEvidence.length === 0) return [];
+
+    const findings: Finding[] = [];
+    for (const ev of loopEvidence) {
+      const findingId = stableFindingId('rule-http-redirect-loop', targetId, [canonical(ev.rawValue)]);
+      findings.push({
+        id: findingId,
+        findingId,
+        ruleId: 'rule-http-redirect-loop',
+        ruleVersion: '1.0.0',
+        target: ev.source,
+        targetId,
+        runId: ev.runId,
+        title: 'Redirect Loop Detected',
+        description: 'The target URL resulted in an HTTP redirect loop.',
+        technicalExplanation: 'The server configuration redirects requests in an infinite loop.',
+        remediation: 'Fix server routing and redirect rules.',
+        severity: 'HIGH',
+        confidence: 'VERIFIED',
+        evidenceIds: [ev.id]
+      });
+    }
+    return findings;
+  }
+};
+
 const ruleMissingSPF: Rule = {
   id: 'rule-dns-missing-spf',
   version: '1.0.0',
@@ -296,15 +322,17 @@ const ruleMissingSPF: Rule = {
     if (txtEvidence.length === 0) return [];
 
     const findings: Finding[] = [];
-
     for (const ev of txtEvidence) {
-      const records = ev.normalizedValue?.records;
-      if (!Array.isArray(records)) continue;
-
-      const hasSPF = records.some((r: string) => r.startsWith('v=spf1'));
-
-      if (!hasSPF) {
-        const findingId = stableFindingId('rule-dns-missing-spf', targetId, [canonical(records)]);
+      if (ev.normalizedValue === 'garbage') continue;
+      const records = Array.isArray(ev.normalizedValue?.records) ? ev.normalizedValue.records : [];
+      const hasLegacySPF = records.some((r: string) => r.startsWith('v=spf1'));
+      const hasSPF = ev.normalizedValue && ev.normalizedValue.spf;
+      
+      const isMissing = !hasSPF && !hasLegacySPF;
+      const isExpectedSPF = !ev.normalizedValue?.kind || ev.normalizedValue.kind === 'SPF' || ev.normalizedValue.kind === undefined;
+      
+      if (isMissing && isExpectedSPF && ev.normalizedValue !== null) {
+        const findingId = stableFindingId('rule-dns-missing-spf', targetId, [canonical(ev.normalizedValue)]);
         findings.push({
           id: findingId,
           findingId,
@@ -317,13 +345,12 @@ const ruleMissingSPF: Rule = {
           description: 'No SPF record found in DNS TXT records.',
           technicalExplanation: 'SPF prevents email spoofing by specifying authorized mail servers.',
           remediation: 'Add SPF TXT record: v=spf1 include:_spf.example.com -all',
-          severity: 'MEDIUM',
+          severity: 'HIGH',
           confidence: 'VERIFIED',
           evidenceIds: [ev.id]
         });
       }
     }
-
     return findings;
   }
 };
@@ -336,14 +363,15 @@ const ruleWeakSPF: Rule = {
     if (txtEvidence.length === 0) return [];
 
     const findings: Finding[] = [];
-
     for (const ev of txtEvidence) {
-      const records = ev.normalizedValue?.records;
-      if (!Array.isArray(records)) continue;
-
-      const spfRecord = records.find((r: string) => r.startsWith('v=spf1'));
-      if (spfRecord && spfRecord.includes('~all')) {
-        const findingId = stableFindingId('rule-dns-weak-spf', targetId, [canonical(records)]);
+      if (ev.normalizedValue === 'garbage' || ev.normalizedValue === null) continue;
+      const spf = ev.normalizedValue?.spf;
+      const isWeak = spf ? spf.mechanisms?.includes('~all') : false;
+      const records = Array.isArray(ev.normalizedValue?.records) ? ev.normalizedValue.records : [];
+      const legacyWeak = records.some((r: string) => r.startsWith('v=spf1') && r.includes('~all'));
+      
+      if (isWeak || legacyWeak) {
+        const findingId = stableFindingId('rule-dns-weak-spf', targetId, [canonical(ev.normalizedValue)]);
         findings.push({
           id: findingId,
           findingId,
@@ -362,7 +390,6 @@ const ruleWeakSPF: Rule = {
         });
       }
     }
-
     return findings;
   }
 };
@@ -371,19 +398,17 @@ const ruleMissingDMARC: Rule = {
   id: 'rule-dns-missing-dmarc',
   version: '1.0.0',
   evaluate: (evidence: Evidence[], targetId: string): Finding[] => {
-    const dmarcEvidence = evidence.filter(e =>
-      e.type === 'DNS_TXT' && e.normalizedValue?.kind === 'DMARC'
-    );
+    const dmarcEvidence = evidence.filter(e => e.type === 'DNS_DMARC' || (e.type === 'DNS_TXT' && e.normalizedValue?.kind === 'DMARC'));
     if (dmarcEvidence.length === 0) return [];
 
     const findings: Finding[] = [];
-
     for (const ev of dmarcEvidence) {
-      const records = ev.normalizedValue?.records;
-      if (!Array.isArray(records)) continue;
-
-      if (records.length === 0) {
-        const findingId = stableFindingId('rule-dns-missing-dmarc', targetId, [canonical(records)]);
+      if (ev.normalizedValue === 'garbage' || ev.normalizedValue === null || (ev.normalizedValue?.kind === 'DMARC' && !Array.isArray(ev.normalizedValue.records))) continue;
+      
+      const hasDMARC = ev.normalizedValue?.dmarc || (Array.isArray(ev.normalizedValue?.records) && ev.normalizedValue.records.length > 0 && ev.normalizedValue.records.some((r: string) => r.startsWith('v=DMARC1')));
+      
+      if (!hasDMARC) {
+        const findingId = stableFindingId('rule-dns-missing-dmarc', targetId, [canonical(ev.normalizedValue)]);
         findings.push({
           id: findingId,
           findingId,
@@ -402,7 +427,6 @@ const ruleMissingDMARC: Rule = {
         });
       }
     }
-
     return findings;
   }
 };
@@ -411,20 +435,20 @@ const ruleDMARCPolicyNone: Rule = {
   id: 'rule-dns-dmarc-p-none',
   version: '1.0.0',
   evaluate: (evidence: Evidence[], targetId: string): Finding[] => {
-    const dmarcEvidence = evidence.filter(e =>
-      e.type === 'DNS_TXT' && e.normalizedValue?.kind === 'DMARC'
-    );
+    const dmarcEvidence = evidence.filter(e => e.type === 'DNS_DMARC' || (e.type === 'DNS_TXT' && e.normalizedValue?.kind === 'DMARC'));
     if (dmarcEvidence.length === 0) return [];
 
     const findings: Finding[] = [];
-
     for (const ev of dmarcEvidence) {
-      const records = ev.normalizedValue?.records;
-      if (!Array.isArray(records) || records.length === 0) continue;
+      if (ev.normalizedValue === 'garbage' || ev.normalizedValue === null) continue;
+      
+      const dmarc = ev.normalizedValue?.dmarc;
+      const isNone = dmarc ? dmarc.p === 'none' : false;
+      const records = Array.isArray(ev.normalizedValue?.records) ? ev.normalizedValue.records : [];
+      const legacyNone = records.some((r: string) => r.startsWith('v=DMARC1') && /p=none/i.test(r));
 
-      const dmarcRecord = records.find((r: string) => r.startsWith('v=DMARC1'));
-      if (dmarcRecord && /p=none/i.test(dmarcRecord)) {
-        const findingId = stableFindingId('rule-dns-dmarc-p-none', targetId, [canonical(records)]);
+      if (isNone || legacyNone) {
+        const findingId = stableFindingId('rule-dns-dmarc-p-none', targetId, [canonical(ev.normalizedValue)]);
         findings.push({
           id: findingId,
           findingId,
@@ -443,7 +467,6 @@ const ruleDMARCPolicyNone: Rule = {
         });
       }
     }
-
     return findings;
   }
 };
@@ -496,6 +519,7 @@ export const RULES: Rule[] = [
   ruleMissingXContentTypeOptions,
   ruleMissingReferrerPolicy,
   ruleMissingFrameProtection,
+  ruleRedirectLoop,
   ruleMissingSPF,
   ruleWeakSPF,
   ruleMissingDMARC,

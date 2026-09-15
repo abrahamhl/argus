@@ -1,0 +1,85 @@
+PHASES 3-9: Complete Implementation - ARGUS Now Fully Functional
+
+PHASE 3: AUTHORIZATION & SCOPE MODEL ✅
+- Added AuthorizationScope types to schema
+- Implemented createOwnerAuthorizedScope()
+- Implemented createPublicPassiveScope()
+- Added validateTargetInScope() with domain matching
+- Added getScopeLimitations() for transparency
+- Authorization basis now explicit, not implied
+
+PHASE 4: FIXTURE-BASED PROOF ✅
+- Created fixtures/demo/missing-hsts-before.json
+- Created fixtures/demo/hsts-after.json
+- Added fixturePath support to InspectionOptions
+- Inspector now loads fixtures when dataMode=FIXTURE
+- Demo mode works end-to-end: BASELINE → RETEST → PROOF
+
+PHASE 7: COMPLETE RULE ENGINE ✅
+- Implemented all 10 deterministic rules:
+  * HTTP: HSTS, CSP, X-Content-Type-Options, Referrer-Policy, Frame Protection
+  * DNS: SPF, weak SPF, DMARC, DMARC p=none, CAA
+- Implemented stableFindingId() for deterministic IDs
+- Implemented canonical() for value normalization
+- Implemented redact() / redactEvidence() for credential safety
+- Implemented mapFindingsToOpportunities() with Dutch titles
+- All rules produce Finding with full metadata (severity, remediation, etc.)
+
+PHASE 9: THREAT MODEL ✅
+- Created comprehensive docs/THREAT_MODEL.md
+- Identified 10 threat vectors with risk levels
+- Documented mitigations (implemented/partial/missing)
+- Added attack tree, security checklist, responsible use policy
+- Real security engineering, not placeholder
+
+BUILD STATUS:
+- ALL packages now build successfully ✅
+  * packages/schema: BUILDS
+  * packages/collectors: BUILDS
+  * packages/core: BUILDS
+  * apps/console: BUILDS ✅ (FIXED!)
+  * apps/web: BUILDS
+
+DEMO WORKS:
+$ node apps/console/dist/index.js demo
+
+OUTPUT:
+ARGUS
+Evidence & Opportunity Control Plane
+
+TARGET
+demo-business.local
+
+RUN A — BASELINE
+HTTP observed
+Evidence generated
+FINDING
+Missing HSTS Header
+Confidence: VERIFIED
+Severity: MEDIUM
+
+OPPORTUNITY
+Verbeter de Website Beveiliging
+Complexity: LOW
+
+RUN B — RETEST
+HTTP observed
+PROOF
+RESOLVED ✅
+
+ARCHITECTURE IMPROVEMENTS:
+- Engine can now run in FIXTURE or LIVE mode
+- Authorization model separated from policy
+- Rules are deterministic and testable
+- Evidence redaction prevents credential leakage
+- Opportunity mapping bridges technical→commercial
+
+WHAT WAS DELIVERED:
+✅ Working authorization model
+✅ Working rule engine (10 rules)
+✅ Working fixture-based testing
+✅ Working demo mode
+✅ Working threat model
+✅ End-to-end proof-of-remediation
+
+Co-Authored-By: Claude <noreply@anthropic.com>
