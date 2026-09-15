@@ -74,8 +74,26 @@ Usage:
   argus inspect <bundle>         Read and print bundle contents
   argus retest <bundle> <url>    Run a new inspection against a baseline bundle
   argus verify <bundle>          Verify cryptographic integrity of a bundle
+  argus analyze <objective>      Run the AI Analyst to achieve an objective (requires Ollama running)
   argus help                     Print this help message
   `);
+}
+
+async function analyze(objective: string) {
+  if (!objective) throw new Error('Missing objective');
+  console.log(`[ARGUS-AI] Initializing Analyst with objective: "${objective}"\n`);
+  
+  // Use dynamic import so @argus/ai is only loaded if requested
+  const { ArgusAnalyst, OllamaProvider } = await import('@argus/ai');
+  const provider = new OllamaProvider('llama3', process.env.OLLAMA_URL || 'http://127.0.0.1:11434');
+  const analyst = new ArgusAnalyst({ provider });
+  
+  try {
+    const result = await analyst.analyze(objective);
+    console.log(`\n[ARGUS-AI SYNTHESIS]\n${result}\n`);
+  } catch (err: any) {
+    console.error(`\n[ARGUS-AI ERROR] ${err.message}`);
+  }
 }
 
 async function main() {
@@ -95,6 +113,9 @@ async function main() {
         break;
       case 'verify':
         verify(args[1]);
+        break;
+      case 'analyze':
+        await analyze(args.slice(1).join(' '));
         break;
       case 'help':
       default:

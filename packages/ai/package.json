@@ -1,19 +1,16 @@
 {
-  "name": "@argus/console",
+  "name": "@argus/ai",
   "version": "0.1.0",
   "main": "dist/index.js",
-  "bin": {
-    "argus": "dist/index.js"
-  },
+  "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js"
+    "test": "node --test dist/**/*.test.js"
   },
   "dependencies": {
     "@argus/schema": "workspace:*",
     "@argus/core": "workspace:*",
-    "@argus/collectors": "workspace:*",
-    "@argus/ai": "workspace:*"
+    "@argus/collectors": "workspace:*"
   }
 }

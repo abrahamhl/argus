@@ -1,0 +1,13 @@
+{
+  "name": "@argus/eval",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "eval": "node dist/runner.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@argus/ai": "workspace:*",
+    "@argus/core": "workspace:*"
+  }
+}
