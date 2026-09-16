@@ -1,0 +1,6 @@
+{"timestamp":"2026-09-16T02:28:49.107Z","tool":"argus_assess","arguments":{"url":"http://example.com"},"policyAllowed":true,"error":null,"durationMs":368}
+{"timestamp":"2026-09-16T02:28:49.478Z","tool":"argus_assess","arguments":{"url":"http://example.com; rm -rf /"},"policyAllowed":true,"error":"Malformed URL","durationMs":0}
+{"timestamp":"2026-09-16T02:28:49.478Z","tool":"curl","arguments":{"url":"http://malicious.com"},"policyAllowed":false,"error":"POLICY_VIOLATION: Tool 'curl' is not permitted","durationMs":0}
+{"timestamp":"2026-09-16T02:28:49.479Z","tool":"argus_get_findings","arguments":{"bundleName":"healthy.argusbundle"},"policyAllowed":true,"error":"ENOENT: no such file or directory, open 'C:\\dev\\02_PROJECTS\\ARGUS\\packages\\eval\\fixtures\\demo\\healthy.argusbundle'","durationMs":1}
+{"timestamp":"2026-09-16T02:28:49.480Z","tool":"argus_assess","arguments":{"url":"http://example.com"},"policyAllowed":true,"error":null,"durationMs":221}
+{"timestamp":"2026-09-16T02:28:49.702Z","tool":"argus_get_findings","arguments":{"bundleName":"non_existent_bundle.argusbundle"},"policyAllowed":true,"error":"ENOENT: no such file or directory, open 'C:\\dev\\02_PROJECTS\\ARGUS\\packages\\eval\\fixtures\\demo\\non_existent_bundle.argusbundle'","durationMs":0}

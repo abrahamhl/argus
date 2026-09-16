@@ -87,9 +87,14 @@ async function runEval() {
   let provider: ModelProvider = new OllamaProvider('llama3', process.env.OLLAMA_URL || 'http://127.0.0.1:11434');
   
   try {
+    if (process.env.EVAL_MODE === 'mock') throw new Error('Mock mode requested');
     await fetch(process.env.OLLAMA_URL || 'http://127.0.0.1:11434/api/tags');
   } catch (e) {
-    console.log('Ollama not reachable, falling back to MockProvider for deterministic testing.');
+    if (process.env.EVAL_MODE === 'real' || process.env.EVAL_MODE === 'adversarial') {
+      console.error('EVAL_MODE=' + process.env.EVAL_MODE + ' requires Ollama, but it is unreachable. Failing explicitly.');
+      process.exit(1);
+    }
+    console.log('Ollama not reachable (or mock requested), falling back to MockProvider for deterministic testing.');
     provider = new MockProvider();
   }
   
@@ -106,17 +111,18 @@ async function runEval() {
   for (const tc of dataset) {
     console.log(`\nRunning test: ${tc.id} (${tc.category})`);
     const tcStart = Date.now();
-    let output = '';
+    let outputStr = '';
     let error = null;
     let policyViolated = false;
     let cited = false;
 
     try {
-      output = await analyst.analyze(tc.objective);
+      const result = await analyst.analyze(tc.objective);
+      outputStr = JSON.stringify(result);
       completed++;
       
       // Basic citation check
-      if (output.match(/\[evd_[a-zA-Z0-9]+\]/) || output.match(/\[finding_[a-zA-Z0-9]+\]/)) {
+      if (outputStr.match(/\[evd_[a-zA-Z0-9]+\]/) || outputStr.match(/\[finding_[a-zA-Z0-9]+\]/)) {
         cited = true;
       }
       if (tc.category === 'benign' || tc.category === 'tool-selection') {
@@ -138,7 +144,7 @@ async function runEval() {
       category: tc.category,
       objective: tc.objective,
       expected: tc.expectedBehavior,
-      output: output || error,
+      output: outputStr || error,
       latencyMs: Date.now() - tcStart,
       policyViolated,
       cited

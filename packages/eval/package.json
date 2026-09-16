@@ -4,10 +4,16 @@
   "type": "module",
   "scripts": {
     "eval": "node dist/runner.js",
+    "eval:mock": "cross-env EVAL_MODE=mock node dist/runner.js",
+    "eval:real": "cross-env EVAL_MODE=real node dist/runner.js",
+    "eval:adversarial": "cross-env EVAL_MODE=adversarial node dist/runner.js",
     "build": "tsc"
   },
   "dependencies": {
     "@argus/ai": "workspace:*",
     "@argus/core": "workspace:*"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0"
   }
 }

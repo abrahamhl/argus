@@ -137,7 +137,14 @@ async function analyze(objective: string) {
   
   try {
     const result = await analyst.analyze(objective);
-    console.log(`\n[ARGUS-AI SYNTHESIS]\n${result}\n`);
+    console.log(`\n[ARGUS-AI SYNTHESIS]\n`);
+    console.log(result.summary);
+    if (result.claims && result.claims.length > 0) {
+      console.log(`\nVerified Claims:`);
+      for (const claim of result.claims) {
+        console.log(`- ${claim.text} (Refs: ${claim.evidenceIds.join(', ')})`);
+      }
+    }
   } catch (err: any) {
     console.error(`\n[ARGUS-AI ERROR] ${err.message}`);
   }
