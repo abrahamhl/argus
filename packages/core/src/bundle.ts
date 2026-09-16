@@ -44,9 +44,34 @@ export function createBundle(
 
 export function saveBundle(bundle: ArgusBundle, path: string): void {
   // Ensure hash is up to date
-  const toHash = { ...bundle, bundleHash: '' };
+  const oldHash = bundle.bundleHash;
+  const toHash = { ...bundle, bundleHash: '', signature: undefined };
   bundle.bundleHash = hashValue(toHash);
+  if (bundle.bundleHash !== oldHash && bundle.signature) {
+    bundle.signature = undefined; // Drop signature if modified
+  }
   writeFileSync(path, JSON.stringify(bundle, null, 2), 'utf-8');
+}
+
+import { redactEvidence } from './rules.js';
+
+export function exportBundle(bundle: ArgusBundle): ArgusBundle {
+  const exported = JSON.parse(JSON.stringify(bundle)) as ArgusBundle;
+
+  exported.evidence = exported.evidence.map(ev => {
+    const redacted = redactEvidence(ev);
+    redacted.rawValue = undefined; // Strip rawValue
+    // Recompute evidence hash because rawValue is gone
+    redacted.sha256 = hashValue(redacted.normalizedValue); 
+    return redacted;
+  });
+
+  // Recompute bundle hash
+  const toHash = { ...exported, bundleHash: '', signature: undefined };
+  exported.bundleHash = hashValue(toHash);
+  exported.signature = undefined;
+
+  return exported;
 }
 
 export function loadBundle(path: string): ArgusBundle {

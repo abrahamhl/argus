@@ -136,6 +136,12 @@ export interface Proof {
   afterEvidenceIds: string[];
 }
 
+export interface BundleSignature {
+  algorithm: string;
+  keyId?: string;
+  signatureHex: string;
+}
+
 export interface ArgusBundle {
   schemaVersion: string;
   argusVersion: string;
@@ -162,6 +168,7 @@ export interface ArgusBundle {
   opportunities: Opportunity[];
   proofs: Proof[];
   bundleHash: string;
+  signature?: BundleSignature;
 }
 
 export type AssessmentType =

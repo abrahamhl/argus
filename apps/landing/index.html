@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUS | Seguridad Determinista Inmutable</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0B0F19; color: #E2E8F0; }
+        .gradient-text { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(90deg, #38BDF8, #818CF8); }
+        .glass-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded bg-gradient-to-tr from-sky-400 to-indigo-500 flex items-center justify-center font-bold text-white">A</div>
+                    <span class="text-xl font-bold tracking-widest text-white">ARGUS</span>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#vision" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Visión</a>
+                    <a href="#tecnologia" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Tecnología</a>
+                    <a href="#mercado" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mercado</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="relative overflow-hidden pt-20 pb-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                El motor de auditoría <br/>
+                <span class="gradient-text">criptográficamente seguro</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10">
+                ARGUS separa la recolección de pruebas de la inteligencia artificial. Pruebas inmutables, hallazgos deterministas, y análisis acelerado por IA sin riesgo de alucinaciones.
+            </p>
+            <a href="#inversion" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-indigo-600 hover:bg-indigo-700 shadow-[0_0_20px_rgba(79,70,229,0.5)] transition-all">
+                Resumen para Inversores
+            </a>
+        </div>
+        <!-- Background elements -->
+        <div class="absolute top-0 inset-x-0 h-full flex justify-center opacity-20 pointer-events-none">
+            <div class="w-[800px] h-[800px] bg-indigo-500 rounded-full blur-[120px] mix-blend-screen"></div>
+        </div>
+    </div>
+
+    <!-- Value Proposition -->
+    <div id="vision" class="py-16 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-sky-500/20 rounded-lg flex items-center justify-center mb-6 text-sky-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Evidencia Inmutable</h3>
+                    <p class="text-gray-400">Cada paquete de auditoría se sella criptográficamente. Si un solo byte cambia, la firma se rompe. Verdad absoluta garantizada.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-6 text-indigo-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Reglas Deterministas</h3>
+                    <p class="text-gray-400">La severidad y los fallos no dependen del estado de ánimo de una IA. El motor de reglas clásico garantiza el 100% de fiabilidad técnica.</p>
+                </div>
+                <div class="glass-card p-8 rounded-2xl">
+                    <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6 text-purple-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Analista IA Confinado</h3>
+                    <p class="text-gray-400">La IA solo entra al final para traducir la técnica en negocio. Está confinada por políticas: no puede inventar, no puede hackear.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pitch para inversores -->
+    <div id="inversion" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">Para Inversores: ¿Qué es ARGUS?</h2>
+        <div class="prose prose-invert lg:prose-lg mx-auto text-gray-300">
+            <p>Imaginen la <strong>caja negra de un avión</strong>. Su propósito principal es registrar la verdad inmutable sobre lo que pasó, sin interpretaciones ni sesgos. En ciberseguridad, cuando se audita una empresa, el mercado actual depende de herramientas que generan montañas de datos técnicos que un humano o una IA interpretan (y a menudo, malinterpretan o "alucinan").</p>
+            <p><strong>Lo que hemos construido es ARGUS:</strong> Un motor de auditoría de ciberseguridad que actúa como esa caja negra. Hemos construido una tubería que recolecta datos del exterior de una empresa y los empaqueta con un <strong>sello criptográfico inviolable</strong>. Estos datos pasan por reglas matemáticas estrictas para decir "Esto está mal" o "Esto está bien" (Determinismo).</p>
+            <p>La magia ocurre al final: Le conectamos una Inteligencia Artificial (Analista IA) que <strong>tiene prohibido alterar las pruebas</strong>. Su única función es leer la caja negra y traducirle a un directivo qué significa ese riesgo en términos de negocio. Hemos solucionado el mayor problema de la IA en ciberseguridad: <strong>la confianza</strong>. ARGUS no alucina fallos; solo explica matemáticamente fallos comprobables.</p>
+        </div>
+    </div>
+
+    <footer class="border-t border-white/10 mt-12 py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Proyecto ARGUS. Preparado para despliegue por 2f.abraham@gmail.com.</p>
+    </footer>
+
+</body>
+</html>

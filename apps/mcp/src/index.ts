@@ -4,6 +4,8 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 import { argusTools, argusToolExecutors } from '@argus/ai';
 
+import { PolicyEngine } from '@argus/core';
+
 const server = new Server({
   name: 'argus-mcp',
   version: '1.0.0'
@@ -12,6 +14,8 @@ const server = new Server({
     tools: {}
   }
 });
+
+const policyEngine = new PolicyEngine();
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
@@ -25,11 +29,15 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const name = request.params.name;
-  const executor = argusToolExecutors[name];
   
-  if (!executor) {
-    throw new Error(`Tool not found: ${name}`);
+  const allowedTools = argusTools.map(t => t.name);
+  const valTool = policyEngine.validateToolName(name, allowedTools);
+  if (!valTool.allowed) {
+    throw new Error(valTool.reason);
   }
+
+  const executor = argusToolExecutors[name];
+
 
   try {
     const result = await executor(request.params.arguments || {});

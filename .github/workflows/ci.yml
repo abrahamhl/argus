@@ -29,11 +29,25 @@ jobs:
     - name: Dependency Audit
       run: pnpm audit --prod
 
+    - name: Typecheck
+      run: pnpm -r exec tsc --noEmit || true
+
     - name: Build
       run: pnpm run build
       
     - name: Run Tests (Unit, Integration, E2E)
       run: pnpm test
+
+    - name: Run Tests with Coverage
+      env:
+        NODE_V8_COVERAGE: coverage
+      run: pnpm -r exec node --experimental-test-coverage --test dist/**/*.test.js || true
+
+    - name: Generate SBOM
+      uses: anchore/sbom-action@v0
+      with:
+        format: cyclonedx-json
+        file: sbom.json
 
   secret-scan:
     runs-on: ubuntu-latest

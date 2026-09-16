@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert';
-import { canonicalize, hashValue, verifyEvidence, verifyEvidenceChain } from './crypto.js';
+import { canonicalize, hashValue, verifyEvidence, verifyEvidenceChain, generateSigningKeyPair, signBundle, verifySignature, SignatureVerificationStatus } from './crypto.js';
 import { Evidence, ArgusBundle } from '@argus/schema';
 
 test('canonicalize sorts keys and serializes correctly', () => {
@@ -57,3 +57,33 @@ test('verifyEvidenceChain detects bundle tampering', () => {
   bundle.target.hostname = 'evil.com';
   assert.strictEqual(verifyEvidenceChain(bundle), false);
 });
+
+test('Ed25519 signing and verification works', () => {
+  const bundle: ArgusBundle = {
+    schemaVersion: '1.0',
+    argusVersion: '0.1',
+    os: 'linux',
+    runtime: 'node',
+    collectorVersions: {},
+    policyManifest: { mode: 'PUBLIC_PASSIVE' },
+    target: { input: 'example.com', normalized: 'example.com', hostname: 'example.com' },
+    run: { id: 'r-1', timestamp: '2023-01-01', durationMs: 100 },
+    observations: [],
+    evidence: [],
+    findings: [],
+    opportunities: [],
+    proofs: [],
+    bundleHash: 'dummy_hash_value'
+  };
+
+  const { publicKey, privateKey } = generateSigningKeyPair();
+  
+  bundle.signature = signBundle(bundle, privateKey, 'key-1');
+  assert.strictEqual(bundle.signature.algorithm, 'Ed25519');
+  
+  assert.strictEqual(verifySignature(bundle, publicKey), SignatureVerificationStatus.VALID);
+  
+  bundle.bundleHash = 'tampered_hash';
+  assert.strictEqual(verifySignature(bundle, publicKey), SignatureVerificationStatus.INVALID);
+});
+

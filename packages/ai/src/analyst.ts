@@ -1,5 +1,8 @@
 import { ModelProvider, Message, ToolCall } from './provider.js';
 import { argusTools, argusToolExecutors } from './tools.js';
+import { PolicyEngine } from '@argus/core';
+
+const policyEngine = new PolicyEngine();
 
 export interface AnalystOptions {
   provider: ModelProvider;
@@ -15,18 +18,18 @@ export class ArgusAnalyst {
   // The Policy Gate validates if the LLM is attempting prohibited actions
   private checkPolicy(toolCall: ToolCall) {
     const allowedTools = argusTools.map(t => t.name);
-    if (!allowedTools.includes(toolCall.name)) {
-      throw new Error(`POLICY_VIOLATION: Tool ${toolCall.name} is not permitted.`);
-    }
-
-    // Additional generic sanitization to prevent injection
-    const jsonStr = JSON.stringify(toolCall.arguments);
-    if (jsonStr.includes('; rm -rf') || jsonStr.includes('eval(')) {
-      throw new Error('POLICY_VIOLATION: Detected malicious payload in arguments.');
+    const valTool = policyEngine.validateToolName(toolCall.name, allowedTools);
+    if (!valTool.allowed) {
+      throw new Error(valTool.reason);
     }
   }
 
   async analyze(objective: string): Promise<string> {
+    const valText = policyEngine.validateTextInput(objective);
+    if (!valText.allowed) {
+      throw new Error(valText.reason);
+    }
+
     const messages: Message[] = [
       {
         role: 'system',

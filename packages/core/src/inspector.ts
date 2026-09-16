@@ -96,7 +96,13 @@ export async function inspectPublicTarget(
     });
 
     const endTime = Date.now();
-    const url = new URL(target);
+    let hostname = target;
+    try {
+      const url = new URL(target);
+      hostname = url.hostname;
+    } catch {
+      // Ignore malformed URL
+    }
 
     return {
       schemaVersion: '1.0.0',
@@ -104,7 +110,7 @@ export async function inspectPublicTarget(
       target: {
         input: target,
         normalized: target,
-        hostname: url.hostname,
+        hostname: hostname,
         organisationLabel: options.organisationLabel,
         policyMode: validation.mode,
         sensitiveCategory: validation.sensitiveCategory
@@ -204,8 +210,15 @@ export async function inspectPublicTarget(
       const httpStartTime = Date.now();
       try {
         const { collectHttp } = await import('@argus/collectors');
+        const { PolicyEngine } = await import('./policy-engine.js');
+        const policyEngine = new PolicyEngine();
 
-        const httpObservations = await collectHttp(target, runId, targetId);
+        const httpObservations = await collectHttp(target, runId, targetId, {
+          validateRedirect: async (nextUrl, hop) => {
+            const val = await policyEngine.validateRedirectHop(nextUrl, hop);
+            if (!val.allowed) throw new Error(val.reason);
+          }
+        });
         observations.push(...httpObservations);
 
         collectorSummary.push({

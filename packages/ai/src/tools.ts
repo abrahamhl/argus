@@ -102,12 +102,19 @@ function resolveBundlePath(bundleName: string): string {
 }
 
 import { collectHttp, collectDns } from '@argus/collectors';
-import { observationToEvidence } from '@argus/core';
+import { observationToEvidence, PolicyEngine } from '@argus/core';
+
+const policyEngine = new PolicyEngine();
 
 // Tool Executors
 export const argusToolExecutors: Record<string, (args: any) => Promise<any>> = {
   argus_assess: async (args: { url: string }) => {
-    if (!args.url.startsWith('http')) throw new Error('Invalid URL');
+    const valArgs = policyEngine.validateToolArguments('argus_assess', args, { url: { type: 'string', required: true, maxLength: 2048 } });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    const valTarget = await policyEngine.validateTarget(args.url);
+    if (!valTarget.allowed) throw new Error(valTarget.reason);
+
     const result = await inspectPublicTarget(args.url, {
       evaluateFindings: async (evidence) => runRules(evidence),
       mapOpportunities: async (findings) => mapFindingsToOpportunities(findings)
@@ -119,29 +126,65 @@ export const argusToolExecutors: Record<string, (args: any) => Promise<any>> = {
   },
   
   argus_collect_http: async (args: { url: string }) => {
-    const obs = await collectHttp(args.url, 'run_tool', 'target_tool');
+    const valArgs = policyEngine.validateToolArguments('argus_collect_http', args, { url: { type: 'string', required: true, maxLength: 2048 } });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    const valTarget = await policyEngine.validateTarget(args.url);
+    if (!valTarget.allowed) throw new Error(valTarget.reason);
+
+    const obs = await collectHttp(args.url, 'run_tool', 'target_tool', {
+      validateRedirect: async (nextUrl, hop) => {
+        const val = await policyEngine.validateRedirectHop(nextUrl, hop);
+        if (!val.allowed) throw new Error(val.reason);
+      }
+    });
     const ev = obs.map((o: any) => observationToEvidence(o, x => x));
     return ev;
   },
   
   argus_collect_dns: async (args: { hostname: string }) => {
+    const valArgs = policyEngine.validateToolArguments('argus_collect_dns', args, { hostname: { type: 'string', required: true, maxLength: 253 } });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    // Validate hostname as a URL target to ensure it is not an IP or blocked
+    const valTarget = await policyEngine.validateTarget(`http://${args.hostname}`);
+    if (!valTarget.allowed) throw new Error(valTarget.reason);
+
     const obs = await collectDns(args.hostname, 'run_tool', 'target_tool');
     return obs.map((o: any) => observationToEvidence(o, x => x));
   },
   
   argus_get_run: async (args: { bundleName: string }) => {
+    const valArgs = policyEngine.validateToolArguments('argus_get_run', args, { bundleName: { type: 'string', required: true, maxLength: 255 } });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    const valBundle = policyEngine.validateBundleName(args.bundleName);
+    if (!valBundle.allowed) throw new Error(valBundle.reason);
+
     const path = resolveBundlePath(args.bundleName);
     const bundle = loadBundle(path);
     return { target: bundle.target, run: bundle.run, bundleHash: bundle.bundleHash };
   },
   
   argus_get_findings: async (args: { bundleName: string }) => {
+    const valArgs = policyEngine.validateToolArguments('argus_get_findings', args, { bundleName: { type: 'string', required: true, maxLength: 255 } });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    const valBundle = policyEngine.validateBundleName(args.bundleName);
+    if (!valBundle.allowed) throw new Error(valBundle.reason);
+
     const path = resolveBundlePath(args.bundleName);
     const bundle = loadBundle(path);
     return bundle.findings;
   },
   
   argus_verify_bundle: async (args: { bundleName: string }) => {
+    const valArgs = policyEngine.validateToolArguments('argus_verify_bundle', args, { bundleName: { type: 'string', required: true, maxLength: 255 } });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    const valBundle = policyEngine.validateBundleName(args.bundleName);
+    if (!valBundle.allowed) throw new Error(valBundle.reason);
+
     try {
       const path = resolveBundlePath(args.bundleName);
       loadBundle(path); // loadBundle inherently verifies
@@ -152,6 +195,18 @@ export const argusToolExecutors: Record<string, (args: any) => Promise<any>> = {
   },
   
   argus_compare_runs: async (args: { baselineBundle: string, retestBundle: string }) => {
+    const valArgs = policyEngine.validateToolArguments('argus_compare_runs', args, { 
+      baselineBundle: { type: 'string', required: true, maxLength: 255 },
+      retestBundle: { type: 'string', required: true, maxLength: 255 } 
+    });
+    if (!valArgs.allowed) throw new Error(valArgs.reason);
+
+    const valBaseline = policyEngine.validateBundleName(args.baselineBundle);
+    if (!valBaseline.allowed) throw new Error(valBaseline.reason);
+
+    const valRetest = policyEngine.validateBundleName(args.retestBundle);
+    if (!valRetest.allowed) throw new Error(valRetest.reason);
+
     const baseline = loadBundle(resolveBundlePath(args.baselineBundle));
     const retest = loadBundle(resolveBundlePath(args.retestBundle));
     const proofs = compareRuns(baseline, retest);
