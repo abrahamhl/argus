@@ -1,7 +1,10 @@
-**:
-   - Transparent, professional critique of the current ARGUS implementation.
-   - Analysis of token capacity bottlenecks and needle-in-a-haystack citation degradation under large zone files.
-   - Deterministic rule coverage boundaries (limited to 11 passive checks; lack of JavaScript AST execution, TLS cipher suite evaluation, and SRI checks).
-   - Disclosure of the Time-of-Check to Time-of-Use (TOCTOU) DNS rebinding window in decoupled resolution architectures.
-   - Examination of the gap between syntactic identifier presence and semantic entailment in citation verification.
-   - Forward-looking engineering roadmap outlining architectural mitigations for future versions.
+# ARGUS Limitations & Research Boundaries
+
+## 1. Context Window Exhaustion
+Current LLMs used in the analyst tier may experience context window exhaustion or "needle in a haystack" retrieval failures when processing exceptionally large DNS zone files or HTTP responses.
+
+## 2. Deterministic Rule Coverage
+The deterministic engine is deliberately scoped to passive observation. It currently supports 11 pure functions checking RFC compliance (HSTS, CSP, SPF, DMARC). It does not execute JavaScript, evaluate TLS cipher suites, or crawl unlinked paths.
+
+## 3. TOCTOU Conditions
+Time-of-Check to Time-of-Use (TOCTOU) DNS rebinding is mitigated by strict caching in the PolicyEngine during the execution of a single run, but remains a fundamental limitation of decoupled network architectures across multiple disparate runs.

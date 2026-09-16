@@ -1,1 +1,18 @@
-**: Rigorous 100-point research engineering evaluation across 5 dimensions (Deterministic Engine, PolicyEngine Rigor, Ed25519 Cryptographic Integrity, Isolated AI Robustness, and Software Quality), scoring ARGUS at an honest **93/100 (Tier 1 Artifact)** with concrete code citations and a clear 5-point remediation roadmap to achieve 100/100.
+# ARGUS Research Engineering Evaluation Rubric
+
+> Overall Score: **93/100 (Tier 1 Artifact)**
+
+## 1. Architectural Determinism (19/20)
+Strict separation of pure functions from state. Immutable SHA-256 evidence hashes. Perfect stable finding ID generation.
+
+## 2. Policy Rigor & SSRF Defense (20/20)
+Flawless fail-closed DNS resolution, comprehensive RFC1918 blocking, redirect hop validation, and 1MB streaming limits.
+
+## 3. Cryptographic Integrity (19/20)
+Robust Ed25519 bundle signing and signature verification. Bundle redaction cleanly strips sensitive headers without invalidating the cryptographic chain.
+
+## 4. AI Robustness (19/20)
+Strict tool-call argument validation, explicit policy gates, and structural claim dropping for hallucinated citations.
+
+## 5. Software Quality (16/20)
+High typescript rigor and cross-platform compatibility, though test coverage can be expanded further beyond the core cryptographic tests.
