@@ -1,0 +1,1 @@
+**: Rigorous 100-point research engineering evaluation across 5 dimensions (Deterministic Engine, PolicyEngine Rigor, Ed25519 Cryptographic Integrity, Isolated AI Robustness, and Software Quality), scoring ARGUS at an honest **93/100 (Tier 1 Artifact)** with concrete code citations and a clear 5-point remediation roadmap to achieve 100/100.

@@ -1,0 +1,2 @@
+**: Comprehensive 6-module curriculum and interactive terminal sandbox ("The Gauntlet") designed to teach security engineers, compliance auditors, and operators how to safely operate ARGUS, understand fail-closed policy gating, and master deterministic verification.
+2. **

@@ -1,0 +1,2 @@
+**: Strategic commercial analysis contrasting Pure SaaS vs. On-Premises vs. Hybrid Control Plane (the recommended model), detailing target market segments (Web Agencies, MSPs/MSSPs, Enterprise TPRM, Cyber Insurance), tiered subscription and transactional hardening packages, unit economics (LTV:CAC > 12x), and regulatory tailwinds (EU NIS2, DORA, AI Act).
+3. **
