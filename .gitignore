@@ -9,3 +9,20 @@ coverage/
 .DS_Store
 *.log
 *.csv
+
+# === LOCAL_CONFIDENCIAL (anadido 19-sep-2026, fusion de la copia duplicada de ARGUS) ===
+# audits/ contiene datos de contacto de terceros (email, telefono, direccion) y
+# hallazgos de vulnerabilidades de sus webs. NUNCA debe salir a un repo publico:
+# riesgo GDPR real + divulgacion de fallos de seguridad ajenos.
+audits/
+*.audit-results.json
+argus-audit-results.json
+
+# Scrapers y perfiles locales
+vinted_profile/
+marktplaats_images/
+ads_*.json
+upload_*.py
+scrape_mp.py
+seo_improve.py
+
