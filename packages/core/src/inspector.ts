@@ -14,11 +14,15 @@ import type {
   CollectorSummary,
   InspectionWarning,
   InspectionError,
-  DataMode
+  DataMode,
+  AuthorizationScope
 } from '@argus/schema';
 import { TargetPolicy, InspectionMode, SensitiveCategory } from './policy.js';
 import { hashValue } from './crypto.js';
 import { URL } from 'node:url';
+import { createImmutableEvidence } from './engine.js';
+import { evaluateScopeGate, createPublicPostureScope } from './authorization.js';
+import { runRules, mapFindingsToOpportunities } from './rules.js';
 
 export interface InspectionOptions {
   mode?: InspectionMode;
@@ -28,6 +32,8 @@ export interface InspectionOptions {
   dataMode?: DataMode;
   fixturePath?: string;
   organisationLabel?: string;
+  scope?: AuthorizationScope;
+  operator?: string;
   evaluateFindings?: FindingEvaluator;
   mapOpportunities?: AsyncOpportunityMapper;
 }
@@ -168,94 +174,132 @@ export async function inspectPublicTarget(
       }
     }
 
+    const scope = options.scope || createPublicPostureScope(targetId, [domain], options.operator || 'Operator');
+
     // LIVE MODE: Collect from actual targets
     // Collect DNS if enabled (default: true)
     if (dataMode === 'LIVE' && options.collectDns !== false) {
-      const dnsStartTime = Date.now();
-      try {
-        const { collectDns } = await import('@argus/collectors');
-        const dnsObs = await collectDns(domain, runId, targetId);
-        observations.push(...dnsObs);
+      const gate = evaluateScopeGate({
+        target: { id: targetId, name: options.organisationLabel || domain, domains: [domain] },
+        run: { id: runId, targetId, timestamp: startTimeISO, argusVersion: '0.1.0', os: process.platform, status: 'STARTED' },
+        scope,
+        collectorName: 'dns',
+        targetUrl: target
+      });
 
-        collectorSummary.push({
-          collector: 'dns',
-          version: '0.1.0',
-          status: 'SUCCESS',
-          observationCount: dnsObs.length,
-          errorCount: 0,
-          durationMs: Date.now() - dnsStartTime
-        });
-      } catch (error: any) {
-        collectorSummary.push({
-          collector: 'dns',
-          version: '0.1.0',
-          status: 'FAILED',
-          observationCount: 0,
-          errorCount: 1,
-          durationMs: Date.now() - dnsStartTime
-        });
-
+      if (!gate.allowed) {
         errors.push({
-          code: 'DNS_COLLECTION_FAILED',
-          message: error.message,
+          code: 'SCOPE_GATE_REJECTED',
+          message: gate.reason || 'Scope gate rejected DNS collector',
           phase: 'COLLECTION',
           fatal: false,
           context: { collector: 'dns' }
         });
+      } else {
+        const dnsStartTime = Date.now();
+        try {
+          const { collectDns } = await import('@argus/collectors');
+          const dnsObs = await collectDns(domain, runId, targetId);
+          observations.push(...dnsObs);
+
+          collectorSummary.push({
+            collector: 'dns',
+            version: '0.1.0',
+            status: 'SUCCESS',
+            observationCount: dnsObs.length,
+            errorCount: 0,
+            durationMs: Date.now() - dnsStartTime
+          });
+        } catch (error: any) {
+          collectorSummary.push({
+            collector: 'dns',
+            version: '0.1.0',
+            status: 'FAILED',
+            observationCount: 0,
+            errorCount: 1,
+            durationMs: Date.now() - dnsStartTime
+          });
+
+          errors.push({
+            code: 'DNS_COLLECTION_FAILED',
+            message: error.message,
+            phase: 'COLLECTION',
+            fatal: false,
+            context: { collector: 'dns' }
+          });
+        }
       }
     }
 
     // Collect HTTP if enabled (default: true)
     if (dataMode === 'LIVE' && options.collectHttp !== false) {
-      const httpStartTime = Date.now();
-      try {
-        const { collectHttp } = await import('@argus/collectors');
-        const { PolicyEngine } = await import('./policy-engine.js');
-        const policyEngine = new PolicyEngine();
+      const gate = evaluateScopeGate({
+        target: { id: targetId, name: options.organisationLabel || domain, domains: [domain] },
+        run: { id: runId, targetId, timestamp: startTimeISO, argusVersion: '0.1.0', os: process.platform, status: 'STARTED' },
+        scope,
+        collectorName: 'http',
+        targetUrl: target
+      });
 
-        const httpObservations = await collectHttp(target, runId, targetId, {
-          validateRedirect: async (nextUrl, hop) => {
-            const val = await policyEngine.validateRedirectHop(nextUrl, hop);
-            if (!val.allowed) throw new Error(val.reason);
-          }
-        });
-        observations.push(...httpObservations);
-
-        collectorSummary.push({
-          collector: 'http',
-          version: '0.1.0',
-          status: 'SUCCESS',
-          observationCount: httpObservations.length,
-          errorCount: 0,
-          durationMs: Date.now() - httpStartTime
-        });
-      } catch (error: any) {
-        collectorSummary.push({
-          collector: 'http',
-          version: '0.1.0',
-          status: 'FAILED',
-          observationCount: 0,
-          errorCount: 1,
-          durationMs: Date.now() - httpStartTime
-        });
-
+      if (!gate.allowed) {
         errors.push({
-          code: 'HTTP_COLLECTION_FAILED',
-          message: error.message,
+          code: 'SCOPE_GATE_REJECTED',
+          message: gate.reason || 'Scope gate rejected HTTP collector',
           phase: 'COLLECTION',
           fatal: false,
           context: { collector: 'http' }
         });
-
         collectionFailed = true;
+      } else {
+        const httpStartTime = Date.now();
+        try {
+          const { collectHttp } = await import('@argus/collectors');
+          const { PolicyEngine } = await import('./policy-engine.js');
+          const policyEngine = new PolicyEngine();
+
+          const httpObservations = await collectHttp(target, runId, targetId, {
+            validateRedirect: async (nextUrl, hop) => {
+              const val = await policyEngine.validateRedirectHop(nextUrl, hop);
+              if (!val.allowed) throw new Error(val.reason);
+            }
+          });
+          observations.push(...httpObservations);
+
+          collectorSummary.push({
+            collector: 'http',
+            version: '0.1.0',
+            status: 'SUCCESS',
+            observationCount: httpObservations.length,
+            errorCount: 0,
+            durationMs: Date.now() - httpStartTime
+          });
+        } catch (error: any) {
+          collectorSummary.push({
+            collector: 'http',
+            version: '0.1.0',
+            status: 'FAILED',
+            observationCount: 0,
+            errorCount: 1,
+            durationMs: Date.now() - httpStartTime
+          });
+
+          errors.push({
+            code: 'HTTP_COLLECTION_FAILED',
+            message: error.message,
+            phase: 'COLLECTION',
+            fatal: false,
+            context: { collector: 'http' }
+          });
+
+          collectionFailed = true;
+        }
       }
     }
 
-    // Convert observations to evidence
+    // Convert observations to evidence (immutable, deterministic)
     for (const obs of observations) {
-      const evd: Evidence = {
-        id: `evd_${hashValue(obs.id + runId).slice(0, 12)}`,
-        targetId: targetId,
+      const evd = createImmutableEvidence({
+        targetId,
         runId,
         type: obs.type,
         source: obs.source,
@@ -263,44 +307,36 @@ export async function inspectPublicTarget(
         collectorVersion: obs.collectorVersion,
         observedAt: obs.observedAt,
         rawValue: obs.rawValue,
-        normalizedValue: obs.rawValue,
-        confidence: 'VERIFIED',
-        sha256: hashValue(obs.rawValue)
-      };
+        confidence: 'VERIFIED'
+      });
       evidence.push(evd);
     }
 
-    // Evaluate findings if rule engine is provided
-    if (options.evaluateFindings) {
-      try {
-        const context: EvaluationContext = {
-          runId,
-          targetId,
-          target,
-          policyMode: validation.mode,
-          sensitiveCategory: validation.sensitiveCategory
-        };
+    // Evaluate findings using provided evaluator or default to core runRules
+    const evaluateFindings = options.evaluateFindings || (async (ev) => runRules(ev));
+    try {
+      const context: EvaluationContext = {
+        runId,
+        targetId,
+        target,
+        policyMode: validation.mode,
+        sensitiveCategory: validation.sensitiveCategory
+      };
 
-        findings = await options.evaluateFindings(evidence, context);
-      } catch (error: any) {
-        errors.push({
-          code: 'FINDING_EVALUATION_FAILED',
-          message: error.message,
-          phase: 'RULE_EVALUATION',
-          fatal: false,
-          stack: error.stack
-        });
-      }
-    } else {
-      warnings.push({
-        code: 'NO_RULE_ENGINE',
-        message: 'No rule engine connected. Findings evaluation skipped.',
-        severity: 'INFO'
+      findings = await evaluateFindings(evidence, context);
+    } catch (error: any) {
+      errors.push({
+        code: 'FINDING_EVALUATION_FAILED',
+        message: error.message,
+        phase: 'RULE_EVALUATION',
+        fatal: false,
+        stack: error.stack
       });
     }
 
-    // Map opportunities if mapper is provided
-    if (options.mapOpportunities && findings.length > 0) {
+    // Map opportunities using provided mapper or default to core mapFindingsToOpportunities
+    if (findings.length > 0) {
+      const mapOpportunities = options.mapOpportunities || (async (fnds) => mapFindingsToOpportunities(fnds));
       try {
         const context: EvaluationContext = {
           runId,
@@ -310,7 +346,7 @@ export async function inspectPublicTarget(
           sensitiveCategory: validation.sensitiveCategory
         };
 
-        opportunities = await options.mapOpportunities(findings, context);
+        opportunities = await mapOpportunities(findings, context);
       } catch (error: any) {
         errors.push({
           code: 'OPPORTUNITY_MAPPING_FAILED',
@@ -320,12 +356,6 @@ export async function inspectPublicTarget(
           stack: error.stack
         });
       }
-    } else if (findings.length > 0 && !options.mapOpportunities) {
-      warnings.push({
-        code: 'NO_OPPORTUNITY_MAPPER',
-        message: 'No opportunity mapper connected. Opportunity mapping skipped.',
-        severity: 'INFO'
-      });
     }
   } catch (error: any) {
     errors.push({

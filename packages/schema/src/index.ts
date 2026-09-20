@@ -203,6 +203,8 @@ export interface ArgusBundle {
 }
 
 export type AssessmentType =
+  | 'PUBLIC_POSTURE'
+  | 'AUTHORIZED_ASSESSMENT'
   | 'OWNER_AUTHORIZED'
   | 'SELF_ASSESSMENT'
   | 'PUBLIC_PASSIVE_REVIEW'
@@ -219,6 +221,8 @@ export interface AuthorizationScope {
   allowedCollectors: string[];
   authorizationBasis: string;
   operatorAcknowledgment: string;
+  operator?: string;
+  toolVersions?: Record<string, string>;
   createdAt: string;
   expiresAt?: string;
   status: ScopeStatus;
@@ -226,6 +230,11 @@ export interface AuthorizationScope {
     passiveOnly: boolean;
     publicDataOnly: boolean;
     noActiveProbing: boolean;
+    noExploitation?: boolean;
+    noBruteForce?: boolean;
+    noFuzzing?: boolean;
+    noSecretHunting?: boolean;
+    noCredentialTesting?: boolean;
   };
 }
 

@@ -1,18 +1,19 @@
 # ARGUS Autonomous State
 
-## Current Phase: 03 Scope/Authorization Gate
+## Current Phase: 04 Complete Threat Model & 05 Complete SECURITY.md
 - **Status**: IN_PROGRESS
 - **Completed Phases**:
   - [x] Workspace verification and monorepo structure validation
   - [x] Initial build verification (`pnpm build` passes with 0 errors)
   - [x] 02 real tests for core invariants (93/93 tests passing)
-- **Active Queue Item**: 03 scope/authorization gate
+  - [x] 03 scope/authorization gate (103/103 tests passing, ScopeGate enforced in inspector)
+- **Active Queue Item**: 04 complete threat model & 05 complete SECURITY.md
 - **Blockers**: None
 
 ## Phase Progress
 - [x] 01 baseline clean clone/build
 - [x] 02 real tests for core invariants
-- [ ] 03 scope/authorization gate
+- [x] 03 scope/authorization gate
 - [ ] 04 complete threat model
 - [ ] 05 complete SECURITY.md
 - [ ] 06 Evidence schema hardening
