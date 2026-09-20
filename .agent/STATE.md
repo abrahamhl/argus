@@ -1,6 +1,6 @@
 # ARGUS Autonomous State
 
-## Current Phase: 08-12 Deterministic Collectors & Fixture Harness
+## Current Phase: 13-15 Finding Engine, Opportunity Engine & AUX Service Catalog
 - **Status**: IN_PROGRESS
 - **Completed Phases**:
   - [x] Workspace verification and monorepo structure validation
@@ -11,7 +11,12 @@
   - [x] 05 complete SECURITY.md (SLA, prohibitions, offline data security, dependency policy)
   - [x] 06 Evidence schema hardening (exact fields, immutability, tamper detection)
   - [x] 07 Confidence model (110/110 tests passing, 5 explicit levels, strict AI clamping)
-- **Active Queue Item**: 08 DNS collector, 09 TLS collector, 10 HTTP collector, 11 email-security collector, 12 fixture harness
+  - [x] 08 DNS collector (typed output, bounded resolution, absence detection)
+  - [x] 09 TLS collector (node:tls, peer cert, days remaining, cipher, timeout)
+  - [x] 10 HTTP collector (bounded redirects, 1MB cap, security headers extraction)
+  - [x] 11 email-security collector (MX priority, SPF qualifier, DMARC tags & reporting, MTA-STS)
+  - [x] 12 fixture harness (complete baseline & remediated fixtures for example-business.nl)
+- **Active Queue Item**: 13 Finding engine, 14 Opportunity engine, 15 AUX service catalog
 - **Blockers**: None
 
 ## Phase Progress
@@ -22,11 +27,14 @@
 - [x] 05 complete SECURITY.md
 - [x] 06 Evidence schema hardening
 - [x] 07 Confidence model
-- [ ] 08 DNS collector
-- [ ] 09 TLS collector
-- [ ] 10 HTTP collector
-- [ ] 11 email-security collector
-- [ ] 12 fixture harness
+- [x] 08 DNS collector
+- [x] 09 TLS collector
+- [x] 10 HTTP collector
+- [x] 11 email-security collector
+- [x] 12 fixture harness
+- [ ] 13 Finding engine
+- [ ] 14 Opportunity engine
+- [ ] 15 AUX service catalog
 - [ ] 13 Finding engine
 - [ ] 14 Opportunity engine
 - [ ] 15 AUX service catalog
