@@ -3,20 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0b10" />
-    <title>ARGUS | Field Intelligence</title>
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="stylesheet" href="/src/style.css" />
-    <!-- Privacy: No telemetry, no trackers -->
+    <meta name="theme-color" content="#040711" />
+    <title>ARGUS | Next-Gen Control Plane Simulator & Investor MVP</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <!-- Privacy: No telemetry, no trackers, offline first -->
   </head>
   <body>
     <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="./src/main.ts"></script>
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch(err => {
-            console.error("SW Registration Failed:", err);
+          navigator.serviceWorker.register("./sw.js").catch(err => {
+            // Optional offline service worker
           });
         });
       }

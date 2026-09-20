@@ -1,1 +1,9 @@
-import { defineConfig } from 'vite'; export default defineConfig({ build: { sourcemap: false } });
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  base: './',
+  build: {
+    sourcemap: false,
+    outDir: 'dist'
+  }
+});
