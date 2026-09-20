@@ -1,6 +1,6 @@
 # ARGUS Autonomous State
 
-## Current Phase: 06 Evidence Schema Hardening & 07 Confidence Model
+## Current Phase: 08-12 Deterministic Collectors & Fixture Harness
 - **Status**: IN_PROGRESS
 - **Completed Phases**:
   - [x] Workspace verification and monorepo structure validation
@@ -9,7 +9,9 @@
   - [x] 03 scope/authorization gate (103/103 tests passing, ScopeGate enforced in inspector)
   - [x] 04 complete threat model (THREAT_MODEL.md covering 14 vectors + product vs target distinction)
   - [x] 05 complete SECURITY.md (SLA, prohibitions, offline data security, dependency policy)
-- **Active Queue Item**: 06 Evidence schema hardening & 07 Confidence model
+  - [x] 06 Evidence schema hardening (exact fields, immutability, tamper detection)
+  - [x] 07 Confidence model (110/110 tests passing, 5 explicit levels, strict AI clamping)
+- **Active Queue Item**: 08 DNS collector, 09 TLS collector, 10 HTTP collector, 11 email-security collector, 12 fixture harness
 - **Blockers**: None
 
 ## Phase Progress
@@ -18,8 +20,8 @@
 - [x] 03 scope/authorization gate
 - [x] 04 complete threat model
 - [x] 05 complete SECURITY.md
-- [ ] 06 Evidence schema hardening
-- [ ] 07 Confidence model
+- [x] 06 Evidence schema hardening
+- [x] 07 Confidence model
 - [ ] 08 DNS collector
 - [ ] 09 TLS collector
 - [ ] 10 HTTP collector

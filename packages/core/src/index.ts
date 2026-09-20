@@ -10,3 +10,4 @@ export * from './api.js';
 export { observationToEvidence } from './engine.js';
 export * from './authorization.js';
 export * from './policy-engine.js';
+export * from './confidence.js';
