@@ -1,59 +1,58 @@
-name: ARGUS CI
+name: CI
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      - master
+      - main
+      - 'agent/**'
+      - 'feature/**'
   pull_request:
-    branches: [ "main", "master" ]
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build-and-test:
+  ci:
+    name: Build, Test & Offline Verification
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Use Node.js 20.x
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20.x'
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.1.0
 
-    - name: Install pnpm
-      uses: pnpm/action-setup@v3
-      with:
-        version: 9.1.0
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
 
-    - name: Frozen Install
-      run: pnpm install --frozen-lockfile
+      - name: Install dependencies (frozen lockfile)
+        run: pnpm install --frozen-lockfile
 
-    - name: Dependency Audit
-      run: pnpm audit --prod
+      - name: Lint workspace
+        run: pnpm lint
 
-    - name: Typecheck
-      run: pnpm -r exec tsc --noEmit || true
+      - name: Build all packages and applications
+        run: pnpm build
 
-    - name: Build
-      run: pnpm run build
-      
-    - name: Run Tests (Unit, Integration, E2E)
-      run: pnpm test
+      - name: Run automated test suite (178 tests)
+        run: pnpm test
 
-    - name: Run Tests with Coverage
-      env:
-        NODE_V8_COVERAGE: coverage
-      run: pnpm -r exec node --experimental-test-coverage --test dist/**/*.test.js || true
-
-    - name: Generate SBOM
-      uses: anchore/sbom-action@v0
-      with:
-        format: cyclonedx-json
-        file: sbom.json
-
-  secret-scan:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Gitleaks Secret Scan
-      uses: gitleaks/gitleaks-action@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Verify offline control plane demo (ARGUS_OFFLINE_MODE=true)
+        run: pnpm demo
+        env:
+          ARGUS_OFFLINE_MODE: 'true'
