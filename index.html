@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#040711" />
+    <title>ARGUS | Next-Gen Control Plane Simulator & Investor MVP</title>
+    <link rel="manifest" href="./manifest.json" />
+    <!-- Privacy: No telemetry, no trackers, offline first -->
+    <script type="module" crossorigin src="./assets/index-9pJcKfWD.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B2ccz9mC.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch(err => {
+            // Optional offline service worker
+          });
+        });
+      }
+    </script>
+  </body>
+</html>
