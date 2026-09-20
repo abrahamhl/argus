@@ -1,21 +1,23 @@
 # ARGUS Autonomous State
 
-## Current Phase: 04 Complete Threat Model & 05 Complete SECURITY.md
+## Current Phase: 06 Evidence Schema Hardening & 07 Confidence Model
 - **Status**: IN_PROGRESS
 - **Completed Phases**:
   - [x] Workspace verification and monorepo structure validation
   - [x] Initial build verification (`pnpm build` passes with 0 errors)
   - [x] 02 real tests for core invariants (93/93 tests passing)
   - [x] 03 scope/authorization gate (103/103 tests passing, ScopeGate enforced in inspector)
-- **Active Queue Item**: 04 complete threat model & 05 complete SECURITY.md
+  - [x] 04 complete threat model (THREAT_MODEL.md covering 14 vectors + product vs target distinction)
+  - [x] 05 complete SECURITY.md (SLA, prohibitions, offline data security, dependency policy)
+- **Active Queue Item**: 06 Evidence schema hardening & 07 Confidence model
 - **Blockers**: None
 
 ## Phase Progress
 - [x] 01 baseline clean clone/build
 - [x] 02 real tests for core invariants
 - [x] 03 scope/authorization gate
-- [ ] 04 complete threat model
-- [ ] 05 complete SECURITY.md
+- [x] 04 complete threat model
+- [x] 05 complete SECURITY.md
 - [ ] 06 Evidence schema hardening
 - [ ] 07 Confidence model
 - [ ] 08 DNS collector
