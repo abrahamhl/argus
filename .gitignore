@@ -25,4 +25,7 @@ ads_*.json
 upload_*.py
 scrape_mp.py
 seo_improve.py
-
+# Local operational data & artifacts
+.argus_data/
+*.pdf
+argus_trace.jsonl

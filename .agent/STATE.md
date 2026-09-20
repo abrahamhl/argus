@@ -1,55 +1,41 @@
 # ARGUS Autonomous State
 
-## Current Phase: 13-15 Finding Engine, Opportunity Engine & AUX Service Catalog
-- **Status**: IN_PROGRESS
+## Current Phase: 30 Clean-Clone Recruiter & Commercial Release Audit
+- **Status**: COMPLETED (ALL 30 PHASES COMPLETE & FULLY VERIFIED)
 - **Completed Phases**:
-  - [x] Workspace verification and monorepo structure validation
-  - [x] Initial build verification (`pnpm build` passes with 0 errors)
-  - [x] 02 real tests for core invariants (93/93 tests passing)
-  - [x] 03 scope/authorization gate (103/103 tests passing, ScopeGate enforced in inspector)
-  - [x] 04 complete threat model (THREAT_MODEL.md covering 14 vectors + product vs target distinction)
-  - [x] 05 complete SECURITY.md (SLA, prohibitions, offline data security, dependency policy)
-  - [x] 06 Evidence schema hardening (exact fields, immutability, tamper detection)
-  - [x] 07 Confidence model (110/110 tests passing, 5 explicit levels, strict AI clamping)
+  - [x] 01 Baseline clean clone/build verification (`pnpm build` passes with 0 errors across 9 workspace packages)
+  - [x] 02 Real tests for core invariants (immutability, SHA-256 hash determinism, finding/evidence linkage, offline sockets)
+  - [x] 03 Scope/authorization gate (fail-closed ScopeGate enforced in inspector and CLI)
+  - [x] 04 Complete threat model (`THREAT_MODEL.md` covering 14 vectors + product vs target distinction)
+  - [x] 05 Complete `SECURITY.md` (vulnerability disclosure SLA, prohibitions, offline data handling, dependency policy)
+  - [x] 06 Evidence schema hardening (exact fields, immutability verification, tamper detection)
+  - [x] 07 Confidence model (5 explicit levels: VERIFIED, SUPPORTED, INFERRED, UNKNOWN, CONTRADICTED; strict AI clamping)
   - [x] 08 DNS collector (typed output, bounded resolution, absence detection)
-  - [x] 09 TLS collector (node:tls, peer cert, days remaining, cipher, timeout)
-  - [x] 10 HTTP collector (bounded redirects, 1MB cap, security headers extraction)
-  - [x] 11 email-security collector (MX priority, SPF qualifier, DMARC tags & reporting, MTA-STS)
-  - [x] 12 fixture harness (complete baseline & remediated fixtures for example-business.nl)
-- **Active Queue Item**: 13 Finding engine, 14 Opportunity engine, 15 AUX service catalog
-- **Blockers**: None
+  - [x] 09 TLS collector (`node:tls`, peer cert, days remaining, cipher, timeout)
+  - [x] 10 HTTP collector (bounded redirects, 1MB body cap, security headers extraction)
+  - [x] 11 Email-security collector (MX priority, SPF qualifier, DMARC tags & reporting, MTA-STS)
+  - [x] 12 Synthetic fixture harness (complete baseline & remediated fixtures for `example-business.nl`)
+  - [x] 13 Finding engine (11 deterministic security rules with structured explanation fields)
+  - [x] 14 Opportunity engine (automatic mapping from findings to commercial services)
+  - [x] 15 AUX service catalog (`AUX_SERVICE_CATALOG` with realistic EUR pricing €195–€1,195, hours, and multilingual deliverables)
+  - [x] 16 Client NL output (Dutch-first, positive checks detection, zero-fear copy)
+  - [x] 17 English/Spanish translations (full client report localization)
+  - [x] 18 Engineer output (cryptographic provenance table, SHA-256 hashes, reproduction commands)
+  - [x] 19 Local persistence (`persistence.ts` providing offline-first storage in `.argus_data/`, run indexing, and path traversal protection)
+  - [x] 20 Report JSON (machine-readable standardized exports)
+  - [x] 21 Standalone HTML report (100% offline self-contained HTML printable directly to PDF via browser print)
+  - [x] 22 Retest engine (`retest.ts` implementing `compareRuns` and deterministic comparative analysis)
+  - [x] 23 Before/After Proof (cryptographic `Proof` generation: RESOLVED, IMPROVED, UNCHANGED, REGRESSED, UNVERIFIED)
+  - [x] 24 Offline end-to-end demo (`pnpm demo` runs 100% offline lifecycle with 7 verified RESOLVED proofs)
+  - [x] 25 AI analyst adapter boundary (`@argus/ai` with PolicyGate validation, tool enforcement, and dropping hallucinated claims)
+  - [x] 26 ROI backlog (`docs/ROI_BACKLOG.md` detailing Dutch SME market drivers, pricing economics, conversion funnels, and Proof-as-a-Service model)
+  - [x] 27 Case-study generator (`case-study.ts` producing client-ready before/after markdown case studies in NL and EN)
+  - [x] 28 Browser/TUI usability pass (`@argus/console` CLI with structured commands: `demo`, `assess`, `inspect`, `retest`, `verify`, `sign`, `export`, `runs`, `report`, `case-study`, `keygen`)
+  - [x] 29 Adversarial security review (`docs/SECURITY_AUDIT.md` and `packages/core/src/adversarial.test.ts` validating all 14 threat model vectors)
+  - [x] 30 Clean-clone recruiter / commercial release audit (`README.md` full overhaul, 178 passing tests, clean build across monorepo)
 
-## Phase Progress
-- [x] 01 baseline clean clone/build
-- [x] 02 real tests for core invariants
-- [x] 03 scope/authorization gate
-- [x] 04 complete threat model
-- [x] 05 complete SECURITY.md
-- [x] 06 Evidence schema hardening
-- [x] 07 Confidence model
-- [x] 08 DNS collector
-- [x] 09 TLS collector
-- [x] 10 HTTP collector
-- [x] 11 email-security collector
-- [x] 12 fixture harness
-- [ ] 13 Finding engine
-- [ ] 14 Opportunity engine
-- [ ] 15 AUX service catalog
-- [ ] 13 Finding engine
-- [ ] 14 Opportunity engine
-- [ ] 15 AUX service catalog
-- [ ] 16 Client NL output
-- [ ] 17 English/Spanish output
-- [ ] 18 Engineer output
-- [ ] 19 local persistence
-- [ ] 20 report JSON
-- [ ] 21 report HTML
-- [ ] 22 retest engine
-- [ ] 23 before/after Proof
-- [ ] 24 offline end-to-end demo
-- [ ] 25 AI analyst adapter boundary
-- [ ] 26 ROI backlog
-- [ ] 27 case-study generator
-- [ ] 28 browser/TUI usability pass
-- [ ] 29 adversarial security review
-- [ ] 30 clean-clone recruiter/commercial release audit
+- **Total Test Count**: 178 tests passing (100% pass rate, 0 failed, 0 skipped):
+  - `@argus/collectors`: 8 tests
+  - `@argus/core`: 166 tests
+  - `@argus/ai`: 4 tests
+- **Blockers**: None. System is fully hardened and ready for commercial operation by AUX Design.

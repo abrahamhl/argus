@@ -11,3 +11,7 @@ export { observationToEvidence } from './engine.js';
 export * from './authorization.js';
 export * from './policy-engine.js';
 export * from './confidence.js';
+export * from './service-catalog.js';
+export * from './report-generator.js';
+export * from './persistence.js';
+export * from './case-study.js';
