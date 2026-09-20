@@ -66,17 +66,23 @@ export interface Observation {
 
 export interface Evidence {
   id: string;
+  evidenceId?: string;
   targetId: string;
   runId: string;
   type: string;
   source: string;
   collector: string;
+  collectorId?: string;
   collectorVersion: string;
   observedAt: string;
   rawValue: any;
   normalizedValue: any;
+  rawHash?: string;
+  normalizedHash?: string;
   confidence: Confidence;
   sha256: string;
+  payload?: any;
+  aiAssisted?: boolean;
   metadata?: Record<string, any>;
   relationships?: any[];
 }
@@ -96,6 +102,11 @@ export interface Finding {
   severity: Severity;
   confidence: Confidence;
   evidenceIds: string[];
+  observed?: string;
+  supports?: string;
+  whyItMatters?: string;
+  limitations?: string;
+  aiAssisted?: boolean;
 }
 
 export interface Opportunity {
@@ -112,6 +123,17 @@ export interface Opportunity {
   needsClientAccess: boolean;
   estimatedComplexity: EstimatedComplexity;
   clientExplanationKey: string;
+  serviceId?: string;
+  clientExplanation?: {
+    nl: string;
+    en: string;
+    es: string;
+  };
+  remediationEstimate?: {
+    estimatedHoursMin?: number;
+    estimatedHoursMax?: number;
+    indicativePriceEur?: number;
+  };
 }
 
 export interface Remediation {
@@ -125,15 +147,24 @@ export interface Remediation {
   status: RemediationStatus;
 }
 
+export type ProofStatus =
+  | 'RESOLVED'
+  | 'IMPROVED'
+  | 'UNCHANGED'
+  | 'REGRESSED'
+  | 'UNVERIFIED'
+  | 'UNKNOWN';
+
 export interface Proof {
   id: string;
   targetId: string;
   retestRunId: string;
   baselineRunId: string;
   originalFindingId: string;
-  status: 'RESOLVED' | 'UNCHANGED' | 'REGRESSED' | 'UNKNOWN';
+  status: ProofStatus;
   beforeEvidenceIds: string[];
   afterEvidenceIds: string[];
+  comparisonNote?: string;
 }
 
 export interface BundleSignature {
