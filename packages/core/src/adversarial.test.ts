@@ -18,7 +18,7 @@
  * Vector 14: Target Vulnerability vs Product Threat Separation
  */
 
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import * as assert from 'node:assert/strict';
 import {
   PolicyEngine,
@@ -732,3 +732,5 @@ describe('Adversarial Security Review — 14 Threat Model Vectors', () => {
     });
   });
 });
+
+

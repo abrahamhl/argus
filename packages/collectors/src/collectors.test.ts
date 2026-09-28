@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert/strict';
 import {
   collectTls,
@@ -107,3 +107,5 @@ describe('Synthetic Company Fixture Harness (Section 12 & 23)', () => {
     assert.equal(dmarcObs.rawValue.dmarc.p, 'reject');
   });
 });
+
+

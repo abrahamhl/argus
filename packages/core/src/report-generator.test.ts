@@ -1,4 +1,4 @@
-import { test } from 'node:test';
+import { test } from 'vitest';
 import { strict as assert } from 'node:assert';
 import type { InspectionResultV1, ArgusBundle, Finding, Opportunity, Evidence } from '@argus/schema';
 import {
@@ -182,3 +182,5 @@ test('generateCommercialReport backwards compatibility alias works', () => {
   assert.ok(legacyHtml.includes('<!DOCTYPE html>'));
   assert.ok(legacyHtml.includes('example-business.nl'));
 });
+
+

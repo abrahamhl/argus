@@ -49,7 +49,7 @@ jobs:
       - name: Build all packages and applications
         run: pnpm build
 
-      - name: Run automated test suite (178 tests)
+      - name: Run automated test suite
         run: pnpm test
 
       - name: Verify offline control plane demo (ARGUS_OFFLINE_MODE=true)

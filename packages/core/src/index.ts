@@ -15,3 +15,7 @@ export * from './service-catalog.js';
 export * from './report-generator.js';
 export * from './persistence.js';
 export * from './case-study.js';
+export * from './deep-intel.js';
+export * from './merkle-proof.js';
+export * from './drift-engine.js';
+export * from './stix-misp.js';

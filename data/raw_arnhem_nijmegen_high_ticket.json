@@ -1,0 +1,4143 @@
+{
+  "Arnhem": [
+    {
+      "type": "node",
+      "id": 672157541,
+      "lat": 51.983151,
+      "lon": 5.901122,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:country": "NL",
+        "addr:housenumber": "4-8",
+        "addr:postcode": "6811LA",
+        "addr:street": "Coehoornstraat",
+        "name": "Hotel Blanc",
+        "phone": "+31 26 442 8072",
+        "source": "local_knowledge, website",
+        "tourism": "hotel",
+        "website": "https://www.hotel-blanc.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 700840952,
+      "lat": 51.9832411,
+      "lon": 5.9020574,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:country": "NL",
+        "addr:housenumber": "1",
+        "addr:postcode": "6811KG",
+        "addr:street": "Stationsplein",
+        "air_conditioning": "yes",
+        "check_date": "2024-08-28",
+        "contact:facebook": "https://www.facebook.com/HotelHaarhuis",
+        "contact:instagram": "https://www.instagram.com/hotelhaarhuis/",
+        "email": "info@hotelhaarhuis.nl",
+        "facebook": "https://www.facebook.com/HotelHaarhuis",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "Hotel Haarhuis",
+        "name": "Hotel Haarhuis",
+        "operator": "Best Western",
+        "phone": "+31 26 442 7441",
+        "rooms": "127",
+        "source": "local_knowledge, website",
+        "stars": "4",
+        "tourism": "hotel",
+        "twitter": "https://twitter.com/hotelhaarhuis",
+        "website": "https://hotelhaarhuis.nl/",
+        "website:en": "https://hotelhaarhuis.nl/en"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1473430751,
+      "lat": 51.9830277,
+      "lon": 5.9041596,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "29",
+        "addr:postcode": "6811KC",
+        "addr:street": "Willemsplein",
+        "email": "info@vanekgarantiemakelaars.nl",
+        "name": "Makelaar Van Ek Garantiemakelaars BV",
+        "office": "estate_agent",
+        "phone": "+31 26 442 5436",
+        "source": "BAG;survey;local knowledge",
+        "source:date": "2014-02-11",
+        "website": "https://vanekgarantiemakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719857772,
+      "lat": 51.9853041,
+      "lon": 5.9213052,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "1",
+        "addr:postcode": "6824BZ",
+        "addr:street": "Velperweg",
+        "email": "info@dirkzwager.nl",
+        "facebook": "https://www.facebook.com/Dirkzwager.nl/",
+        "name": "Dirkzwager",
+        "office": "lawyer",
+        "opening_hours": "Mo-Fr 08:45-17:00; Sa,Su,PH off",
+        "phone": "+31 88 242 4100",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "twitter": "https://twitter.com/dirkzwager_nl",
+        "website": "https://www.dirkzwager.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719862306,
+      "lat": 51.9862092,
+      "lon": 5.9055096,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "12",
+        "addr:postcode": "6814BA",
+        "addr:street": "Sonsbeekweg",
+        "name": "Spitman Makelaar Arnhem",
+        "office": "estate_agent",
+        "phone": "+31 26 445 2500",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://spitmanmakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719868094,
+      "lat": 51.9858722,
+      "lon": 5.9059978,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "15",
+        "addr:postcode": "6814AG",
+        "addr:street": "Cronjéstraat",
+        "check_date": "2026-04-28",
+        "email": "info@hotel-molendal.nl",
+        "name": "Hotel Molendal",
+        "phone": "+31 26 44 24 858",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "tourism": "hotel",
+        "website": "https://www.hotel-molendal.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719874656,
+      "lat": 51.9867942,
+      "lon": 5.9246031,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "31",
+        "addr:postcode": "6824BD",
+        "addr:street": "Velperweg",
+        "amenity": "dentist",
+        "email": "kies@gsmans.nl",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Smans",
+        "opening_hours": "Mo-Th 08:30-17:00; Fr 08:30-16:00",
+        "phone": "+31 26 442 1885",
+        "source": "BAG;local knowledge;survey",
+        "source:date": "2014-02-11",
+        "website": "https://www.gsmans.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719876614,
+      "lat": 51.9859227,
+      "lon": 5.9164919,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "4",
+        "addr:postcode": "6822BZ",
+        "addr:street": "Elly Lamakerplantsoen",
+        "check_date:currency:XBT": "2024-01-01",
+        "currency:XBT": "yes",
+        "name": "Hotel Modez",
+        "payment:lightning": "yes",
+        "payment:onchain": "no",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "survey:date": "2025-02-27",
+        "tourism": "hotel",
+        "website": "https://www.hotelmodez.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719883658,
+      "lat": 51.9877773,
+      "lon": 5.9084472,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "59",
+        "addr:postcode": "6814BJ",
+        "addr:street": "Apeldoornseweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandartsenpraktijk Apeldoornseweg 59",
+        "source": "BAG;BitKassa",
+        "source:date": "2014-02-11",
+        "survey:date": "2024-02-18",
+        "website": "https://www.apeldoornseweg59.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2719891350,
+      "lat": 51.9860422,
+      "lon": 5.9135774,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "85",
+        "addr:postcode": "6821AC",
+        "addr:street": "Sonsbeeksingel",
+        "check_date": "2024-08-27",
+        "name": "Boga Administratiekantoor",
+        "office": "financial",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://www.boga-advies.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2721180802,
+      "lat": 52.0023866,
+      "lon": 5.9098629,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "4",
+        "addr:postcode": "6815CM",
+        "addr:street": "Mahlerstraat",
+        "amenity": "dentist",
+        "name": "Praktijk voor Parodontologie en Implantologie Arnhem",
+        "short_name": "Ppia",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://ppia.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2721180885,
+      "lat": 51.9941716,
+      "lon": 5.895916,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "40",
+        "addr:postcode": "6814CL",
+        "addr:street": "Zijpendaalseweg",
+        "guest_house": "bed_and_breakfast",
+        "name": "Stadsboerderij de Teerplaats",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "tourism": "guest_house",
+        "website": "http://www.stadsboerderij-de-teerplaats.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2722312883,
+      "lat": 51.9871078,
+      "lon": 5.9561299,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "30",
+        "addr:postcode": "6825AV",
+        "addr:street": "Muiderslotstraat",
+        "amenity": "dentist",
+        "email": "info@tandartspraktijkadolfsen.nl",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Adolfsen",
+        "opening_hours": "Mo-Th 08:00-12:00, 13:30-17:00",
+        "phone": "+31 26 361 1411",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://tandartsadolfsen.tandartsennet.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2722829735,
+      "lat": 51.985151,
+      "lon": 5.9224384,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "10",
+        "addr:postcode": "6824BH",
+        "addr:street": "Velperweg",
+        "check_date": "2026-07-01",
+        "check_date:opening_hours": "2026-07-01",
+        "email": "info@nysingh.nl",
+        "facebook": "https://www.facebook.com/Nysinghadvocatennotarissen",
+        "name": "Nysingh advocaten-notarissen",
+        "office": "lawyer",
+        "opening_hours": "Mo-Fr 08:30-17:30; Sa,Su,PH off",
+        "phone": "+31 88 752 0000",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-02-11",
+        "twitter": "https://twitter.com/nysingh",
+        "website": "https://www.nysingh.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2722832425,
+      "lat": 51.9849236,
+      "lon": 5.9215944,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "2",
+        "addr:postcode": "6824BH",
+        "addr:street": "Velperweg",
+        "check_date": "2026-07-01",
+        "check_date:opening_hours": "2026-07-01",
+        "email": "info@dirkzwager.nl",
+        "facebook": "https://www.facebook.com/Dirkzwager.nl/",
+        "name": "Dirkzwager Bibliotheek",
+        "office": "lawyer",
+        "opening_hours": "Mo-Fr 08:45-17:00; Sa,Su,PH off",
+        "phone": "+31 88 242 4100",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-02-11",
+        "twitter": "https://twitter.com/dirkzwager_nl",
+        "website": "https://www.dirkzwager.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2722832427,
+      "lat": 51.9877769,
+      "lon": 5.9290289,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "2",
+        "addr:postcode": "6824BB",
+        "addr:street": "Vosdijk",
+        "email": "receptie@karelvandekamp.nl",
+        "name": "Karel van de Kamp",
+        "office": "notary",
+        "opening_hours": "Mo-Fr 08:30-17:30",
+        "phone": "+31 26 355 1200",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-02-11",
+        "website": "https://www.karelvandekamp.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2722833313,
+      "lat": 51.9856389,
+      "lon": 5.9289286,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "28",
+        "addr:postcode": "6824AN",
+        "addr:street": "Adolf van Nieuwenaarlaan",
+        "name": "Bed and Breakfast Molenbeke",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "survey:date": "2022-10-20",
+        "tourism": "guest_house",
+        "website": "http://www.benbmolenbeke.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2722888925,
+      "lat": 51.9771912,
+      "lon": 5.908914,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "1A",
+        "addr:postcode": "6811HE",
+        "addr:street": "Eusebiusplein",
+        "brand": "Bastion Hotel",
+        "brand:website": "https://www.bastionhotels.com/",
+        "brand:wikidata": "Q2356460",
+        "name": "Bastion Hotel Arnhem",
+        "rooms": "129",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "stars": "4",
+        "tourism": "hotel",
+        "website": "https://www.bastionhotels.com/nl-nl/hotels/hotel-arnhem",
+        "wikidata": "Q112014771"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2724307850,
+      "lat": 51.9689561,
+      "lon": 5.9070576,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "34",
+        "addr:postcode": "6833AG",
+        "addr:street": "Orchislaan",
+        "amenity": "dentist",
+        "email": "info@mzcarnhem.nl",
+        "name": "Mondzorgcentrum Arnhem",
+        "opening_hours": "Mo-Th 08:30-17:00",
+        "phone": "+31 26 321 8770",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://www.mzcarnhem.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2725568102,
+      "lat": 51.9611508,
+      "lon": 5.8575735,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "14",
+        "addr:postcode": "6843DM",
+        "addr:street": "Dordrechtweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandartsenpraktijk Kooij-Diederen",
+        "phone": "+31 26 381 4239",
+        "website": "https://www.tandartskooijdiederen.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2725570393,
+      "lat": 51.9794074,
+      "lon": 5.9022986,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "3",
+        "addr:postcode": "6811HA",
+        "addr:street": "Rijnkade",
+        "email": "beeldrijk@beeldrijk.org",
+        "name": "Beeldrijk",
+        "office": "tax_advisor",
+        "phone": "+31 26 389 3250",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://beeldrijk.org"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2725651334,
+      "lat": 51.9817606,
+      "lon": 5.9103554,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "7-6",
+        "addr:postcode": "6811DE",
+        "addr:street": "Koningstraat",
+        "name": "Dudok Studio's",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "tourism": "hotel",
+        "website": "https://dudokstudios.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2725651600,
+      "lat": 51.9814354,
+      "lon": 5.9040493,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "74",
+        "addr:postcode": "6811EZ",
+        "addr:street": "Rijnstraat",
+        "description": "Hôtel Nouvelle is a hotel with charming English interior style rooms in a restored monumental building from 1895. An excellent location for both leisure and business travellers who seek a good bed and breakfast.",
+        "email": "info@hotelnouvelle.nl",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "level": "0;1;2;3;4",
+        "name": "Hôtel Nouvelle",
+        "operator": "Hôtel Nouvelle",
+        "payment:american_express": "yes",
+        "payment:bancontact": "yes",
+        "payment:cash": "yes",
+        "payment:contactless": "yes",
+        "payment:diners_club": "yes",
+        "payment:jcb": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:unionpay": "yes",
+        "payment:visa": "yes",
+        "payment:vpay": "yes",
+        "payment:wire_transfer": "yes",
+        "rooms": "12",
+        "smoking": "no",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "start_date": "2018",
+        "tourism": "hotel",
+        "website": "https://hotelnouvelle.nl/",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2726501358,
+      "lat": 51.9441278,
+      "lon": 5.8625355,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "5",
+        "addr:postcode": "6845AC",
+        "addr:street": "Randweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Bless",
+        "opening_hours": "Mo-Th 08:30-16:45; Fr 08:30-12:30",
+        "phone": "+31 26 3817517",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://www.tandartspraktijkbless.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2727108496,
+      "lat": 51.9889604,
+      "lon": 5.9336752,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "79",
+        "addr:postcode": "6824HH",
+        "addr:street": "Velperweg",
+        "email": "arnhem@dezorgaccountants.nl",
+        "name": "De Zorg Accountants",
+        "office": "accountant",
+        "phone": "+31 88 102 0800",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-02-11",
+        "website": "https://www.dezorgaccountants.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2727108592,
+      "lat": 51.98874,
+      "lon": 5.93491,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "84",
+        "addr:postcode": "6824HL",
+        "addr:street": "Velperweg",
+        "email": "info@denhartogheuff.nl",
+        "name": "Den Hartog Heuff Notarissen",
+        "office": "notary",
+        "opening_hours": "Mo-Fr 08:30-17:00",
+        "phone": "+31 26 384 3434",
+        "source": "local knowledge;BAG",
+        "source:date": "2014-02-11",
+        "website": "https://www.denhartogheuff.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2727108943,
+      "lat": 51.9890986,
+      "lon": 5.9362562,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "98",
+        "addr:postcode": "6824HM",
+        "addr:street": "Velperweg",
+        "amenity": "dentist",
+        "email": "mwpevers@planet.nl",
+        "healthcare": "dentist",
+        "name": "Tandheelkundepraktijk Evers",
+        "opening_hours": "Mo-Fr 08:00-17:00",
+        "phone": "+31 26 361 3329",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-02-11",
+        "website": "http://www.tandartspraktijkevers.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2764572759,
+      "lat": 51.9776284,
+      "lon": 5.969852,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "551",
+        "addr:postcode": "6825MD",
+        "addr:street": "Meander",
+        "contact:website": "https://www2.deloitte.com/nl/nl/footerlinks/onze-kantoren/gelderland/kantoor-arnhem.html",
+        "name": "Deloitte",
+        "office": "accountant",
+        "phone": "+31 88 288 2888",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-03-24",
+        "website": "https://www2.deloitte.com/nl/nl.html"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2764649049,
+      "lat": 52.0328235,
+      "lon": 5.8736918,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "23",
+        "addr:postcode": "6816TD",
+        "addr:street": "Koningsweg",
+        "guest_house": "bed_and_breakfast",
+        "name": "De Vildtgaard",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "guest_house",
+        "website": "vildtgaard.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2764649442,
+      "lat": 52.038931,
+      "lon": 5.8857688,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "3",
+        "addr:postcode": "6816TR",
+        "addr:street": "Deelenseweg",
+        "email": "info@buitenplaats-petersburg.nl",
+        "internet_access": "wlan",
+        "name": "Buitenplaats Petersburg",
+        "phone": "+31 6 19 99 47 24",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://buitenplaats-petersburg.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2768973787,
+      "lat": 52.0159866,
+      "lon": 5.9305051,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "25",
+        "addr:postcode": "6816SL",
+        "addr:street": "Europaweg",
+        "branch": "Arnhem",
+        "brand": "Postillion Hotels",
+        "brand:website": "https://www.postillionhotels.com/",
+        "brand:wikidata": "Q4754837",
+        "email": "hotel.arnhem@postillionhotels.com",
+        "name": "Postillion",
+        "operator": "Postillion Hotels",
+        "operator:website": "https://www.postillionhotels.com/",
+        "operator:wikidata": "Q4754837",
+        "phone": "+31 26 357 3333",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://www.postillionhotels.com/arnhem/",
+        "wikidata": "Q111410375"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2769007119,
+      "lat": 52.0102501,
+      "lon": 5.8244569,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "3",
+        "addr:postcode": "6816VD",
+        "addr:street": "Papendallaan",
+        "email": "hotel@papendal.nl",
+        "name": "Hotel Papendal",
+        "phone": "+31 26 483 7911",
+        "source": "local knowledge;BAG",
+        "source:date": "2014-03-24;2018-09-25",
+        "tourism": "hotel",
+        "website": "https://papendal.nl/hotel/",
+        "wheelchair": "yes",
+        "wikidata": "Q111875831"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2769007146,
+      "lat": 52.0142712,
+      "lon": 5.8192555,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "505",
+        "addr:postcode": "6816VK",
+        "addr:street": "Amsterdamseweg",
+        "branch": "Arnhem",
+        "brand": "Van der Valk",
+        "brand:wikidata": "Q2802214",
+        "email": "arnhem@valk.com",
+        "facebook": "https://www.facebook.com/HotelArnhem",
+        "name": "Van der Valk",
+        "phone": "+31 26 482 1100",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "twitter": "https://twitter.com/HotelArnhem",
+        "website": "https://www.hotelarnhem.nl/",
+        "wikidata": "Q111410362"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2769017251,
+      "lat": 51.9997755,
+      "lon": 5.879298,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "1",
+        "addr:postcode": "6816PA",
+        "addr:street": "Schelmseweg",
+        "name": "Pension Warnsborn",
+        "phone": "+31 26 442 5994",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "guest_house",
+        "website": "https://www.pensionwarnsborn.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2769017519,
+      "lat": 52.0104133,
+      "lon": 5.8653892,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "277",
+        "addr:postcode": "6816VP",
+        "addr:street": "Bakenbergseweg",
+        "air_conditioning": "yes",
+        "check_date": "2024-10-28",
+        "check_date:internet_access": "2024-10-28",
+        "currency:XBT": "no",
+        "internet_access": "wlan",
+        "name": "Groot Warnsborn",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://grootwarnsborn.nl",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4100029700,
+      "lat": 51.9542146,
+      "lon": 5.847167,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "37",
+        "addr:postcode": "6846XZ",
+        "addr:street": "Fortunastraat",
+        "email": "arnhem@bmvmakelaars.nl",
+        "name": "BMV Makelaars Arnhem-Zuid",
+        "office": "estate_agent",
+        "opening_hours": "Mo-Fr 08:30-17:30; Sa 09:30-17:00",
+        "phone": "+31 26 355 2100",
+        "source": "BAG;survey",
+        "source:date": "2016-04-05",
+        "website": "https://bmvmakelaars.nl/vestigingen/BMV-makelaars-arnhem-zuid"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5782580402,
+      "lat": 51.9430624,
+      "lon": 5.8920104,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "2",
+        "addr:postcode": "6836JH",
+        "addr:street": "Darwinstraat",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Kapper",
+        "opening_hours": "Mo-Th 08:00-17:00; Fr 08:00-12:00",
+        "source": "BAG",
+        "source:date": "2018-07-08",
+        "website": "https://www.tandartspraktijkkapper.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5792927240,
+      "lat": 51.9853613,
+      "lon": 5.9064658,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "14",
+        "addr:postcode": "6814AE",
+        "addr:street": "De la Reijstraat",
+        "name": "026 Notariaat",
+        "office": "notary",
+        "phone": "+31 26 333 5048",
+        "source": "BAG",
+        "source:date": "2018-07-08",
+        "website": "https://info@026notariaat.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6005765207,
+      "lat": 51.988659,
+      "lon": 5.9310804,
+      "tags": {
+        "contact:website": "https://www.gaba.nl/velperweg-67-arnhem/",
+        "email": "info@gaba.nl",
+        "facebook": "https://www.facebook.com/gabamakelaardij/",
+        "name": "Gaba",
+        "office": "estate_agent",
+        "opening_hours": "Mo-Fr 08:30-17:30",
+        "phone": "+31 26 443 5555",
+        "twitter": "https://twitter.com/gabagroep",
+        "website": "https://www.gaba.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6013908232,
+      "lat": 51.9779593,
+      "lon": 5.9709944,
+      "tags": {
+        "branch": "Arnhem",
+        "brand": "Cushman & Wakefield",
+        "brand:wikidata": "Q1146061",
+        "contact:website": "https://www.fundainbusiness.nl/bedrijfsmakelaars/arnhem/2272-cushman-en-wakefield-arnhem/onze-medewerkers/",
+        "name": "Cushman & Wakefield",
+        "office": "estate_agent",
+        "phone": "+31 26 445 2445",
+        "website": "https://www.cushmanwakefield.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6016283374,
+      "lat": 51.9792881,
+      "lon": 5.974516,
+      "tags": {
+        "brand": "Accon Avm",
+        "email": "info@acconavm.nl",
+        "facebook": "https://www.facebook.com/AcconAdviseursAccountants",
+        "name": "Accon Avm",
+        "office": "accountant",
+        "phone": "+31 26 384 2384",
+        "twitter": "https://twitter.com/acconavm",
+        "website": "https://acconavm.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6016283375,
+      "lat": 51.9791295,
+      "lon": 5.9740385,
+      "tags": {
+        "brand": "BDO Nederland",
+        "contact:website": "https://www.bdo.nl/nl-nl/locaties/bdo-arnhem",
+        "email": "arnhem@bdo.nl",
+        "name": "BDO Arnhem",
+        "office": "accountant",
+        "phone": "+31 26 352 5625",
+        "website": "https://www.bdo.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6028146439,
+      "lat": 51.9791763,
+      "lon": 5.9808713,
+      "tags": {
+        "facebook": "https://www.facebook.com/PwCinNederland",
+        "name": "PWC",
+        "office": "accountant",
+        "operator": "PWC",
+        "phone": "+31 88 792 0026",
+        "twitter": "https://twitter.com/PwC_Nederland",
+        "website": "https://www.pwc.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6170700948,
+      "lat": 51.9871271,
+      "lon": 5.9254651,
+      "tags": {
+        "check_date": "2024-11-24",
+        "email": "info@rijssenbeek.nl",
+        "name": "Rijssenbeek Advocaten",
+        "office": "lawyer",
+        "phone": "+31 26 443 4249",
+        "website": "https://www.rijssenbeek.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7280512487,
+      "lat": 51.9836608,
+      "lon": 5.9027901,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "25",
+        "addr:postcode": "6811KB",
+        "addr:street": "Willemsplein",
+        "air_conditioning": "yes",
+        "brand": "Ibis Styles",
+        "brand:wikidata": "Q3147425",
+        "check_date": "2024-05-14",
+        "email": "HB3G1@accor.com",
+        "internet_access": "wlan",
+        "name": "ibis Styles",
+        "phone": "+31 26 204 0700",
+        "rooms": "145",
+        "source": "BAG",
+        "source:date": "2020-03-09",
+        "tourism": "hotel",
+        "website": "https://all.accor.com/hotel/B3G1/index.nl.shtml",
+        "website:en": "https://all.accor.com/hotel/B3G1/index.en.shtml",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7446901587,
+      "lat": 51.9478215,
+      "lon": 5.8343989,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "5",
+        "addr:postcode": "6846DP",
+        "addr:street": "Parelmoerwolk",
+        "amenity": "dentist",
+        "email": "info@tandarts-schuytvaart.nl",
+        "healthcare": "dentist",
+        "healthcare:speciality": "dentist",
+        "name": "Tandartspraktijk Schuytvaart",
+        "opening_hours": "Mo-Fr 08:00-12:30, 13:15-17:00",
+        "phone": "+31 481 351 103",
+        "source": "BAG",
+        "source:date": "2021-06-02",
+        "website": "https://www.tandarts-schuytvaart.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8728863857,
+      "lat": 51.9885127,
+      "lon": 5.9298822,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "49A",
+        "addr:postcode": "6824BG",
+        "addr:street": "Velperweg",
+        "amenity": "dentist",
+        "email": "info@tandpark.nl",
+        "healthcare": "dentist",
+        "healthcare:speciality": "dentist;orthodontics",
+        "name": "Tandpark",
+        "opening_hours": "Mo-Fr 08:00-16:45",
+        "phone": "+31 26 3031247",
+        "source": "BAG",
+        "source:date": "2021-05-08",
+        "website": "https://www.tandpark.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8890029783,
+      "lat": 51.9792657,
+      "lon": 5.9743759,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "729",
+        "addr:postcode": "6825ME",
+        "addr:street": "Meander",
+        "contact:phone": "+31 88 253 1800",
+        "name": "aaff",
+        "office": "accountant",
+        "old_name": "Alfa",
+        "source": "BAG",
+        "source:date": "2021-06-08",
+        "website": "https://www.aaff.nl/locaties/arnhem"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10745137864,
+      "lat": 51.9838742,
+      "lon": 5.9108219,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "26",
+        "addr:postcode": "6811AL",
+        "addr:street": "Jansbinnensingel",
+        "check_date": "2025-07-27",
+        "check_date:currency:XBT": "2025-07-27",
+        "currency:XBT": "yes",
+        "description": "Bitcoin solutions for small businesses",
+        "image": "https://pbs.twimg.com/profile_images/462232031431122945/xrpPe5Xm_400x400.png",
+        "name": "BitKassa",
+        "office": "financial",
+        "opening_hours": "\"on appointment\"",
+        "payment:lightning": "yes",
+        "payment:onchain": "yes",
+        "phone": "+31 84 882 9151",
+        "survey:date": "2025-01-23",
+        "website": "https://www.bitkassa.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12656802302,
+      "lat": 51.9844113,
+      "lon": 5.9136801,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "10",
+        "addr:postcode": "6828AS",
+        "addr:street": "Spoorwegstraat",
+        "check_date": "2025-04-23",
+        "currency:XBT": "no",
+        "email": "info@the-church.nl",
+        "name": "The Church",
+        "payment:lightning": "no",
+        "payment:lightning_contactless": "no",
+        "payment:onchain": "no",
+        "phone": "+31 26 214 8800",
+        "source": "BAG",
+        "source:date": "2018-08-08",
+        "survey:date": "2025-03-12",
+        "tourism": "hotel",
+        "website": "https://the-church.nl/",
+        "wikidata": "Q112014770"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12889145975,
+      "lat": 51.9840878,
+      "lon": 5.949766,
+      "tags": {
+        "name": "Hoetnik Makelaars",
+        "office": "estate_agent",
+        "phone": "+31 26 4434900",
+        "website": "https://www.hoetinkmakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13230497244,
+      "lat": 51.9817257,
+      "lon": 5.8972174,
+      "tags": {
+        "guest_house": "bed_and_breakfast",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Bed & Breakfast Drijfpaleis",
+        "operator": "Ruud Hilbrands",
+        "smoking": "outside",
+        "tourism": "guest_house",
+        "website": "https://www.drijfpaleis.nl",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13645373577,
+      "lat": 51.9524329,
+      "lon": 5.8769223,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "2",
+        "addr:postcode": "6842BD",
+        "addr:street": "Rijksweg-West",
+        "name": "OHRA",
+        "office": "insurance",
+        "phone": "+31 26 400 4040",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://www.ohra.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13645373581,
+      "lat": 51.9520958,
+      "lon": 5.8769499,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "2",
+        "addr:postcode": "6842BD",
+        "addr:street": "Rijksweg-West",
+        "alt_name": "NN Group",
+        "branch": "Arnhem",
+        "name": "Nationale-Nederlanden",
+        "office": "insurance",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://www.nn.nl",
+        "wikidata": "Q1834291",
+        "wikipedia": "nl:NN Group"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13645373582,
+      "lat": 51.9521857,
+      "lon": 5.8776638,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "2",
+        "addr:postcode": "6842BD",
+        "addr:street": "Rijksweg-West",
+        "level": "8",
+        "name": "Infin",
+        "office": "accountant",
+        "phone": "+31 85 050 8700",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "website": "https://infin.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 14028338949,
+      "lat": 51.9775864,
+      "lon": 5.9699315,
+      "tags": {
+        "addr:city": "Arnhem",
+        "addr:housenumber": "551",
+        "addr:postcode": "6825MD",
+        "addr:street": "Meander",
+        "name": "Het Notarieel",
+        "office": "notary",
+        "opening_hours": "Mo-Fr 08:30-17:00",
+        "phone": "+31 26 384 2200",
+        "website": "https://hetnotarieel.nl/notaris/arnhem/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 51912639,
+      "center": {
+        "lat": 51.9837179,
+        "lon": 5.8849314
+      },
+      "nodes": [
+        2724859317,
+        2724859318,
+        2724859314,
+        2724859315,
+        2724859312,
+        2724859313,
+        2724859311,
+        662310257,
+        662310258,
+        2724859326,
+        662310262,
+        2724859331,
+        2724859333,
+        2724859332,
+        2724859330,
+        2724859327,
+        2724859325,
+        2724859323,
+        2724859322,
+        2724859321,
+        662310261,
+        2724859316,
+        2724859304,
+        2724859296,
+        2724859306,
+        662310260,
+        2724859277,
+        662310259,
+        2724859266,
+        662310256,
+        662310255,
+        662310248,
+        662310247,
+        662310252,
+        662310251,
+        662310250,
+        662310249,
+        662310253,
+        662310254,
+        662310244,
+        662310245,
+        662310240,
+        662310241,
+        662310242,
+        662310243,
+        662310238,
+        662310239,
+        662310197,
+        662310246,
+        2724859216,
+        2724859223,
+        2724859244,
+        2724859248,
+        2724859288,
+        662310195,
+        2724859301,
+        2724859317
+      ],
+      "tags": {
+        "building": "yes",
+        "name": "NH Rijnhotel",
+        "phone": "+31 26 443 4642",
+        "ref:bag": "0202100000240538",
+        "source": "BAG;survey",
+        "source:date": "2014-02-11",
+        "stars": "4",
+        "start_date": "1953",
+        "tourism": "hotel",
+        "website": "https://www.nh-hotels.com/",
+        "wikidata": "Q111410376"
+      }
+    },
+    {
+      "type": "way",
+      "id": 266880175,
+      "center": {
+        "lat": 51.9897953,
+        "lon": 5.8991976
+      },
+      "nodes": [
+        2723783785,
+        2723783640,
+        2723783770,
+        2723783737,
+        2723783820,
+        2723784027,
+        2723783895,
+        2723783867,
+        2723783817,
+        2723783792,
+        2723783785
+      ],
+      "tags": {
+        "building": "yes",
+        "internet_access": "yes",
+        "internet_access:fee": "yes",
+        "name": "De Burgemeester van Arnhem",
+        "ref:bag": "0202100000241747",
+        "rooms": "4",
+        "source": "BAG",
+        "source:date": "2014-02-11",
+        "start_date": "1905",
+        "tourism": "guest_house",
+        "website": "https://www.arnhembedandbreakfast.com/en"
+      }
+    }
+  ],
+  "Nijmegen": [
+    {
+      "type": "node",
+      "id": 597251603,
+      "lat": 51.8474637,
+      "lon": 5.8645823,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "38",
+        "addr:postcode": "6511KB",
+        "addr:street": "Grote Markt",
+        "check_date": "2026-08-30",
+        "name": "Pauw",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "hotel",
+        "website": "https://hotelpauw.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1710920215,
+      "lat": 51.8480977,
+      "lon": 5.8596795,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "44",
+        "addr:postcode": "6511CK",
+        "addr:street": "Lange Hezelstraat",
+        "check_date": "2024-08-08",
+        "guest_house": "hotel",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Hotel de Prince",
+        "phone": "+31 24 360 4510",
+        "tourism": "guest_house",
+        "website": "https://www.deprince.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2826866958,
+      "lat": 51.8339578,
+      "lon": 5.8727445,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "158",
+        "addr:postcode": "6523RN",
+        "addr:street": "Molenveldlaan",
+        "name": "Kop Advocaten",
+        "office": "lawyer",
+        "phone": "+31 24 737 0376",
+        "source": "BAG",
+        "source:date": "2020-02-10",
+        "website": "https://www.kopadvocaten.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2826959853,
+      "lat": 51.8344139,
+      "lon": 5.8614182,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "106",
+        "addr:postcode": "6524MK",
+        "addr:street": "Javastraat",
+        "amenity": "dentist",
+        "name": "Ammersingh Tandartsenpraktijk",
+        "phone": "+31 24 324 0577",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.ammersingh.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2828263433,
+      "lat": 51.8398314,
+      "lon": 5.8622004,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "1",
+        "addr:postcode": "6524HA",
+        "addr:street": "Pontanusstraat",
+        "name": "Van Anken",
+        "office": "estate_agent",
+        "phone": "+31 24 322 3626",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.vananken.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2828264568,
+      "lat": 51.8382512,
+      "lon": 5.8630375,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "28",
+        "addr:postcode": "6524JC",
+        "addr:street": "Fransestraat",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "healthcare:speciality": "implantology;dentures",
+        "name": "de Jong",
+        "phone": "+31 24 322 9863",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.gebitspraktijk.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2828264618,
+      "lat": 51.8385451,
+      "lon": 5.8640049,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "12",
+        "addr:postcode": "6524JA",
+        "addr:street": "Fransestraat",
+        "name": "InBeeld",
+        "office": "estate_agent",
+        "phone": "+31 24 845 7440",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.inbeeldmakelaardij.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2828267594,
+      "lat": 51.8397475,
+      "lon": 5.8627246,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "34",
+        "addr:postcode": "6524DC",
+        "addr:street": "Groesbeekseweg",
+        "name": "de Stijl",
+        "office": "estate_agent",
+        "phone": "+31 24 324 4669",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.vgmdestijl.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2829343626,
+      "lat": 51.8390353,
+      "lon": 5.8649542,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "53",
+        "addr:postcode": "6524CN",
+        "addr:street": "Groesbeekseweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "EviDent",
+        "phone": "+31 24 360 3335",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.evidentmondzorg.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2840757518,
+      "lat": 51.8412807,
+      "lon": 5.863774,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "74",
+        "addr:postcode": "6524AE",
+        "addr:street": "Bijleveldsingel",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Maenen",
+        "phone": "+31 24 322 1430",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.tandartsmaenen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2840773406,
+      "lat": 51.8430432,
+      "lon": 5.8708943,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "10",
+        "addr:postcode": "6521JE",
+        "addr:street": "Berg en Dalseweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Traianus",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://www.mondzorgtraianus.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2840773535,
+      "lat": 51.8431682,
+      "lon": 5.8696992,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "19H",
+        "addr:postcode": "6511TE",
+        "addr:street": "Sint Canisiussingel",
+        "name": "Hans Janssen",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "https://hansjanssennijmegen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847225284,
+      "lat": 51.8412722,
+      "lon": 5.8769439,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "63",
+        "addr:postcode": "6522BB",
+        "addr:street": "Berg en Dalseweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Mondzorg Oost",
+        "phone": "+31 24 329 4238",
+        "source": "BAG",
+        "source:date": "2020-03-08",
+        "website": "https://www.mondzorgoost.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847308777,
+      "lat": 51.8400723,
+      "lon": 5.85848,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "38",
+        "addr:postcode": "6512CR",
+        "addr:street": "Stijn Buysstraat",
+        "name": "Aartsen & Somers",
+        "office": "lawyer",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.aartsensomers.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847309194,
+      "lat": 51.8399901,
+      "lon": 5.8553149,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "51",
+        "addr:postcode": "6512BR",
+        "addr:street": "Graafseweg",
+        "name": "Acta advocaten",
+        "office": "lawyer",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "http://www.acta-advocaten.nl/#xl_xr_page_index"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847324322,
+      "lat": 51.8407426,
+      "lon": 5.8599665,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "12",
+        "addr:postcode": "6524GB",
+        "addr:street": "St. Annastraat",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Bertholet en van de Ven",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.sintanna12.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847324341,
+      "lat": 51.8412044,
+      "lon": 5.8593921,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "18",
+        "addr:postcode": "6511NE",
+        "addr:street": "Keizer Karelplein",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Mondzorg Keizer Karel",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "http://www.mondzorgkeizerkarel.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847324342,
+      "lat": 51.8402633,
+      "lon": 5.8600671,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "18",
+        "addr:postcode": "6524GC",
+        "addr:street": "St. Annastraat",
+        "name": "Driessen makelaardij",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://driessenmakelaardij.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847324369,
+      "lat": 51.8408737,
+      "lon": 5.8575825,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "21",
+        "addr:postcode": "6512BM",
+        "addr:street": "Graafseweg",
+        "name": "K/ap",
+        "office": "insurance",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.klap.com/nijmegen/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847324619,
+      "lat": 51.8391244,
+      "lon": 5.8599007,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "48",
+        "addr:postcode": "6524GE",
+        "addr:street": "St. Annastraat",
+        "name": "Tax Tigers",
+        "office": "tax_advisor",
+        "phone": "+31 24 388 8272",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.taxtigers.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847357845,
+      "lat": 51.841383,
+      "lon": 5.8560197,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "16C",
+        "addr:postcode": "6512AW",
+        "addr:street": "van Oldenbarneveltstraat",
+        "name": "Snoeijs Consultants",
+        "office": "financial_advisor",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.snoeijsconsultants.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847360772,
+      "lat": 51.843539,
+      "lon": 5.8575299,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "3",
+        "addr:postcode": "6511EV",
+        "addr:street": "Nassausingel",
+        "email": "info@guesthousevertoef.com",
+        "internet_access": "wlan",
+        "name": "Guest House Vertoef",
+        "phone": "+31 88 004 2424",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-05-07",
+        "tourism": "hotel",
+        "website": "https://www.guesthousevertoef.com/nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847403903,
+      "lat": 51.8463408,
+      "lon": 5.8692655,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "1",
+        "addr:postcode": "6511RV",
+        "addr:street": "Hertogstraat",
+        "check_date": "2025-10-24",
+        "email": "info@in-credible.nl",
+        "name": "Hotel Credible",
+        "phone": "+31 24 322 0498",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "hotel",
+        "website": "https://www.in-credible.nl/",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2847403924,
+      "lat": 51.848553,
+      "lon": 5.8701457,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "108",
+        "addr:postcode": "6511XR",
+        "addr:street": "Waalkade",
+        "email": "info@hotelcourage.nl",
+        "internet_access": "yes",
+        "name": "Hotel Courage",
+        "phone": "+31 24 360 4970",
+        "rooms": "27",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "hotel",
+        "website": "https://hotelcourage.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2848021244,
+      "lat": 51.8479819,
+      "lon": 5.8593841,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "55",
+        "addr:postcode": "6511CC",
+        "addr:street": "Lange Hezelstraat",
+        "brand": "Waagen Hotel Group",
+        "description": "Dependance of the Waagen Hotel Group and Hotel De Gulden Waagen. For check in please visit De Gulden Waagen reception at Lange Hezelstraat 75A.",
+        "email": "info@debronzenkoets.nl",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "De Bronzen Koets",
+        "name": "De Bronzen Koets",
+        "note:website": "Reserveringen lijken beiden via de website van hoteldeguldenwaagen te gaan (verderop in de straat, eenzelfde bedrijf)",
+        "opening_hours": "Mo-Su 08:00-22:00",
+        "payment:american_express": "yes",
+        "payment:app": "yes",
+        "payment:cash": "yes",
+        "payment:coins": "yes",
+        "payment:contactless": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:maestro": "yes",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "payment:visa_debit": "yes",
+        "phone": "+31 24 202 2212",
+        "reservation": "recommended",
+        "rooms": "20",
+        "smoking": "outside",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "hotel",
+        "website": "https://hoteldeguldenwaagen.nl/",
+        "wheelchair": "no"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2848277372,
+      "lat": 51.824651,
+      "lon": 5.8558421,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "12",
+        "addr:postcode": "6533BD",
+        "addr:street": "Kastanjelaan",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Gezamenlijke Tandartsenpraktijk Nijmegen",
+        "opening_hours": "Mo,We 08:30-21:00; Tu,Th-Fr 08:30-17:00",
+        "phone": "+31 24 355 4884",
+        "source": "BAG",
+        "source:date": "2019-06-08",
+        "website": "https://www.gtptandarts-nijmegen.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2851861353,
+      "lat": 51.8140083,
+      "lon": 5.8481149,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "433",
+        "addr:postcode": "6533VG",
+        "addr:street": "Sint Jacobslaan",
+        "amenity": "dentist",
+        "email": "tandarts@edentum.nl",
+        "healthcare": "dentist",
+        "healthcare:speciality": "dentistry",
+        "name": "Tandheelkundig Centrum St. Jacobslaan",
+        "opening_hours": "Mo-Fr 08:30-13:00,14:00-17:00",
+        "phone": "+31 24 322 2319",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "toilets:wheelchair": "no",
+        "website": "https://www.tandartsessed.nl/",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2851909443,
+      "lat": 51.8135005,
+      "lon": 5.8408716,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "227",
+        "addr:postcode": "6533NM",
+        "addr:street": "Einsteinstraat",
+        "amenity": "dentist",
+        "email": "info@tandartsvossen.nl",
+        "healthcare": "dentist",
+        "name": "Tandarts Vossen",
+        "opening_hours": "Mo,Tu 08:00-12:30,01:30-17:00, We,Th 08:00-16:00, Fr 08:00-12:00",
+        "phone": "+31 24 355 5889",
+        "source": "BAG",
+        "source:date": "2019-06-06",
+        "website": "https://www.tandartsvossen.nl",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2851968282,
+      "lat": 51.8066947,
+      "lon": 5.8257921,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "32",
+        "addr:postcode": "6535RZ",
+        "addr:street": "Couwenbergstraat",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandartsenpraktijk Hatert",
+        "opening_hours": "Mo,Tu,Th 08:30-17:00",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.tphatert.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2855901254,
+      "lat": 51.8141394,
+      "lon": 5.8009721,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "6011",
+        "addr:postcode": "6537KV",
+        "addr:street": "Meijhorst",
+        "amenity": "dentist",
+        "name": "Tandheelkundig Centrum Nijmegen",
+        "opening_hours": "Mo-Th 08:00-16:30;Fr 08:00-12:00",
+        "phone": "+31 24 344 2670",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.tc-nijmegen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2855901581,
+      "lat": 51.8115156,
+      "lon": 5.8015053,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "7029",
+        "addr:postcode": "6537EP",
+        "addr:street": "Meijhorst",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Dukenburg",
+        "opening_hours": "Mo-Th 08:00-17:00; Fr 08:00-12:30",
+        "phone": "+31 24 345 0850",
+        "source": "BAG",
+        "source:date": "2018-02-08",
+        "website": "https://www.tandartspraktijkdukenburg.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2879535106,
+      "lat": 51.8719004,
+      "lon": 5.8603713,
+      "tags": {
+        "addr:city": "Lent",
+        "addr:housenumber": "8",
+        "addr:postcode": "6663MM",
+        "addr:street": "Thermionpark",
+        "amenity": "dentist",
+        "name": "Jeugdtandarts Waalsprong",
+        "opening_hours": "Mo-Th 08:00-17:00; Fr 08:00-15:00",
+        "phone": "+31 24 324 6324",
+        "source": "BAG",
+        "source:date": "2014-07-09",
+        "website": "https://www.jeugdtandarts.nl/waalsprong/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2949286737,
+      "lat": 51.825729,
+      "lon": 5.7922934,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "1",
+        "addr:postcode": "6538SZ",
+        "addr:street": "Takenhofplein",
+        "email": "info@nmg.nl",
+        "name": "NMG Makelaardij",
+        "office": "estate_agent",
+        "phone": "+31 88 200 7000",
+        "source": "BAG",
+        "source:date": "2014-07-05",
+        "website": "https://nmgwonen.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2949294793,
+      "lat": 51.8247568,
+      "lon": 5.7929537,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "6",
+        "addr:postcode": "6538SZ",
+        "addr:street": "Takenhofplein",
+        "amenity": "clinic",
+        "email": "balie@mctp.nl",
+        "healthcare": "dentist",
+        "name": "Mondzorgcentrum Takenhofplein",
+        "phone": "+31 24 212 2128",
+        "source": "BAG",
+        "source:date": "2014-07-05",
+        "website": "https://mondzorgcentrumtakenhofplein.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2952734363,
+      "lat": 51.8240852,
+      "lon": 5.7891393,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "20",
+        "addr:postcode": "6537TL",
+        "addr:street": "Wijchenseweg",
+        "branch": "Nijmegen",
+        "name": "aaff",
+        "office": "accountant",
+        "old_name": "ABAB",
+        "source": "BAG",
+        "source:date": "2014-07-07",
+        "website": "https://www.aaff.nl/locaties/nijmegen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2953087156,
+      "lat": 51.8324986,
+      "lon": 5.8385868,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "285",
+        "addr:postcode": "6532XR",
+        "addr:street": "Hatertseveldweg",
+        "amenity": "dentist",
+        "email": "balie@h2tandartsen.nl",
+        "name": "H2 Tandartsen",
+        "opening_hours": "Mo-We,Fr 08:00-16:30; Th 08:00-20:00",
+        "phone": "+31 24 323 4183",
+        "source": "BAG",
+        "source:date": "2019-06-10",
+        "website": "https://www.h2tandartsen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2953091832,
+      "lat": 51.8307382,
+      "lon": 5.8209507,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "614",
+        "addr:postcode": "6544LL",
+        "addr:street": "Neerbosscheweg",
+        "air_conditioning": "yes",
+        "bar": "yes",
+        "brand": "Bastion Hotel",
+        "brand:website": "https://www.bastionhotels.com/",
+        "brand:wikidata": "Q2356460",
+        "internet_access:fee": "no",
+        "name": "Bastion Hotel Nijmegen",
+        "operator": "Bastion",
+        "rooms": "85",
+        "smoking": "outside",
+        "source": "BAG",
+        "source:date": "2014-07-07",
+        "stars": "4",
+        "tourism": "hotel",
+        "website": "https://www.bastionhotels.com/nl-nl/hotels/hotel-nijmegen",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2953221329,
+      "lat": 51.8361361,
+      "lon": 5.8420708,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "232",
+        "addr:postcode": "6531ZZ",
+        "addr:street": "Graafseweg",
+        "amenity": "dentist",
+        "email": "info@tandartswouter.nl",
+        "name": "Tandarts Wouter",
+        "opening_hours": "Mo-Th 08:00-12:30,13:30-17:00; Fr 08:00-12:00",
+        "phone": "+31 24 355 6001",
+        "source": "BAG",
+        "source:date": "2014-07-07",
+        "website": "https://tandartswouter.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2953576445,
+      "lat": 51.8542761,
+      "lon": 5.8369764,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "478",
+        "addr:postcode": "6541BE",
+        "addr:street": "Weurtseweg",
+        "email": "welcome@hotelnimma.nl",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Nimma",
+        "phone": "+31 24 844 4007",
+        "smoking": "outside",
+        "source": "BAG",
+        "source:date": "2014-07-08",
+        "toilets:wheelchair": "no",
+        "tourism": "hotel",
+        "website": "https://www.hotelnimma.nl/home",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2960033812,
+      "lat": 51.861937,
+      "lon": 5.86485,
+      "tags": {
+        "addr:city": "Lent",
+        "addr:housenumber": "48",
+        "addr:postcode": "6663CB",
+        "addr:street": "Pastoor van Laakstraat",
+        "amenity": "clinic",
+        "name": "Overwaal",
+        "source": "BAG",
+        "source:date": "2014-07-12",
+        "website": "https://propersona.nl/behandellocaties/expertisecentrum-angst-dwang-en-ptss-overwaal/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3657353655,
+      "lat": 51.81288,
+      "lon": 5.8666518,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "2",
+        "addr:postcode": "6525TR",
+        "addr:street": "Kanunnik Faberstraat",
+        "amenity": "dentist",
+        "name": "Tandartspraktijk Bochem Brakkenstein",
+        "phone": "+31 24 323 4422",
+        "website": "https://www.bochem.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4840112328,
+      "lat": 51.848121,
+      "lon": 5.8585137,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "75A",
+        "addr:postcode": "6511CD",
+        "addr:street": "Lange Hezelstraat",
+        "brand": "Waagen Hotel Group",
+        "check_date": "2026-07-30",
+        "description": "De Gulden Waagen is part of Waagen Hotel group and is a inner city boutique hotel anno 1425 in the oldest shopping street of The Netherlands. De Bronzen Koets is there dependance with adittional hotelrooms at just a few meters walk.",
+        "email": "info@hoteldeguldenwaagen.nl",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Hotel de Gulden Waagen",
+        "phone": "+31 24 202 2212",
+        "rooms": "20",
+        "source": "BAG",
+        "source:date": "2017-12-23",
+        "tourism": "hotel",
+        "website": "https://www.hoteldeguldenwaagen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5418862936,
+      "lat": 51.8442737,
+      "lon": 5.8649506,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "110",
+        "addr:postcode": "6511LK",
+        "addr:street": "Ziekerstraat",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "plastic_surgery",
+        "name": "Faceland",
+        "opening_hours": "Mo, Sa, Su 09:30-17:00; Tu-Fr 09:30-21:00",
+        "operator": "Faceland",
+        "source": "BAG",
+        "source:date": "2018-02-08",
+        "website": "https://www.facelandclinic.com/nl/over-ons/klinieken/nederland/nijmegen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5418863015,
+      "lat": 51.8416046,
+      "lon": 5.8618598,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "1",
+        "addr:postcode": "6511NJ",
+        "addr:street": "Oranjesingel",
+        "contact:email": "advocatuur@hekkelman.nl",
+        "name": "Hekkelman",
+        "office": "lawyer",
+        "opening_hours": "Mo-Fr 08:30-17:00",
+        "phone": "+31 24 382 8384",
+        "source": "BAG",
+        "source:date": "2018-02-08",
+        "website": "https://www.hekkelman.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5418875115,
+      "lat": 51.8436659,
+      "lon": 5.8681709,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "130",
+        "addr:postcode": "6511SG",
+        "addr:street": "Hertogstraat",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "cardiology",
+        "name": "Hartkliniek Nijmegen",
+        "opening_hours": "Mo-Fr 08:30-17:00",
+        "phone": "+31 88 500 2000",
+        "source": "BAG",
+        "source:date": "2018-02-08",
+        "website": "https://www.hartkliniek.com/over-ons/vestigingen/nijmegen",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7850807267,
+      "lat": 51.8832667,
+      "lon": 5.8458009,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "1",
+        "addr:postcode": "6515LM",
+        "addr:street": "Jacques Tatistraat",
+        "amenity": "dentist",
+        "check_date": "2026-06-18",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Nijmegen",
+        "source": "BAG",
+        "source:date": "2020-08-27",
+        "website": "https://tandartspraktijknijmegen.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9214243275,
+      "lat": 51.865037,
+      "lon": 5.8523607,
+      "tags": {
+        "addr:city": "Lent",
+        "addr:housenumber": "31",
+        "addr:postcode": "6663RB",
+        "addr:street": "Riet van Alebeekstraat",
+        "name": "ST Makelaars",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2021-10-31",
+        "website": "https://stmakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9471673140,
+      "lat": 51.8654432,
+      "lon": 5.8518337,
+      "tags": {
+        "addr:city": "Lent",
+        "addr:housenumber": "2",
+        "addr:postcode": "6663RC",
+        "addr:street": "Dick Boerrigterplein",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "Gezondheidsplein de Boog",
+        "source": "BAG",
+        "source:date": "2022-02-03",
+        "website": "https://gpnn.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10682600431,
+      "lat": 51.88174,
+      "lon": 5.8458716,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "5",
+        "addr:postcode": "6515GM",
+        "addr:street": "Carbatinastraat",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "healthcare:speciality": "orthodontics",
+        "name": "Orthodontiepraktijk Lent",
+        "opening_hours": "Mo-Th 08:00-16:30",
+        "phone": "+31 24 203 6660",
+        "source": "BAG",
+        "source:date": "2023-02-21",
+        "website": "https://ortho-lent.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10682600432,
+      "lat": 51.8816475,
+      "lon": 5.8461414,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "5A",
+        "addr:postcode": "6515GM",
+        "addr:street": "Carbatinastraat",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "name": "Van Rosmalenkliniek",
+        "opening_hours": "Mo-Tu,Fr 09:00-17:30; We 09:00-18:00; Th 08:30-18:00; Sa 10:00-16:00",
+        "source": "BAG",
+        "source:date": "2023-02-21",
+        "website": "https://www.vanrosmalenkliniek.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11013635799,
+      "lat": 51.8391068,
+      "lon": 5.8609785,
+      "tags": {
+        "name": "Vrouwenrechtswinkel Nijmegen",
+        "office": "lawyer",
+        "phone": "+31 24 324 0855",
+        "website": "https://vrouwenrechtswinkelnijmegen.nl/nl/home-page/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11253491065,
+      "lat": 51.8644624,
+      "lon": 5.8536367,
+      "tags": {
+        "addr:city": "Lent",
+        "addr:housenumber": "4A",
+        "addr:postcode": "6663RL",
+        "addr:street": "Oranje Marieplein",
+        "amenity": "dentist",
+        "name": "Mondzorg De Waalsprong",
+        "opening_hours": "Mo 08:45-12:30, 13:15-17:15, 17:45-20:00; Tu-Fr 08:45-12:30, 13:15-17:00",
+        "phone": "+31 24 2001295",
+        "source": "BAG",
+        "source:date": "2023-10-10",
+        "website": "https://www.mondzorgdewaalsprong.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11410559116,
+      "lat": 51.8281372,
+      "lon": 5.8683985,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "22",
+        "addr:postcode": "6525AE",
+        "addr:street": "Professor Bellefroidstraat",
+        "amenity": "clinic",
+        "email": "info@ggdgelderlandzuid.nl",
+        "healthcare": "clinic",
+        "name": "GGD Gelderland-Zuid",
+        "phone": "+31 88 144 7144",
+        "source": "BAG",
+        "source:date": "2023-12-11",
+        "website": "https://ggdgelderlandzuid.nl/",
+        "wikidata": "Q89363055"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11463283781,
+      "lat": 51.8629165,
+      "lon": 5.8608493,
+      "tags": {
+        "addr:city": "Lent",
+        "addr:housenumber": "4",
+        "addr:postcode": "6663AN",
+        "addr:street": "Hertog Eduardplein",
+        "brand": "Van der Valk",
+        "brand:wikidata": "Q2802214",
+        "brand:wikipedia": "en:Van der Valk (company)",
+        "contact:facebook": "https://www.facebook.com/HotelNijmegenLent/",
+        "email": "info@nijmegen.valk.com",
+        "image": "https://photos.app.goo.gl/mATxv2KMGARdAtFv9",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "internet_access:ssid": "Van der Valk – Guest",
+        "name": "Van der Valk Hotel",
+        "phone": "+31 24 792 0200",
+        "rooms": "116",
+        "tourism": "hotel",
+        "website": "https://www.valknijmegen.nl",
+        "wikidata": "Q80111634"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11632118099,
+      "lat": 51.8244587,
+      "lon": 5.782682,
+      "tags": {
+        "name": "BTCDirect",
+        "office": "financial",
+        "website": "https://btcdirect.eu/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11746668569,
+      "lat": 51.841359,
+      "lon": 5.8561043,
+      "tags": {
+        "name": "Mennink & van de Geer",
+        "office": "financial_advisor",
+        "website": "https://www.menninkvandegeer.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11808107170,
+      "lat": 51.8410903,
+      "lon": 5.859704,
+      "tags": {
+        "name": "Hestia",
+        "office": "estate_agent",
+        "website": "https://hestia.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13055815728,
+      "lat": 51.8642713,
+      "lon": 5.867724,
+      "tags": {
+        "name": "Het Laauwik",
+        "tourism": "guest_house",
+        "website": "https://www.airbnb.nl/rooms/1116037820819253476?source_impression_id=p3_1754555021_P3Vn2kCl6MAjHCnF"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13319456901,
+      "lat": 51.8414242,
+      "lon": 5.872442,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "2",
+        "addr:postcode": "6521GT",
+        "addr:street": "Daalsehof",
+        "email": "algemeen@rechtswinkelnijmegen.nl",
+        "name": "Rechtswinkel",
+        "office": "lawyer",
+        "opening_hours": "Mo 19:30-20:30; We 19:30-20:30",
+        "website": "https://rechtswinkelnijmegen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13464875890,
+      "lat": 51.844289,
+      "lon": 5.8693556,
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "14",
+        "addr:postcode": "6511SL",
+        "addr:street": "van der Brugghenstraat",
+        "name": "Atelier",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "hotel",
+        "website": "https://www.atelier-nijmegen.nl/hotel"
+      }
+    },
+    {
+      "type": "way",
+      "id": 494450411,
+      "center": {
+        "lat": 51.8491829,
+        "lon": 5.8715807
+      },
+      "nodes": [
+        4866457341,
+        14174894476,
+        4866457342,
+        4866457350,
+        4866457351,
+        14174894474,
+        4866457352,
+        4866457338,
+        4862103913,
+        14174894499,
+        14174894475,
+        4862103912,
+        4866457341
+      ],
+      "tags": {
+        "addr:city": "Nijmegen",
+        "addr:housenumber": "1C",
+        "addr:postcode": "6511XT",
+        "addr:street": "Lindenberghaven",
+        "beds": "10",
+        "building": "houseboat",
+        "email": "gastenschiporca@gmail.com",
+        "floating": "yes",
+        "guest_house": "bed_and_breakfast",
+        "internet_access": "yes",
+        "internet_access:fee": "customers",
+        "name": "Opoe Sientje",
+        "operator": "Stichting Exploitatie De Kaaij",
+        "phone": "+31 6 13116184",
+        "rooms": "5",
+        "tourism": "guest_house",
+        "website": "https://opoesientje.nl/"
+      }
+    }
+  ],
+  "Oosterbeek-Renkum": [
+    {
+      "type": "node",
+      "id": 3014760854,
+      "lat": 52.0162748,
+      "lon": 5.7652684,
+      "tags": {
+        "addr:city": "Wolfheze",
+        "addr:housenumber": "8",
+        "addr:postcode": "6874NC",
+        "addr:street": "Buunderkamp",
+        "check_date": "2024-06-26",
+        "name": "Hotel De Buunderkamp",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "hotel",
+        "website": "https://www.hoteldebuunderkamp.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014846016,
+      "lat": 51.9841354,
+      "lon": 5.7588252,
+      "tags": {
+        "addr:city": "Heelsum",
+        "addr:housenumber": "5",
+        "addr:postcode": "6866DS",
+        "addr:street": "Klein-Zwitserlandlaan",
+        "internet_access": "wlan",
+        "name": "Klein Zwitserland",
+        "operator": "Fletcher Hotels",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "hotel",
+        "website": "https://www.hotelkleinzwitserland.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014846413,
+      "lat": 51.9844531,
+      "lon": 5.7396845,
+      "tags": {
+        "addr:city": "Renkum",
+        "addr:housenumber": "8",
+        "addr:postcode": "6871KA",
+        "addr:street": "Industrieweg",
+        "email": "info@geelkerken.nl",
+        "name": "Geelkerken Adviseurs",
+        "office": "tax_advisor",
+        "phone": "+31 85 208 3535",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "website": "https://www.geelkerken-adviseurs.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014920495,
+      "lat": 51.9714899,
+      "lon": 5.7257727,
+      "tags": {
+        "addr:city": "Renkum",
+        "addr:housenumber": "149",
+        "addr:postcode": "6871AG",
+        "addr:street": "Dorpsstraat",
+        "name": "B&B de Kleikamp",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "guest_house",
+        "website": "https://www.dekleikamp.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014931343,
+      "lat": 51.9720514,
+      "lon": 5.73051,
+      "tags": {
+        "addr:city": "Renkum",
+        "addr:housenumber": "72",
+        "addr:postcode": "6871AN",
+        "addr:street": "Dorpsstraat",
+        "email": "bongers.ass.adv@planet.nl",
+        "name": "Bongers assurantie adviseurs bv",
+        "office": "insurance",
+        "phone": "+31 317 313 256",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "website": "https://www.bongersadviseurs.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014931448,
+      "lat": 51.9729255,
+      "lon": 5.734132,
+      "tags": {
+        "addr:city": "Renkum",
+        "addr:housenumber": "8",
+        "addr:postcode": "6871AL",
+        "addr:street": "Dorpsstraat",
+        "email": "info@timmermakelaars.nl",
+        "name": "Timmer en Timmer Makelaars",
+        "office": "estate_agent",
+        "opening_hours": "Mo-Fr 08:00-17:30",
+        "phone": "+31 317 319 114",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "website": "https://www.timmermakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014932313,
+      "lat": 51.9747353,
+      "lon": 5.7271324,
+      "tags": {
+        "addr:city": "Renkum",
+        "addr:housenumber": "98",
+        "addr:postcode": "6871XX",
+        "addr:street": "Europalaan",
+        "name": "B&B Huis van Peelen",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "guest_house",
+        "website": "https://huisvanpeelen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014995658,
+      "lat": 51.9802969,
+      "lon": 5.7548944,
+      "tags": {
+        "addr:city": "Heelsum",
+        "addr:housenumber": "1",
+        "addr:postcode": "6866BV",
+        "addr:street": "Prins Bernhardlaan",
+        "email": "info@abeladministraties.nl",
+        "name": "abel administraties BV",
+        "office": "accountant",
+        "phone": "+31 317 746 050",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "website": "https://www.abeladministraties.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3014999190,
+      "lat": 51.9775556,
+      "lon": 5.7589453,
+      "tags": {
+        "addr:city": "Heelsum",
+        "addr:housenumber": "25",
+        "addr:postcode": "6866NL",
+        "addr:street": "Koninginnelaan",
+        "guest_house": "bed_and_breakfast",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Rehoboth",
+        "rooms": "8",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "survey:date": "2026-08-13",
+        "tourism": "guest_house",
+        "website": "https://herberghrehoboth.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3015003627,
+      "lat": 51.9802615,
+      "lon": 5.7557869,
+      "tags": {
+        "addr:city": "Heelsum",
+        "addr:housenumber": "70",
+        "addr:postcode": "6866CM",
+        "addr:street": "Utrechtseweg",
+        "email": "info@jrmakelaars.nl",
+        "image": "https://jimdo-storage.freetls.fastly.net/image/89038081/aef8fecb-c1ce-428b-8d36-e3b638d6eeba.jpg",
+        "name": "JonkmanRijnstreek Makelaars",
+        "office": "estate_agent",
+        "phone": "+31 317 351 100",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "website": "https://www.jonkmanrijnstreek.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3015162835,
+      "lat": 51.9778823,
+      "lon": 5.7801109,
+      "tags": {
+        "addr:city": "Doorwerth",
+        "addr:housenumber": "35",
+        "addr:postcode": "6865BL",
+        "addr:street": "Kabeljauwallee",
+        "email": "info@hoteldoorwerth.nl",
+        "name": "Fletcher Hotel Arnhem Doorwerth",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "hotel",
+        "website": "https://www.hoteldoorwerth.nl/nl/",
+        "wheelchair": "limited"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3015162881,
+      "lat": 51.9791029,
+      "lon": 5.8041233,
+      "tags": {
+        "addr:city": "Doorwerth",
+        "addr:housenumber": "1",
+        "addr:postcode": "6865HA",
+        "addr:street": "van der Molenplein",
+        "name": "B&B de Kerk",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "guest_house",
+        "website": "https://dekerkdoorwerth.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3015421064,
+      "lat": 51.9869487,
+      "lon": 5.844884,
+      "tags": {
+        "addr:city": "Oosterbeek",
+        "addr:housenumber": "1",
+        "addr:postcode": "6862DJ",
+        "addr:street": "Weverstraat",
+        "name": "Spitman Makelaars Oosterbeek",
+        "office": "estate_agent",
+        "opening_hours": "Mo-Fr 08:30-17:00",
+        "phone": "+31 26 445 2500",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "website": "https://spitmanmakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3015429089,
+      "lat": 51.9838798,
+      "lon": 5.8371537,
+      "tags": {
+        "addr:city": "Oosterbeek",
+        "addr:housenumber": "48",
+        "addr:postcode": "6862BW",
+        "addr:street": "Pietersbergseweg",
+        "guest_house": "bed_and_breakfast",
+        "name": "Het OplaadPunt",
+        "source": "BAG",
+        "source:date": "2014-08-13",
+        "tourism": "guest_house",
+        "website": "https://www.hetoplaadpuntoosterbeek.nl"
+      }
+    }
+  ],
+  "Rheden-Velp": [
+    {
+      "type": "node",
+      "id": 479376664,
+      "lat": 52.006181,
+      "lon": 6.008885,
+      "tags": {
+        "addr:city": "Rheden",
+        "addr:housenumber": "62",
+        "addr:postcode": "6991JG",
+        "addr:street": "Arnhemsestraatweg",
+        "email": "rheden@sandton.eu",
+        "name": "Sandton Hotel De Roskam",
+        "operator": "Sandton",
+        "phone": "+31 26 497 1277",
+        "rooms": "59",
+        "smoking": "outside",
+        "source": "local knowledge;streetlevel imagery",
+        "source:date": "2018-09-22",
+        "tourism": "hotel",
+        "website": "https://www.sandton.eu/sandton-hotel-de-roskam/nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2854778846,
+      "lat": 52.0513945,
+      "lon": 6.1034933,
+      "tags": {
+        "addr:city": "Dieren",
+        "addr:housenumber": "10",
+        "addr:postcode": "6951DJ",
+        "addr:street": "Lindelaan",
+        "name": "Financieel Raadhuis",
+        "office": "insurance",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://financieelraadhuis.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2854780605,
+      "lat": 52.0513631,
+      "lon": 6.1034242,
+      "tags": {
+        "addr:city": "Dieren",
+        "addr:housenumber": "12",
+        "addr:postcode": "6951DJ",
+        "addr:street": "Lindelaan",
+        "name": "Grotenhuis",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://grotenhuismakelaardij.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2854783418,
+      "lat": 52.0482845,
+      "lon": 6.1024472,
+      "tags": {
+        "addr:city": "Dieren",
+        "addr:housenumber": "15a",
+        "addr:postcode": "6951BM",
+        "addr:street": "Wilhelminaweg",
+        "name": "De Kroon",
+        "office": "notary",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://notarisdekroon.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2854797968,
+      "lat": 52.049912,
+      "lon": 6.1000669,
+      "tags": {
+        "addr:city": "Dieren",
+        "addr:housenumber": "47",
+        "addr:postcode": "6951BN",
+        "addr:street": "Wilhelminaweg",
+        "name": "Best Living",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://bestliving.nl/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2856500598,
+      "lat": 52.0417251,
+      "lon": 6.1071877,
+      "tags": {
+        "addr:city": "Dieren",
+        "addr:housenumber": "22c",
+        "addr:postcode": "6953BM",
+        "addr:street": "Kerkstraat",
+        "amenity": "clinic",
+        "email": "info@lc-renes.nl",
+        "healthcare": "speech_therapist",
+        "name": "Logopedisch Centrum Renes",
+        "phone": "+31 6 40168125",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.lc-renes.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2858965390,
+      "lat": 52.0134218,
+      "lon": 6.0383225,
+      "tags": {
+        "addr:city": "Rheden",
+        "addr:housenumber": "18a",
+        "addr:postcode": "6991AM",
+        "addr:street": "Arnhemsestraatweg",
+        "email": "evaoosterwegel@gmail.com",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "B&B De Buitenkamer",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "guest_house",
+        "website": "https://bedandbreakfast-rheden.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859040774,
+      "lat": 51.9965246,
+      "lon": 5.9703992,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "11",
+        "addr:postcode": "6881KX",
+        "addr:street": "Rozendaalselaan",
+        "email": "info@hendriks-assurantien.nl",
+        "name": "Hendriks Assurantien",
+        "office": "insurance",
+        "phone": "+31 85 105 2540",
+        "source": "BAG;2018-09-21;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07",
+        "website": "https://www.hendriks-assurantien.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859046109,
+      "lat": 51.9961739,
+      "lon": 5.9736995,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "166",
+        "addr:postcode": "6881TL",
+        "addr:street": "Hoofdstraat",
+        "email": "info@assinkmakelaars.nl",
+        "name": "Assink NVM Makelaar",
+        "office": "estate_agent",
+        "phone": "+31 26 361 7023",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-22",
+        "website": "https://www.assinkmakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859049033,
+      "lat": 51.9960906,
+      "lon": 5.9725093,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "190",
+        "addr:postcode": "6881TM",
+        "addr:street": "Hoofdstraat",
+        "email": "info@notarisdekroon.nl",
+        "name": "Notariskantoor de Kroon",
+        "office": "notary",
+        "phone": "+31 26 361 7221",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-22",
+        "website": "https://www.notarisdekroon.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859049067,
+      "lat": 51.9944532,
+      "lon": 5.9757693,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "1a",
+        "addr:postcode": "6881VM",
+        "addr:street": "President Kennedylaan",
+        "amenity": "dentist",
+        "email": "info@ittmanntandartsen.nl",
+        "healthcare": "dentist",
+        "name": "Ittmann Tandartsen",
+        "phone": "+31 26 361 0403",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-22",
+        "website": "https://www.ittmanntandartsen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859051905,
+      "lat": 51.9958771,
+      "lon": 5.9764203,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "21",
+        "addr:postcode": "6881TA",
+        "addr:street": "Hoofdstraat",
+        "amenity": "dentist",
+        "email": "info@tandartskraaij.nl",
+        "emergency": "no",
+        "facebook": "https://www.facebook.com/TandartspraktijkKraaij/",
+        "healthcare": "dentist",
+        "name": "Tandartspraktijk Kraaij",
+        "opening_hours": "Mo-Fr 08:00-17:00; Sa 09:00-15:00",
+        "phone": "+31 26 361 0100",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-05-07",
+        "website": "https://www.tandartskraaij.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859053707,
+      "lat": 51.9974298,
+      "lon": 5.9699529,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "23d",
+        "addr:postcode": "6881KZ",
+        "addr:street": "Rozendaalselaan",
+        "contact:mobile": "+31 6 13559195",
+        "contact:phone": "+31 26 382 8350",
+        "email": "info@bultsmakelaardij.nl",
+        "name": "Bults Makelaardij",
+        "office": "estate_agent",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-22",
+        "website": "https://www.bultsmakelaardij.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859054601,
+      "lat": 51.9963591,
+      "lon": 5.9773967,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "25",
+        "addr:postcode": "6881HB",
+        "addr:street": "Tramstraat",
+        "email": "nijenhuis@lawyer.com",
+        "name": "Nijenhuis Advocaten Velp (pro deo strafzaken)",
+        "office": "lawyer",
+        "phone": "+31 26 364 6630",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-05-07",
+        "website": "https://nijenhuisadvocaten.webs.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859054643,
+      "lat": 51.9962776,
+      "lon": 5.9761577,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "26",
+        "addr:postcode": "6881TH",
+        "addr:street": "Hoofdstraat",
+        "email": "info@drijberenpartners.nl",
+        "facebook": "https://www.facebook.com/drijberenpartners",
+        "name": "Drijber en Partners B.V.",
+        "office": "lawyer",
+        "phone": "+31 26 820 0110",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.drijberenpartners.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859059989,
+      "lat": 52.0028885,
+      "lon": 5.976441,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "38",
+        "addr:postcode": "6881CM",
+        "addr:street": "Beukenweg",
+        "email": "info@vanweverwijkmakelaardij.nl",
+        "facebook": "https://www.facebook.com/vanweverwijkmakelaardij/",
+        "name": "Van Weverwijk Makelaardij",
+        "office": "estate_agent",
+        "phone": "+31 26 848 6023",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-05-07",
+        "website": "https://www.vanweverwijkmakelaardij.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859060438,
+      "lat": 51.9956203,
+      "lon": 5.9744663,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "33b",
+        "addr:postcode": "6881TB",
+        "addr:street": "Hoofdstraat",
+        "email": "velp800@hypotheekshop.nl",
+        "name": "De Hypotheekshop",
+        "office": "insurance",
+        "phone": "+31 26 361 1435",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-23",
+        "website": "https://www.hypotheekshop.nl/velp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859069391,
+      "lat": 51.996353,
+      "lon": 5.970991,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "6",
+        "addr:postcode": "6881LC",
+        "addr:street": "Rozendaalselaan",
+        "email": "jfschouwenaar@bart.nl",
+        "name": "Schouwenaar Advocaten",
+        "office": "lawyer",
+        "phone": "+31 26 363 5558",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-22",
+        "website": "http://janschouwenaar.nl/advocaat.htm"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859070122,
+      "lat": 52.0016633,
+      "lon": 5.9692745,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "60",
+        "addr:postcode": "6881LE",
+        "addr:street": "Rozendaalselaan",
+        "email": "info@erg-leuk.nl",
+        "guest_house": "bed_and_breakfast",
+        "name": "Erg Leuk",
+        "outdoor_seating": "yes",
+        "phone": "+31 26 361 0033",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-20",
+        "tourism": "hotel;guest_house",
+        "website": "http://www.erg-leuk.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859072125,
+      "lat": 51.9964779,
+      "lon": 5.9709728,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "8",
+        "addr:postcode": "6881LC",
+        "addr:street": "Rozendaalselaan",
+        "email": "info@willemsen.nl",
+        "name": "Willemsen Makelaars",
+        "office": "estate_agent",
+        "phone": "+31 26 445 2751",
+        "source": "BAG;local knowledge;streetlevel imagery",
+        "source:date": "2014-05-07;2018-09-22",
+        "website": "https://www.willemsen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859414056,
+      "lat": 51.9883042,
+      "lon": 5.980284,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "30a",
+        "addr:postcode": "6883ES",
+        "addr:street": "Reigerstraat",
+        "amenity": "clinic",
+        "email": "info@bergmanclinics.nl",
+        "healthcare": "clinic",
+        "name": "Bergman Clinics Oogzorg",
+        "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-18:00",
+        "phone": "+31 88 900 0500",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.bergmanclinics.nl/vestigingen"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859417389,
+      "lat": 51.9939027,
+      "lon": 5.9638173,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "46a",
+        "addr:postcode": "6882AG",
+        "addr:street": "Zuider Parallelweg",
+        "check_date": "2025-07-03",
+        "email": "info@kampsmakelaardij.nl",
+        "name": "Kamps Makelaardij",
+        "office": "estate_agent",
+        "phone": "+31 6 10119911",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.kampsmakelaardij.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859420481,
+      "lat": 51.9931527,
+      "lon": 5.9745583,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "65",
+        "addr:postcode": "6882MK",
+        "addr:street": "Emmastraat",
+        "amenity": "dentist",
+        "email": "info@tandartsklaassen.nl",
+        "healthcare": "dentist",
+        "name": "Tandartsenpraktijk Klaassen",
+        "opening_hours": "Mo-Fr 08:00-16:00; Tu 18:00-20:00",
+        "phone": "+31 26 362 1010",
+        "source": "BAG;local knowledge",
+        "source:date": "2014-05-07",
+        "website": "https://tandartsklaassen.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859513235,
+      "lat": 52.0053838,
+      "lon": 6.0398334,
+      "tags": {
+        "addr:city": "Rheden",
+        "addr:housenumber": "12b",
+        "addr:postcode": "6991HK",
+        "addr:street": "Laakweg",
+        "email": "info@laakhuis.nl",
+        "guest_house": "apartment",
+        "name": "B&B Het Laakhuis",
+        "phone": "+31 6 42409167",
+        "rooms": "3",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "tourism": "guest_house",
+        "website": "https://laakhuis.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859518554,
+      "lat": 52.0073012,
+      "lon": 6.0365867,
+      "tags": {
+        "addr:city": "Rheden",
+        "addr:housenumber": "36",
+        "addr:postcode": "6991GN",
+        "addr:street": "Veerweg",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandarts H.P.E. Tak",
+        "phone": "+31 26 4951112",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.tandartspraktijktak.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2859520717,
+      "lat": 52.0056277,
+      "lon": 6.034007,
+      "tags": {
+        "addr:city": "Rheden",
+        "addr:housenumber": "4a",
+        "addr:postcode": "6991EB",
+        "addr:street": "Schoolweg",
+        "name": "Droomhuis Makelaardij",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-05-07",
+        "website": "https://www.droomhuismakelaardij.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4534763290,
+      "lat": 51.9997894,
+      "lon": 5.9873482,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "2",
+        "addr:postcode": "6881AJ",
+        "addr:street": "Beekhuizenseweg",
+        "amenity": "dentist",
+        "email": "info@tandartsvelp.nl",
+        "healthcare": "dentist",
+        "name": "Schellekens & Van den Boomen",
+        "name:nl": "Schellekens & Van den Boomen",
+        "opening_hours": "Mo-Th 08:30-17:00; Fr 08:30-15:00",
+        "phone": "+31 26 362 0333",
+        "website": "https://www.tandartsvelp.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4649774509,
+      "lat": 52.0216407,
+      "lon": 6.0632612,
+      "tags": {
+        "addr:city": "De Steeg",
+        "addr:housenumber": "29",
+        "addr:postcode": "6994AC",
+        "addr:street": "Hoofdstraat",
+        "check_date": "2026-03-07",
+        "email": "info@aandeallee.nl",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Aan de Allee",
+        "phone": "+31 26 213 1234",
+        "rooms": "1",
+        "tourism": "guest_house",
+        "website": "https://www.aandeallee.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5702864204,
+      "lat": 52.0158421,
+      "lon": 5.9893806,
+      "tags": {
+        "addr:city": "Velp",
+        "addr:housenumber": "70",
+        "addr:postcode": "6881AM",
+        "addr:street": "Beekhuizenseweg",
+        "email": "info@hotelbeekhuizen.nl",
+        "name": "Boutique Hotel Beekhuizen",
+        "phone": "+31 26 202 0122",
+        "source": "BAG;local knowledge;survey",
+        "source:date": "2018-06-08",
+        "tourism": "guest_house",
+        "website": "https://www.hotelbeekhuizen.nl/",
+        "wikidata": "Q112014775"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5949611567,
+      "lat": 51.9962092,
+      "lon": 5.9705691,
+      "tags": {
+        "email": "info@frankevanderaa.nl",
+        "name": "Franke & Van der Aa",
+        "office": "estate_agent",
+        "operator": "NVM",
+        "phone": "+31 26 361 7923",
+        "source": "local knowledge",
+        "website": "https://www.frankevanderaa.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5952507151,
+      "lat": 51.9950365,
+      "lon": 5.9656741,
+      "tags": {
+        "amenity": "clinic",
+        "email": "info@helderkliniek.nl",
+        "facebook": "https://facebook.com/helderkliniek",
+        "healthcare": "clinic",
+        "name": "Helder Kliniek Velp",
+        "opening_hours": "Mo-Fr 09:00-17:00",
+        "operator": "Helder Kliniek",
+        "phone": "+31 88 778 5202",
+        "website": "https://www.helderkliniek.nl/contact/velp/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5952507152,
+      "lat": 51.9950447,
+      "lon": 5.9657478,
+      "tags": {
+        "amenity": "clinic",
+        "email": "info@xpertclinic.nl",
+        "facebook": "https://www.facebook.com/xpertclinic",
+        "healthcare": "clinic",
+        "name": "Xpert Clinic Velp",
+        "opening_hours": "Mo-Fr 09:00-17:00",
+        "operator": "Xpert Clinic",
+        "phone": "+31 88 778 5203",
+        "source": "local knowledge",
+        "twitter": "https://twitter.com/xpertclinic",
+        "website": "https://www.xpertclinic.nl/contact/vestigingen/velp"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5952507153,
+      "lat": 51.9950637,
+      "lon": 5.9658182,
+      "tags": {
+        "amenity": "clinic",
+        "email": "info@velthuiskliniek.nl",
+        "facebook": "https://www.facebook.com/velthuiskliniek",
+        "healthcare": "clinic",
+        "name": "Velthuis Kliniek Velp",
+        "opening_hours": "Mo-Fr 09:00-17:00",
+        "operator": "Velthuis Kliniek",
+        "phone": "+31 88 778 5201",
+        "source": "local knowledge",
+        "twitter": "https://twitter.com/velthuiskliniek",
+        "website": "https://www.velthuiskliniek.nl/over-de-kliniek/vestigingen/velp/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9825125297,
+      "lat": 52.0563689,
+      "lon": 6.1051323,
+      "tags": {
+        "addr:city": "Dieren",
+        "addr:housenumber": "1c",
+        "addr:postcode": "6951KM",
+        "addr:street": "De Marke",
+        "name": "WRA Juristen",
+        "office": "lawyer",
+        "opening_hours": "Mo-Fr 09:00-17:00",
+        "phone": "+31 6 2723 7793",
+        "source": "BAG",
+        "source:date": "2022-06-17",
+        "website": "https://www.wrajuristen.nl"
+      }
+    }
+  ],
+  "Overbetuwe-Elst": [
+    {
+      "type": "node",
+      "id": 3008628113,
+      "lat": 51.9184257,
+      "lon": 5.8500777,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "1",
+        "addr:postcode": "6662KA",
+        "addr:street": "Rijksweg-Zuid",
+        "name": "Univé-kantoor Elst",
+        "office": "insurance",
+        "opening_hours": "Mo 13:00-17:00; Tu-Fr 10:00-17:00",
+        "source": "BAG",
+        "source:date": "2021-02-06",
+        "website": "https://www.unive.nl/stad-en-land/elst"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008630724,
+      "lat": 51.9092064,
+      "lon": 5.8614922,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "19",
+        "addr:postcode": "6662NE",
+        "addr:street": "Industrieweg Oost",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Pro-Da",
+        "phone": "+31 26 7950010",
+        "source": "BAG",
+        "source:date": "2014-08-10",
+        "website": "https://www.pro-da.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008709597,
+      "lat": 51.9192357,
+      "lon": 5.8412674,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "2",
+        "addr:postcode": "6661EV",
+        "addr:street": "Valburgseweg",
+        "name": "Jansen Makelaars",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-08-10",
+        "website": "https://www.jansenmakelaars.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008710655,
+      "lat": 51.9214828,
+      "lon": 5.8474327,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "20",
+        "addr:postcode": "6661DJ",
+        "addr:street": "Grote Molenstraat",
+        "amenity": "clinic",
+        "healthcare": "clinic",
+        "healthcare:speciality": "plastic_surgery",
+        "name": "Kliniek Elst",
+        "source": "BAG",
+        "source:date": "2014-08-10",
+        "website": "https://kliniekelst.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008735555,
+      "lat": 51.9186698,
+      "lon": 5.8493796,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "4a",
+        "addr:postcode": "6662KD",
+        "addr:street": "Rijksweg-Zuid",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Tandarts Dirk Witjes",
+        "source": "BAG",
+        "source:date": "2014-08-10",
+        "website": "https://www.tandartswitjes.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008739029,
+      "lat": 51.9185913,
+      "lon": 5.8411239,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "6",
+        "addr:postcode": "6662DR",
+        "addr:street": "Smidsstraat",
+        "name": "Pierson belastingadviseurs",
+        "office": "tax_advisor",
+        "source": "BAG",
+        "source:date": "2014-08-10",
+        "website": "https://www.piersonba.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3008744895,
+      "lat": 51.9191195,
+      "lon": 5.842107,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "86",
+        "addr:postcode": "6661EP",
+        "addr:street": "Dorpsstraat",
+        "name": "Bram Heezen & Paul Jansen Makelaardij",
+        "office": "estate_agent",
+        "source": "BAG",
+        "source:date": "2014-08-10",
+        "website": "https://www.heezenjansen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3016629696,
+      "lat": 51.960911,
+      "lon": 5.8137048,
+      "tags": {
+        "addr:city": "Driel",
+        "addr:housenumber": "26",
+        "addr:postcode": "6665CN",
+        "addr:street": "Polenplein",
+        "contact:email": "info@hermeling-driel.nl",
+        "contact:phone": "+31 26 479 0880",
+        "name": "HermelinG",
+        "note": "Hoofdletter G aan het einde van de naam.",
+        "office": "insurance",
+        "source": "BAG",
+        "source:date": "2014-08-14",
+        "website": "https://hermeling-driel.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3016952947,
+      "lat": 51.9557757,
+      "lon": 5.7518182,
+      "tags": {
+        "addr:city": "Heteren",
+        "addr:housenumber": "3",
+        "addr:postcode": "6666HB",
+        "addr:street": "Lange Akkers",
+        "email": "info@finvitrum.nl",
+        "name": "Finvitrum Advies",
+        "office": "financial_advisor",
+        "opening_hours": "Mo-Fr 09:00-18:00",
+        "phone": "+31 6 50631972",
+        "source": "BAG",
+        "source:date": "2014-08-14",
+        "website": "https://www.finvitrum.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3017126908,
+      "lat": 51.9287102,
+      "lon": 5.7135504,
+      "tags": {
+        "addr:city": "Zetten",
+        "addr:housenumber": "12",
+        "addr:postcode": "6671CB",
+        "addr:street": "Hoofdstraat",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "Samenwerkende Tandartsen Zetten",
+        "source": "BAG",
+        "source:date": "2014-08-14",
+        "website": "https://www.tandartszetten.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3017129016,
+      "lat": 51.9292879,
+      "lon": 5.7128944,
+      "tags": {
+        "addr:city": "Zetten",
+        "addr:housenumber": "28",
+        "addr:postcode": "6671CD",
+        "addr:street": "Hoofdstraat",
+        "email": "info@notarisrang.nl",
+        "name": "Notariskantoor Rang",
+        "office": "notary",
+        "phone": "+31 488 451 338",
+        "source": "BAG",
+        "source:date": "2014-08-14",
+        "website": "https://www.notarisrang.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3017134459,
+      "lat": 51.9312796,
+      "lon": 5.7115439,
+      "tags": {
+        "addr:city": "Zetten",
+        "addr:housenumber": "68",
+        "addr:postcode": "6671CG",
+        "addr:street": "Hoofdstraat",
+        "long_name": "Remko Stevens Makelaardij",
+        "name": "Remko Stevens",
+        "office": "estate_agent",
+        "opening_hours": "Mo-Fr 08:45-17:30",
+        "phone": "+31 488 750 721",
+        "source": "BAG",
+        "source:date": "2014-08-14",
+        "website": "https://www.remkostevens.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3017134741,
+      "lat": 51.9313491,
+      "lon": 5.7115155,
+      "tags": {
+        "addr:city": "Zetten",
+        "addr:housenumber": "70",
+        "addr:postcode": "6671CG",
+        "addr:street": "Hoofdstraat",
+        "email": "info@denhartigh-administraties.nl",
+        "long_name": "Boekhoud- en administratiekantoor den Hartigh",
+        "name": "den Hartigh",
+        "office": "financial",
+        "phone": "+31 488 468 180",
+        "source": "BAG",
+        "source:date": "2014-08-14",
+        "website": "https://www.denhartigh-administraties.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5711981894,
+      "lat": 51.9193004,
+      "lon": 5.8477827,
+      "tags": {
+        "addr:city": "Elst",
+        "addr:housenumber": "28",
+        "addr:postcode": "6661EL",
+        "addr:street": "Dorpsstraat",
+        "name": "Grandcafé & Hotel Het Wapen van Elst",
+        "source": "BAG",
+        "source:date": "2018-06-08",
+        "toilets:wheelchair": "yes",
+        "tourism": "hotel",
+        "website": "https://wapenvanelst.nl/"
+      }
+    }
+  ],
+  "Berg en Dal": [
+    {
+      "type": "node",
+      "id": 495221318,
+      "lat": 51.8631757,
+      "lon": 5.9334875,
+      "tags": {
+        "addr:city": "Ooij",
+        "addr:housenumber": "4",
+        "addr:postcode": "6576JW",
+        "addr:street": "Erlecomsedam",
+        "amenity": "cafe",
+        "check_date": "2025-07-21",
+        "contact:facebook": "https://www.facebook.com/oortjeshekken.nl/",
+        "cuisine": "coffee_shop;sandwich;breakfast;cake;tea;brunch;diner",
+        "diet:vegetarian": "yes",
+        "email": "info@oortjeshekken.nl",
+        "name": "Oortjeshekken",
+        "opening_hours": "Mo-Su 08:30-23:00",
+        "outdoor_seating": "yes",
+        "phone": "+31 24 663 1288",
+        "reservation": "yes",
+        "restaurant": "yes",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "toilets": "yes",
+        "tourism": "hotel",
+        "website": "https://oortjeshekken.nl/",
+        "website:menu": "https://www.oortjeshekken.nl/etendrinken/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 623718186,
+      "lat": 51.8656819,
+      "lon": 6.045319,
+      "tags": {
+        "addr:city": "Millingen aan de Rijn",
+        "addr:housenumber": "186",
+        "addr:postcode": "6566EW",
+        "addr:street": "Heerbaan",
+        "email": "info@hotelmillingen.nl",
+        "name": "Millings Centrum",
+        "phone": "+31 481 431 204",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://www.hotelmillingen.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1342341910,
+      "lat": 51.8172244,
+      "lon": 5.8821377,
+      "tags": {
+        "addr:city": "Heilig Landstichting",
+        "addr:housenumber": "114",
+        "addr:postcode": "6564CK",
+        "addr:street": "Nijmeegsebaan",
+        "internet_access": "wlan",
+        "name": "Hotel restaurant Rozenhof",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://www.rozenhof.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2408215925,
+      "lat": 51.8572127,
+      "lon": 5.9388679,
+      "tags": {
+        "addr:city": "Ooij",
+        "addr:housenumber": "32",
+        "addr:postcode": "6576AS",
+        "addr:street": "Koningin Julianalaan",
+        "bar": "yes",
+        "brand": "Fletcher Hotel",
+        "brand:wikidata": "Q67203020",
+        "email": "info@hoteldegeldersepoort.nl",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Fletcher Hotel-Restaurant De Gelderse Poort",
+        "phone": "+31 24 663 8213",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://www.fletcher.nl/nl/hotel-restaurant-de-gelderse-poort"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2802533601,
+      "lat": 51.8661423,
+      "lon": 6.0510303,
+      "tags": {
+        "addr:city": "Millingen aan de Rijn",
+        "addr:housenumber": "7",
+        "addr:postcode": "6566BB",
+        "addr:street": "Werfstraat",
+        "email": "info@bedanddinner.nl",
+        "name": "Bed & Diner",
+        "phone": "+31 481 849 220",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "guest_house",
+        "website": "https://www.bedanddinner.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2803586310,
+      "lat": 51.784021,
+      "lon": 5.9346924,
+      "tags": {
+        "addr:city": "Groesbeek",
+        "addr:housenumber": "48",
+        "addr:postcode": "6561AK",
+        "addr:street": "Molenweg",
+        "check_date": "2026-06-16",
+        "internet_access": "wlan",
+        "name": "Hotel de Oude Molen",
+        "phone": "+31 24 7200060",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://hoteldeoudemolen.com/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2803650566,
+      "lat": 51.7748177,
+      "lon": 5.9267274,
+      "tags": {
+        "addr:city": "Groesbeek",
+        "addr:housenumber": "12",
+        "addr:postcode": "6562KB",
+        "addr:street": "Mooksebaan",
+        "email": "info@dewolfsberg.nl",
+        "name": "de Wolfsberg",
+        "phone": "+31 24 397 1327",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "toilets:wheelchair": "yes",
+        "tourism": "hotel",
+        "website": "https://wolfsberg.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2804115518,
+      "lat": 51.8215783,
+      "lon": 5.9083733,
+      "tags": {
+        "addr:city": "Berg en Dal",
+        "addr:housenumber": "17",
+        "addr:postcode": "6571BA",
+        "addr:street": "Molenbosweg",
+        "brand": "Fletcher Hotel",
+        "brand:wikidata": "Q67203020",
+        "name": "Hotel Erica",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "https://www.hotelerica.nl/nl/",
+        "wheelchair": "yes"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2804282916,
+      "lat": 51.8320767,
+      "lon": 5.9254574,
+      "tags": {
+        "addr:city": "Beek",
+        "addr:housenumber": "2",
+        "addr:postcode": "6573BJ",
+        "addr:street": "Hazeldonklaan",
+        "amenity": "dentist",
+        "healthcare": "dentist",
+        "name": "MTC de Gelderse poort",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "website": "http://www.mtcdegeldersepoort.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2804454565,
+      "lat": 51.8286443,
+      "lon": 5.9247453,
+      "tags": {
+        "addr:city": "Beek",
+        "addr:housenumber": "124",
+        "addr:postcode": "6573DD",
+        "addr:street": "Rijksstraatweg",
+        "check_date": "2025-07-18",
+        "email": "info@sousleseglises.nl",
+        "name": "Sous les Eglises",
+        "phone": "+31 24 684 1850",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "hotel",
+        "website": "http://www.sousleseglises.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2804513233,
+      "lat": 51.8702203,
+      "lon": 5.9111623,
+      "tags": {
+        "addr:city": "Ooij",
+        "addr:housenumber": "9",
+        "addr:postcode": "6576JC",
+        "addr:street": "Ooijse Bandijk",
+        "name": "Nachtje in de Ooij",
+        "phone": "+31 24 663 1786",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "tourism": "guest_house",
+        "website": "https://nachtjeindeooij.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6535591603,
+      "lat": 51.7799719,
+      "lon": 5.893022,
+      "tags": {
+        "addr:city": "Groesbeek",
+        "addr:housenumber": "12",
+        "addr:street": "Biesseltsebaan",
+        "name": "Woeste Hoogte",
+        "tourism": "guest_house",
+        "website": "https://www.woestehoogte.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10150025162,
+      "lat": 51.8283495,
+      "lon": 5.9237105,
+      "tags": {
+        "check_date": "2025-07-26",
+        "email": "info@bbpastoriebeek.nl",
+        "guest_house": "bed_and_breakfast",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "B&B De Pastorie",
+        "phone": "+31 24 679 2241",
+        "rooms": "4",
+        "tourism": "guest_house",
+        "website": "https://bbpastoriebeek.nl/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275703730,
+      "center": {
+        "lat": 51.7745281,
+        "lon": 5.9713226
+      },
+      "nodes": [
+        2803675684,
+        2803678532,
+        2803678535,
+        2803675693,
+        2803675695,
+        2803678180,
+        2803678188,
+        2803678107,
+        2803678087,
+        2803675679,
+        2803675684
+      ],
+      "tags": {
+        "building": "yes",
+        "guest_house": "bed_and_breakfast",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "De Pastorie",
+        "ref:bag": "0241100000000128",
+        "rooms": "3",
+        "source": "BAG",
+        "source:date": "2014-03-24",
+        "start_date": "1950",
+        "tourism": "guest_house",
+        "website": "https://www.depastoriegroesbeek.com/"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275745187,
+      "center": {
+        "lat": 51.8244973,
+        "lon": 5.9166653
+      },
+      "nodes": [
+        2804197812,
+        2804197932,
+        2804197938,
+        2804197945,
+        2804197934,
+        2804197944,
+        2804197954,
+        2804197955,
+        2804197956,
+        2804197969,
+        2804197968,
+        2804197971,
+        2804197964,
+        2804197981,
+        11115131620,
+        2804197951,
+        2804197922,
+        2804197684,
+        2804197683,
+        2804197680,
+        2804197681,
+        2804197685,
+        2804197657,
+        2804197651,
+        2804197643,
+        2804197748,
+        2804197724,
+        2804197774,
+        2804197789,
+        2804197795,
+        2804197793,
+        2804197663,
+        2804197665,
+        2804197669,
+        2804197787,
+        2804197662,
+        2804197678,
+        2804197820,
+        11115131619,
+        2804197808,
+        2804197802,
+        2804197656,
+        2804197812
+      ],
+      "tags": {
+        "addr:city": "Berg en Dal",
+        "addr:housenumber": "5",
+        "addr:postcode": "6572AA",
+        "addr:street": "Oude Holleweg",
+        "building": "yes",
+        "internet_access": "yes",
+        "name": "Val Monte",
+        "phone": "+31 347 750 430",
+        "ref:bag": "0282100000000394",
+        "rooms": "124",
+        "source": "BAG",
+        "source:date": "2023-08-14",
+        "start_date": "1870",
+        "tourism": "hotel",
+        "website": "https://www.fletcher.nl/nl/parkhotel-val-monte"
+      }
+    },
+    {
+      "type": "way",
+      "id": 275785482,
+      "center": {
+        "lat": 51.8631614,
+        "lon": 5.933493
+      },
+      "nodes": [
+        2804574623,
+        2804574624,
+        2804574638,
+        2804574614,
+        2804574616,
+        2804574602,
+        2804574592,
+        2804574601,
+        2804574596,
+        2804574594,
+        2804574581,
+        2804574591,
+        4970753065,
+        2804574599,
+        2804574593,
+        2804574605,
+        2804574610,
+        2804574615,
+        2804574623
+      ],
+      "tags": {
+        "addr:city": "Ooij",
+        "addr:housenumber": "4",
+        "addr:postcode": "6576JW",
+        "addr:street": "Erlecomsedam",
+        "building": "yes",
+        "building:levels": "2",
+        "contact:email": "info@oortjeshekken.nl",
+        "contact:facebook": "https://www.facebook.com/oortjeshekken.nl/",
+        "internet_access": "yes",
+        "name": "Oortjeshekken Hotel",
+        "opening_hours": "Mo-Su 08:30-23:00",
+        "phone": "+31 24 663 12 88",
+        "ref:bag": "0282100000000646",
+        "reservation": "required",
+        "reservation:website": "https://reservations.cubilis.eu/be/oortjeshekken-hotel-ooy",
+        "rooms": "13",
+        "source": "BAG",
+        "source:date": "2017-07-14",
+        "start_date": "1890",
+        "tourism": "hotel",
+        "website": "https://oortjeshekken.nl/"
+      }
+    }
+  ],
+  "Wijchen": [
+    {
+      "type": "node",
+      "id": 1805052351,
+      "lat": 51.8180425,
+      "lon": 5.6924216,
+      "tags": {
+        "addr:city": "Leur",
+        "addr:housenumber": "4",
+        "addr:postcode": "6615AM",
+        "addr:street": "Ruffelsdijk",
+        "guest_house": "bed_and_breakfast",
+        "name": "Landelijk Leur",
+        "phone": "+31 6 23089098",
+        "source": "BAG",
+        "source:date": "2014-07-25",
+        "tourism": "guest_house",
+        "website": "https://www.bblandelijkleur.nl"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2978158777,
+      "lat": 51.8327645,
+      "lon": 5.676419,
+      "tags": {
+        "addr:city": "Hernen",
+        "addr:housenumber": "14",
+        "addr:postcode": "6616BG",
+        "addr:street": "Flerdeweg",
+        "name": "de Terp",
+        "source": "BAG",
+        "source:date": "2014-07-24",
+        "toilets:wheelchair": "yes",
+        "tourism": "guest_house",
+        "website": "https://de-terp.nl/",
+        "wheelchair": "yes",
+        "wheelchair:description": "Diese Haus hat ein Rollstuhl gerechtes Zimmer mit guter Bewegungsfreiheit! Die Gastgeber sprechen Deutsch und sind sehr hilfsbereit."
+      }
+    },
+    {
+      "type": "node",
+      "id": 2979575093,
+      "lat": 51.7893237,
+      "lon": 5.7159539,
+      "tags": {
+        "addr:city": "Balgoij",
+        "addr:housenumber": "12",
+        "addr:postcode": "6613AC",
+        "addr:street": "Houtsestraat",
+        "contact:mobile": "+31 6 22378368",
+        "guest_house": "bed_and_breakfast",
+        "name": "De Holtsehoek",
+        "source": "BAG",
+        "source:date": "2014-07-25",
+        "tourism": "guest_house",
+        "website": "https://bbbalgoy.nl/index.php/nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2980914811,
+      "lat": 51.8087393,
+      "lon": 5.7254693,
+      "tags": {
+        "addr:city": "Wijchen",
+        "addr:housenumber": "43",
+        "addr:postcode": "6602AW",
+        "addr:street": "Spoorstraat",
+        "contact:email": "info@alexadvocaten.nl",
+        "contact:phone": "+31 88 410 4411",
+        "name": "ALEX advocaten",
+        "office": "lawyer",
+        "opening_hours": "Mo-Fr 09:00-17:00",
+        "source": "BAG",
+        "source:date": "2014-07-25",
+        "website": "https://www.alexadvocaten.nl/"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12288774447,
+      "lat": 51.8092621,
+      "lon": 5.7796577,
+      "tags": {
+        "addr:city": "Wijchen",
+        "addr:housenumber": "15A",
+        "addr:postcode": "6603KJ",
+        "addr:street": "Oude Teersdijk",
+        "name": "Hotel Thermen Berendonck",
+        "source": "BAG",
+        "source:date": "2024-10-25",
+        "tourism": "hotel",
+        "website": "https://www.thermenberendonck.de/hotel-thermen-berendonck"
+      }
+    }
+  ]
+}

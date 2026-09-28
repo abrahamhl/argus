@@ -28,4 +28,8 @@ seo_improve.py
 # Local operational data & artifacts
 .argus_data/
 *.pdf
+*.xlsx
+reports/
+data/argus_arnhem_scanned_results.json
+osm_arnhem_*.json
 argus_trace.jsonl

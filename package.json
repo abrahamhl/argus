@@ -10,11 +10,29 @@
     "build": "pnpm -r --filter \"@argus/*\" run build",
     "test": "pnpm -r --filter \"@argus/*\" run test",
     "lint": "pnpm -r --filter \"@argus/*\" run lint",
-    "demo": "pnpm --filter @argus/console start demo"
+    "demo": "pnpm --filter @argus/console start demo",
+    "field": "node scripts/field_cli.mjs",
+    "field:top20": "node scripts/field_cli.mjs --top20",
+    "letters": "node scripts/generate_arnhem_directie_brieven.mjs",
+    "excel": "node scripts/generate_arnhem_master_excel_90_10.mjs",
+    "scan:arnhem": "node scripts/run_argus_scan.mjs",
+    "scan:crossborder": "node scripts/run_cross_border_scan.mjs",
+    "excel:crossborder": "node scripts/generate_cross_border_master_excel.mjs",
+    "excel:appointments": "node scripts/generate_appointment_master_excel.mjs",
+    "field:appointments": "node scripts/appointment_cli.mjs",
+    "test:catalog": "node --test test/cross_border_catalog.test.mjs",
+    "test:appointments": "node --test test/appointment_leads.test.mjs",
+    "verify-proof": "node scripts/verify_proof_pack.mjs",
+    "build:standalone": "pnpm --filter @argus/web run build && node scripts/build_standalone_html.mjs",
+    "build:leads": "node scripts/build_all_outputs.mjs",
+    "audit:expanded": "node scripts/run_expanded_audit.mjs",
+    "fetch:expanded": "node scripts/fetch_expanded_leads.mjs",
+    "test:expanded": "node test/test_expanded_leads.mjs"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "vitest": "^1.6.0"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",

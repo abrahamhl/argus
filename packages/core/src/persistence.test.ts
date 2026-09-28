@@ -1,4 +1,4 @@
-import { test, before, after } from 'node:test';
+import { test, beforeAll as before, afterAll as after } from 'vitest';
 import { strict as assert } from 'node:assert';
 import { mkdtempSync, rmSync, existsSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -129,3 +129,6 @@ test('persistence: deletes run and updates index', async () => {
     await loadRunData('run_persist_03', testDir);
   });
 });
+
+
+

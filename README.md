@@ -1,6 +1,6 @@
 # ARGUS: Evidence & Opportunity Control Plane
 
-[![Build & Test Status](https://img.shields.io/badge/tests-178%20passing-success.svg)](#test-suite--verification)
+[![Build & Test Status](https://img.shields.io/badge/tests-passing-success.svg)](#test-suite--verification)
 [![Architecture](https://img.shields.io/badge/architecture-offline--first-blue.svg)](#ecosystem-invariants)
 [![Commercial Partner](https://img.shields.io/badge/commercial-AUX%20Design%20(auxdesign.nl)-0ea5e9.svg)](#commercial-context--aux-design)
 [![Security Audited](https://img.shields.io/badge/security%20audit-14%2F14%20vectors%20passed-green.svg)](docs/SECURITY_AUDIT.md)
@@ -13,7 +13,7 @@
 
 ## 1. Executive Summary
 
-**ARGUS** is an autonomous **Evidence & Opportunity Control Plane**. Unlike traditional vulnerability scanners that generate speculative CVSS scores, fabricated alerts, or unactionable noise, ARGUS operates strictly on **cryptographically hashed, reproducible evidence**.
+**ARGUS** is an Early-stage: evidence schema, two collectors and a demo against local fixtures.
 
 ARGUS is built specifically for **AUX Design** (`auxdesign.nl`) to deliver high-trust, non-invasive security assessments for Dutch small and medium-sized businesses (MKB).
 
@@ -139,7 +139,7 @@ pnpm install
 # Build all workspace packages
 pnpm build
 
-# Run the complete test suite (178 passing tests)
+# Run the complete test suite 
 pnpm test
 ```
 
@@ -152,6 +152,7 @@ pnpm demo
 ```
 
 **What the demo executes (100% offline):**
+[View the Demo Report](examples/demo-report.md)
 1. **Scope Gate:** Evaluates authorization policy for target `example-business.nl`.
 2. **Observation & Evidence:** Collects synthetic baseline observations and computes SHA-256 immutable hashes.
 3. **Deterministic Finding Engine:** Evaluates 11 security rules, identifying 7 posture gaps (missing HSTS, weak SPF, missing DMARC, missing CSP, etc.).
@@ -206,7 +207,7 @@ pnpm --filter @argus/console start case-study <baseline-run-id> <retest-run-id> 
 
 ## 7. Test Suite & Verification
 
-The ARGUS monorepo contains a comprehensive automated test suite with **178 passing tests** covering core invariants, security threat vectors, collectors, report rendering, and persistence:
+The ARGUS monorepo contains a comprehensive automated test suite covering core invariants, security threat vectors, collectors, report rendering, and persistence:
 
 ```bash
 pnpm test
@@ -254,3 +255,4 @@ ARGUS maintains a rigorous, continuous security posture:
 
 Copyright © 2026 AUX Design / Abraham & Contributors. All rights reserved.  
 Built for the protection and modernization of Dutch small and medium-sized businesses.
+

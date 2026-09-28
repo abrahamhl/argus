@@ -1,0 +1,29 @@
+To: info@dr-oehmen.com
+Subject: Wichtiger Sicherheitshinweis: E-Mail-Zustellbarkeit und DSGVO-Prüfung für Dr. med. Oehmen
+X-Unsent: 1
+Content-Type: text/plain; charset=utf-8
+
+Sehr geehrte Damen und Herren der Geschäftsleitung von Dr. med. Oehmen,
+
+im Rahmen unserer routinemäßigen Sicherheitsüberprüfung für Unternehmen im Raum Bocholt / Niederrhein haben wir die öffentliche Domain dr-oehmen.com analysiert.
+
+Hierbei haben wir zwei akute Handlungsfelder festgestellt:
+
+1. Fehlender DMARC-Schutz (E-Mail-Sicherheit):
+Ihre Domain verfügt über keinen aktiven DMARC-Eintrag. Dies führt dazu, dass Rechnungen und Angebote bei Kunden mit Google Workspace oder Microsoft 365 zunehmend im Spam-Ordner landen. Zudem können Kriminelle Ihre Domain unbemerkt für Phishing und gefälschte Zahlungsaufforderungen missbrauchen.
+
+2. Online-Terminbuchung & Mobile Erreichbarkeit:
+Über 65% der Neukunden suchen abends auf dem Smartphone nach Dienstleistungen in Bocholt. Da auf Ihrer Webseite keine direkte Terminauswahl möglich ist, brechen viele Interessenten ab und buchen bei Mitbewerbern mit digitalem Kalender.
+
+Unser technischer Leiter Abraham behebt diese Schwachstellen innerhalb von 48 Stunden schlüsselfertig (DMARC-Härtung, DSGVO-konforme Terminbuchung mit SMS-Bestätigung).
+
+Investition: einmalig € 1295 zzgl. MwSt.
+
+Wann passt es Ihnen in dieser Woche für ein kurzes 10-minütiges Telefonat?
+
+Mit freundlichen Grüßen
+
+Debbie & Abraham
+ARGUS Security & Conversion Systems
+E-Mail: audit@argus-security.eu
+Referenz: ARGUS-DE-dr-oehmen.com

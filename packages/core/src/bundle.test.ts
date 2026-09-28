@@ -1,4 +1,4 @@
-import test from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert';
 import { exportBundle, createBundle } from './bundle.js';
 import { verifyEvidence } from './crypto.js';
@@ -39,3 +39,5 @@ test('exportBundle strips rawValue and removes secrets', () => {
   // The hash should be valid for the redacted evidence
   assert.strictEqual(verifyEvidence(exported.evidence[0]), true);
 });
+
+

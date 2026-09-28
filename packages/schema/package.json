@@ -6,6 +6,6 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"no tests yet\""
+    "test": "vitest run"
   }
 }

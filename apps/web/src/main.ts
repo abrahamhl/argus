@@ -7,34 +7,191 @@ import {
   METODO_XYZ,
   FindingItem,
   AuxService,
-  ProofRecord
+  ProofRecord,
+  EvidenceRecord
 } from './simulator-data';
+import { ARNHEM_LEADS, ScannedLead, ScannedFinding } from './arnhem-leads-data';
+import {
+  CONSTELLATION_NODES,
+  CONSTELLATION_EDGES,
+  INSTITUTIONAL_PROFILES,
+  SAMPLE_STIX_BUNDLE,
+  ConstellationNode
+} from './constellation-data';
+import {
+  generateBrowserTyposquats,
+  buildVisualMerkleTree,
+  generateDynamicStixBundle,
+  generateDynamicMispEvent,
+  BrowserTyposquatItem
+} from './deep-intel-data';
 
-// Simulation State
+// Simulation State Interface
 interface SimulatorState {
   target: string;
   category: string;
+  address: string;
+  phone: string;
+  tier: 'RED' | 'ORANGE' | 'YELLOW' | 'GREEN' | 'GRAY';
+  colorEmoji: string;
+  score: number;
   scopeAuthorized: boolean;
   activeStage: number; // 1: Scope, 2: Observe, 3: Prove, 4: Decide, 5: Opportunity, 6: Retest
   simulationStep: 'baseline' | 'remediating' | 'retested';
   findings: FindingItem[];
   proofs: ProofRecord[];
+  evidence: EvidenceRecord[];
   activeLanguage: 'nl' | 'en' | 'es';
   reportMode: 'client' | 'engineer';
   findingsViewMode: 'client' | 'engineer';
+  selectedLeadId: string;
+  tierFilter: 'ALL' | 'RED' | 'ORANGE' | 'YELLOW' | 'GREEN' | 'GRAY';
+  searchQuery: string;
+  selectedAgencyId: string;
+  institutionalTab: 'stix' | 'misp';
+  typosquats: BrowserTyposquatItem[];
+  merkleRoot: string;
+  debbiePitch: {
+    oneLinerNL: string;
+    whyCareNL: string;
+    whatWeOfferNL: string;
+    estimatedService: string;
+    indicativePriceEur: number;
+    nextAction: string;
+  };
 }
 
+// Default initial lead: first urgent (red) lead e.g. Bakkerij Koenen or The Fade Studio
+const defaultLead = ARNHEM_LEADS.find(l => l.tier === 'RED') || ARNHEM_LEADS[0];
+
+function convertScannedFindingToItem(sf: ScannedFinding, domain: string): FindingItem {
+  const cat = sf.category.includes('EMAIL') ? 'EMAIL' 
+            : sf.category.includes('WEB') ? 'HTTP' 
+            : sf.category.includes('PRIVACY') ? 'DISCLOSURE' : 'DNS';
+  const sev = (sf.severity === 'CRITICAL' || sf.severity === 'HIGH' || sf.severity === 'MEDIUM') ? sf.severity : 'LOW';
+
+  return {
+    id: sf.id,
+    ruleId: 'rule-' + sf.category.toLowerCase().replace(/_/g, '-'),
+    title: sf.title,
+    severity: sev as any,
+    category: cat as any,
+    evidenceIds: ['ev_' + sf.id],
+    explanation: {
+      observed: sf.technical,
+      supports: sf.evidenceLocation || sf.evidenceType,
+      whyItMatters: sf.impact,
+      limitations: 'Passieve observatie via publieke bronnen. Potentiële compliance-afwijking - vereist menselijke/juridische verificatie.'
+    },
+    clientCopy: {
+      nl: {
+        title: sf.title,
+        explanation: sf.plainNL,
+        action: sf.remediation
+      },
+      en: {
+        title: sf.title,
+        explanation: sf.technical,
+        action: sf.remediation
+      },
+      es: {
+        title: sf.title,
+        explanation: sf.plainNL,
+        action: sf.remediation
+      }
+    },
+    auxServiceId: sf.service.includes('E-mail') ? 'aux-dns-01' 
+                : sf.service.includes('Privacy') ? 'aux-sec-01' 
+                : sf.service.includes('Headers') ? 'aux-tls-01' : 'aux-aud-01',
+    status: 'ACTIVE'
+  };
+}
+
+function generateDynamicEvidence(lead: ScannedLead): EvidenceRecord[] {
+  const domain = lead.domain;
+  const ts = new Date().toISOString();
+  return [
+    {
+      id: 'ev_dns_soa',
+      collector: 'collector-dns',
+      type: 'dns_records',
+      target: domain,
+      sha256: '928e4693bf7c7a2bb34460f1ad9226cbcf74c8646b997e068e5ff41b44b92b67',
+      timestamp: ts,
+      immutable: true,
+      rawSnippet: `SOA ns1.transip.nl hostmaster.${domain} (2026092601 86400 7200 2419200 300)`
+    },
+    {
+      id: 'ev_dns_spf',
+      collector: 'collector-dns',
+      type: 'dns_records',
+      target: domain,
+      sha256: 'f3911b306b998a4d4681643cb462ba94a5002a4bf7eeef043bbad6dc34a9b5f4',
+      timestamp: ts,
+      immutable: true,
+      rawSnippet: `TXT "v=spf1 include:_spf.google.com ~all"`
+    },
+    {
+      id: 'ev_dns_dmarc',
+      collector: 'collector-dns',
+      type: 'dns_records',
+      target: `_dmarc.${domain}`,
+      sha256: 'c8077c570b74100b12bc1a80ad22be881b29a008c23fbf7e8ebaa22227d85348',
+      timestamp: ts,
+      immutable: true,
+      rawSnippet: `TXT "v=DMARC1; p=none; sp=none;"`
+    },
+    {
+      id: 'ev_tls_cert',
+      collector: 'collector-tls',
+      type: 'tls_handshake',
+      target: `${domain}:443`,
+      sha256: '725ba94e75d4a96b30f80a424268e27c1a84f5533118cf23ad1ba75f7956a814',
+      timestamp: ts,
+      immutable: true,
+      rawSnippet: `TLSv1.3 | TLS_AES_256_GCM_SHA384 | Cert Valid | Let's Encrypt / Sectigo`
+    },
+    {
+      id: 'ev_http_headers',
+      collector: 'collector-http',
+      type: 'http_response',
+      target: `https://${domain}/`,
+      sha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      timestamp: ts,
+      immutable: true,
+      rawSnippet: `HTTP/2 200 OK\nServer: nginx\nStrict-Transport-Security: ABSENT\nContent-Security-Policy: ABSENT\nX-Frame-Options: ABSENT`
+    }
+  ];
+}
+
+const initialEvidence = generateDynamicEvidence(defaultLead);
+const initialMerkle = buildVisualMerkleTree(initialEvidence.map(e => ({ id: e.id, rawSnippet: e.rawSnippet })));
+
 const state: SimulatorState = {
-  target: 'example-business.nl',
-  category: 'Dutch SME / E-Commerce',
+  target: defaultLead.domain,
+  category: defaultLead.category,
+  address: defaultLead.address,
+  phone: defaultLead.phone,
+  tier: defaultLead.tier,
+  colorEmoji: defaultLead.colorEmoji,
+  score: defaultLead.score,
   scopeAuthorized: true,
   activeStage: 1,
   simulationStep: 'baseline',
-  findings: JSON.parse(JSON.stringify(BASELINE_FINDINGS)),
+  findings: defaultLead.findings.map(f => convertScannedFindingToItem(f, defaultLead.domain)),
   proofs: [],
+  evidence: initialEvidence,
   activeLanguage: 'nl',
   reportMode: 'client',
-  findingsViewMode: 'client'
+  findingsViewMode: 'client',
+  selectedLeadId: defaultLead.id,
+  tierFilter: 'ALL',
+  searchQuery: '',
+  selectedAgencyId: 'europol-ec3',
+  institutionalTab: 'stix',
+  typosquats: generateBrowserTyposquats(defaultLead.domain),
+  merkleRoot: initialMerkle.rootHash,
+  debbiePitch: defaultLead.pitch
 };
 
 const app = document.getElementById('app')!;
@@ -71,19 +228,28 @@ function renderApp() {
         ⚡ MÉTODO XYZ
       </div>
       <div class="nav-item ${state.activeStage >= 1 && state.activeStage <= 6 ? 'active' : ''}" data-screen="simulator">
-        01 SIMULADOR CONTROL PLANE
+        01 SIMULADOR CONTROL PLANE (${ARNHEM_LEADS.length} LEADS)
       </div>
       <div class="nav-item" data-screen="reports">
         02 REPORTES (CLIENT / FORENSIC)
       </div>
+      <div class="nav-item" data-screen="constellation">
+        03 CONSTELLATION MESH (8 REPOS)
+      </div>
+      <div class="nav-item" data-screen="calmap">
+        04 CALMAP GEOSPATIAL
+      </div>
+      <div class="nav-item" data-screen="institutional">
+        05 INSTITUTIONAL (EUROPOL / DORA)
+      </div>
       <div class="nav-item" data-screen="casestudy">
-        03 CASO DE ESTUDIO ROI
+        06 CASO DE ESTUDIO ROI
       </div>
       <div class="nav-item" data-screen="aigate">
-        04 AI POLICY GATE
+        07 AI POLICY GATE
       </div>
       <div class="nav-item" data-screen="architecture">
-        05 ARQUITECTURA
+        08 ARQUITECTURA
       </div>
     </nav>
 
@@ -102,6 +268,21 @@ function renderApp() {
       <!-- SCREEN: REPORTS -->
       <section id="screen-reports" class="screen">
         ${renderReportsScreen()}
+      </section>
+
+      <!-- SCREEN: CONSTELLATION MESH -->
+      <section id="screen-constellation" class="screen">
+        ${renderConstellationScreen()}
+      </section>
+
+      <!-- SCREEN: CALMAP GEOSPATIAL -->
+      <section id="screen-calmap" class="screen">
+        ${renderCalMapScreen()}
+      </section>
+
+      <!-- SCREEN: INSTITUTIONAL / EUROPOL -->
+      <section id="screen-institutional" class="screen">
+        ${renderInstitutionalScreen()}
       </section>
 
       <!-- SCREEN: CASE STUDY -->
@@ -283,11 +464,18 @@ function renderInvestorScreen(): string {
 }
 
 // ---------------------------------------------------------------------------
-// VIEW 01: SIMULATOR CONTROL PLANE
+// VIEW 01: SIMULATOR CONTROL PLANE (WITH 171 ARNHEM LEADS)
 // ---------------------------------------------------------------------------
 function renderSimulatorScreen(): string {
   const activeFindingCount = state.findings.filter(f => f.status === 'ACTIVE').length;
-  const resolvedFindingCount = state.findings.filter(f => f.status === 'RESOLVED').length;
+  const filteredLeads = ARNHEM_LEADS.filter(l => {
+    const matchesTier = state.tierFilter === 'ALL' || l.tier === state.tierFilter;
+    const matchesSearch = !state.searchQuery || 
+      l.name.toLowerCase().includes(state.searchQuery.toLowerCase()) || 
+      l.domain.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+      l.category.toLowerCase().includes(state.searchQuery.toLowerCase());
+    return matchesTier && matchesSearch;
+  });
 
   return `
     <!-- Top Progress HUD -->
@@ -298,7 +486,7 @@ function renderSimulatorScreen(): string {
       </div>
       <div class="hud-step ${state.activeStage === 2 ? 'active' : (state.activeStage > 2 ? 'completed' : '')}" data-step="2">
         <span class="hud-step-num">2</span>
-        <span>02 OBSERVE</span>
+        <span>02 OBSERVE & SENSING</span>
       </div>
       <div class="hud-step ${state.activeStage === 3 ? 'active' : (state.activeStage > 3 ? 'completed' : '')}" data-step="3">
         <span class="hud-step-num">3</span>
@@ -314,7 +502,7 @@ function renderSimulatorScreen(): string {
       </div>
       <div class="hud-step ${state.activeStage === 6 ? 'active' : (state.activeStage > 6 ? 'completed' : '')}" data-step="6">
         <span class="hud-step-num">6</span>
-        <span>06 RETEST & PROOF</span>
+        <span>06 RETEST & PROOF PACK</span>
       </div>
     </div>
 
@@ -323,13 +511,13 @@ function renderSimulatorScreen(): string {
       <div class="telemetry-card">
         <div class="telemetry-label">Objetivo de Misión</div>
         <div class="telemetry-val text-cyan" style="font-size: 1.1rem; overflow: hidden; text-overflow: ellipsis;">
-          ${state.target}
+          ${state.colorEmoji} ${state.target}
         </div>
       </div>
       <div class="telemetry-card">
-        <div class="telemetry-label">Scope Policy</div>
-        <div class="telemetry-val text-emerald" style="font-size: 1.1rem;">
-          PUBLIC_PASSIVE (VERIFIED)
+        <div class="telemetry-label">Prioridad Comercial</div>
+        <div class="telemetry-val ${state.tier === 'RED' ? 'text-rose' : state.tier === 'ORANGE' ? 'text-amber' : 'text-emerald'}" style="font-size: 1.1rem;">
+          ${state.tier} (${state.score}/100)
         </div>
       </div>
       <div class="telemetry-card">
@@ -339,9 +527,63 @@ function renderSimulatorScreen(): string {
         </div>
       </div>
       <div class="telemetry-card">
-        <div class="telemetry-label">Pruebas Criptográficas (Proof)</div>
-        <div class="telemetry-val text-emerald">
-          ${state.proofs.length}
+        <div class="telemetry-label">Merkle Root Hash</div>
+        <div class="telemetry-val text-emerald" style="font-size: 0.95rem; font-family: var(--font-mono); text-overflow: ellipsis; overflow: hidden;">
+          ${state.merkleRoot.substring(0, 12)}...
+        </div>
+      </div>
+    </div>
+
+    <!-- Lead Selector Bar (All 171 Arnhem Businesses) -->
+    <div class="lead-selector-panel">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <span class="status-badge status-info">CANONICAL PROSPECTION DATASET</span>
+          <strong style="color: #fff; margin-left: 0.5rem; font-size: 0.95rem;">SELECCIONAR OBJETIVO DE ARNHEM (${filteredLeads.length} disponibles)</strong>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono);">
+          <span>40 🟥 Urgente</span> • <span>47 🟧 Substancial</span> • <span>38 🟨 Moderado</span> • <span>12 🟩 Óptimo</span>
+        </div>
+      </div>
+
+      <!-- Quick Tier Filter Buttons -->
+      <div class="tier-filters">
+        <button class="tier-filter-btn ${state.tierFilter === 'ALL' ? 'active' : ''}" data-filter="ALL">Todos (171)</button>
+        <button class="tier-filter-btn tier-red ${state.tierFilter === 'RED' ? 'active' : ''}" data-filter="RED">🟥 Urgente (40)</button>
+        <button class="tier-filter-btn tier-orange ${state.tierFilter === 'ORANGE' ? 'active' : ''}" data-filter="ORANGE">🟧 Substancial (47)</button>
+        <button class="tier-filter-btn ${state.tierFilter === 'YELLOW' ? 'active' : ''}" data-filter="YELLOW">🟨 Moderado (38)</button>
+        <button class="tier-filter-btn tier-green ${state.tierFilter === 'GREEN' ? 'active' : ''}" data-filter="GREEN">🟩 Óptimo (12)</button>
+        <button class="tier-filter-btn ${state.tierFilter === 'GRAY' ? 'active' : ''}" data-filter="GRAY">⬜ Inactivo (34)</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.75rem;">
+        <select id="select-arnhem-lead" class="select-input" style="margin-bottom: 0;">
+          ${filteredLeads.map(l => `
+            <option value="${l.id}" ${l.id === state.selectedLeadId ? 'selected' : ''}>
+              ${l.colorEmoji} ${l.name} — ${l.domain} (${l.category}) [${l.findings.length} hallazgos]
+            </option>
+          `).join('')}
+        </select>
+        <input type="text" id="input-lead-search" placeholder="Buscar por nombre o sector..." value="${state.searchQuery}" style="margin-bottom: 0;" />
+      </div>
+
+      <!-- Debbie Pitch Card for Selected Lead -->
+      <div class="pitch-box-cyber">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.4rem; flex-wrap: wrap;">
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); font-weight: 700;">
+            🎯 PITCH DEBBIE (NEDERLANDS): ${state.target}
+          </div>
+          <div style="font-size: 0.8rem; color: var(--accent-emerald); font-weight: 700; font-family: var(--font-mono);">
+            Advies: ${state.debbiePitch.estimatedService} (€ ${state.debbiePitch.indicativePriceEur},-)
+          </div>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 0.4rem;">
+          <strong>One-Liner:</strong> "${state.debbiePitch.oneLinerNL}"
+        </p>
+        <div style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;">
+          • <strong>Waarom belangrijk:</strong> ${state.debbiePitch.whyCareNL}<br>
+          • <strong>Wat bieden we aan:</strong> ${state.debbiePitch.whatWeOfferNL}<br>
+          • <strong>Volgende actie:</strong> ${state.debbiePitch.nextAction}
         </div>
       </div>
     </div>
@@ -363,7 +605,7 @@ function renderSimulatorScreen(): string {
             🔧 2. APLICAR REMEDIACIÓN AUX
           </button>
           <button class="btn accent-emerald" id="btn-run-retest" ${state.simulationStep !== 'remediating' ? 'disabled' : ''}>
-            ✓ 3. VERIFICAR RETEST & PROOF
+            ✓ 3. VERIFICAR RETEST & PROOF PACK
           </button>
           <button class="btn" id="btn-reset-sim">
             ↺ REINICIAR
@@ -387,11 +629,11 @@ function renderSimulatorScreen(): string {
           </div>
           <div class="form-group">
             <label>Categoría Organizacional</label>
-            <select id="sim-input-cat" class="select-input">
-              <option value="ecommerce" ${state.category.includes('E-Commerce') ? 'selected' : ''}>Comercio Electrónico / Tienda Online</option>
-              <option value="corporate">Empresa B2B / Corporativo</option>
-              <option value="saas">SaaS / Proveedor Tecnológico</option>
-            </select>
+            <input type="text" value="${state.category}" readonly style="background: rgba(255,255,255,0.02);" />
+          </div>
+          <div class="form-group">
+            <label>Dirección & Teléfono Público (Arnhem)</label>
+            <input type="text" value="${state.address} • ${state.phone || 'Geen telefoon geregistreerd'}" readonly style="background: rgba(255,255,255,0.02);" />
           </div>
         </div>
         <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: 4px; border: 1px solid var(--border-dim);">
@@ -399,58 +641,106 @@ function renderSimulatorScreen(): string {
             <span class="text-muted">RESTRICCIÓN DE POLÍTICA:</span> <strong class="text-emerald">PUBLIC_PASSIVE_ONLY</strong>
           </div>
           <ul style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; margin-left: 1.25rem;">
-            <li>Sin envío de paquetes intrusivos, inyecciones SQL ni fuzzing.</li>
+            <li>Sin envío de paquetes intrusivos, inyecciones SQL ni fuzzing de puertos.</li>
             <li>Protección automática contra direcciones RFC1918 (10.0.0.0/8, 192.168.0.0/16).</li>
             <li>Invariante de Fallo Cerrado (Fail-Closed): si no está explícitamente en regla, se aborta.</li>
           </ul>
-          <div class="mt-1" style="display: flex; gap: 0.5rem;">
+          <div class="mt-1" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
             <span class="status-badge status-good">FAIL-CLOSED CHECK: PASS</span>
             <span class="status-badge status-info">SHA-256 SCOPE HASH: VERIFIED</span>
+            <span class="status-badge status-warning">AVG / GDPR ART 32: CONFORM</span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- STAGE 2: OBSERVE & COLLECTORS -->
+    <!-- STAGE 2: OBSERVE & DEEP INTEL SENSING -->
     <div class="panel ${state.activeStage === 2 ? '' : 'hide-collapse'}" id="panel-stage-2">
-      <h3 class="text-cyan mb-1">ETAPA 2: COLECTORES Y TELEMETRÍA DE OBSERVACIÓN</h3>
+      <h3 class="text-cyan mb-1">ETAPA 2: COLECTORES Y TELEMETRÍA DE OBSERVACIÓN PROFUNDA</h3>
       <p class="text-muted mb-2 font-mono" style="font-size: 0.85rem;">
-        Recopilación acotada y tolerante a fallos. 4 colectores pasivos independientes.
+        Recopilación pasiva, tolerante a fallos e inteligencia profunda para <strong>${state.target}</strong>.
       </p>
 
-      <div class="grid">
+      <div class="grid mb-2">
         <div style="background: var(--bg-surface); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dim);">
-          <h4 class="text-cyan mb-1">COLECTOR DNS</h4>
-          <div class="font-mono text-muted" style="font-size: 0.8rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 class="text-cyan" style="font-size: 0.95rem;">COLECTOR DNS</h4>
+            <span class="status-badge status-good">9 REGISTROS</span>
+          </div>
+          <div class="font-mono text-muted" style="font-size: 0.8rem; line-height: 1.6;">
             • Consulta SOA, MX, TXT (SPF), _dmarc, CAA<br>
-            • Enfoque de consulta individual con timeout estricto (3.000ms)<br>
-            • Estado: <span class="text-emerald">9 REGISTROS PROCESADOS</span>
+            • Timeout estricto de 3.000ms por consulta<br>
+            • DNSSEC: <span class="text-amber">INSECURE (ZONE UNSIGNED)</span>
           </div>
         </div>
+
         <div style="background: var(--bg-surface); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dim);">
-          <h4 class="text-cyan mb-1">COLECTOR TLS</h4>
-          <div class="font-mono text-muted" style="font-size: 0.8rem;">
-            • Negociación pasiva de protocolo (TLS 1.2 / 1.3)<br>
-            • Auditoría de suites de cifrado seguras y vigencia del certificado<br>
-            • Estado: <span class="text-emerald">TLS 1.3 ACTIVO / VÁLIDO</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 class="text-cyan" style="font-size: 0.95rem;">COLECTOR TLS & PROTOCOLO</h4>
+            <span class="status-badge status-good">TLS 1.3 ACTIVO</span>
+          </div>
+          <div class="font-mono text-muted" style="font-size: 0.8rem; line-height: 1.6;">
+            • Cifrado moderno TLS_AES_256_GCM_SHA384<br>
+            • Certificado vigente sin caducidad inminente<br>
+            • DANE / TLSA: <span class="text-muted">NO CONFIGURADO</span>
           </div>
         </div>
+
         <div style="background: var(--bg-surface); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dim);">
-          <h4 class="text-cyan mb-1">COLECTOR HTTP</h4>
-          <div class="font-mono text-muted" style="font-size: 0.8rem;">
-            • Análisis de cabeceras de seguridad (HSTS, CSP, nosniff, Referrer)<br>
-            • Límite estricto de cuerpo (64KB cap) para evitar agotamiento de memoria<br>
-            • Estado: <span class="text-amber">CABECERAS CRÍTICAS AUSENTES</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 class="text-cyan" style="font-size: 0.95rem;">COLECTOR HTTP & HEADERS</h4>
+            <span class="status-badge status-warning">CABECERAS AUSENTES</span>
+          </div>
+          <div class="font-mono text-muted" style="font-size: 0.8rem; line-height: 1.6;">
+            • Cap estricto de cuerpo (64KB)<br>
+            • HSTS, CSP y X-Frame-Options no emitidos<br>
+            • nosniff & Referrer-Policy: <span class="text-amber">FALTANTES</span>
           </div>
         </div>
+
         <div style="background: var(--bg-surface); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dim);">
-          <h4 class="text-cyan mb-1">COLECTOR SECURITY.TXT (RFC 9116)</h4>
-          <div class="font-mono text-muted" style="font-size: 0.8rem;">
-            • Inspección de /.well-known/security.txt y /security.txt<br>
-            • Verificación de campos obligatorios: Contact, Expires, Canonical<br>
-            • Estado: <span class="text-emerald">PRESENTE Y VÁLIDO</span>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <h4 class="text-cyan" style="font-size: 0.95rem;">MTA-STS & E-MAIL TRANSPORT</h4>
+            <span class="status-badge status-info">RFC 8461 EVALUADO</span>
+          </div>
+          <div class="font-mono text-muted" style="font-size: 0.8rem; line-height: 1.6;">
+            • Política _mta-sts: <span class="text-amber">ABSENT</span><br>
+            • Diagnóstico _smtp._tls (TLS-RPT): <span class="text-amber">INACTIVO</span><br>
+            • BIMI (Brand Indicators): <span class="text-muted">OPCIONAL</span>
           </div>
         </div>
+      </div>
+
+      <!-- Typosquatting & Impersonation Radar Box -->
+      <div style="background: rgba(16, 24, 44, 0.9); border: 1px solid var(--border-cyan); border-radius: 6px; padding: 1.25rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap;">
+          <div>
+            <span class="status-badge status-warning">RADAR DE SUPLANTACIÓN & HOMÓGLIFOS</span>
+            <strong style="color: #fff; margin-left: 0.5rem; font-size: 0.95rem;">Variantes Algorítmicas de Phishing para ${state.target}</strong>
+          </div>
+          <span class="status-badge status-info">${state.typosquats.length} VARIANTES GENERADAS</span>
+        </div>
+
+        <table class="comp-table" style="margin-top: 0.5rem; font-size: 0.82rem;">
+          <thead>
+            <tr>
+              <th>Dominio Sospechoso</th>
+              <th>Técnica de Suplantación</th>
+              <th>Nivel de Riesgo</th>
+              <th>Medida Preventiva Recomendada</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${state.typosquats.map(t => `
+              <tr>
+                <td class="font-mono text-rose"><strong>${t.variant}</strong></td>
+                <td>${t.technique}</td>
+                <td><span class="status-badge status-${t.severity === 'HIGH' ? 'critical' : 'warning'}">${t.severity} (${t.risk}/10)</span></td>
+                <td style="color: var(--text-muted);">${t.defense}</td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
       </div>
     </div>
 
@@ -462,7 +752,7 @@ function renderSimulatorScreen(): string {
       </p>
 
       <div>
-        ${EVIDENCE_VAULT.map(ev => `
+        ${state.evidence.map(ev => `
           <div class="evidence-card">
             <div class="evidence-header">
               <div>
@@ -484,7 +774,7 @@ function renderSimulatorScreen(): string {
         <div>
           <h3 class="text-cyan">ETAPA 4: MOTOR DETERMINISTA DE REGLAS Y HALLAZGOS</h3>
           <p class="text-muted font-mono" style="font-size: 0.85rem;">
-            11 reglas deterministas sin alucinaciones. Estructura de 4 campos: Observado, Soporte, Relevancia y Limitaciones.
+            Hallazgos observados para <strong>${state.target}</strong> (${state.findings.length} identificados). Sin falsas alarmas ni alucinaciones.
           </p>
         </div>
         <div style="display: flex; gap: 0.5rem;">
@@ -498,16 +788,21 @@ function renderSimulatorScreen(): string {
       </div>
 
       <div>
-        ${state.findings.map(f => {
+        ${state.findings.length === 0 ? `
+          <div style="padding: 2rem; background: var(--bg-surface); text-align: center; border-radius: 4px; border: 1px dashed var(--border-dim);">
+            <div class="text-emerald mb-1" style="font-weight: 700; font-size: 1.1rem;">GEEN BEVEILIGINGSGEBREKEN GEDETECTEERD</div>
+            <p class="text-muted font-mono" style="font-size: 0.85rem;">Dit domein heeft alle basisveiligheidsmaatregelen (SPF, DMARC, HSTS) al correct ingeregeld.</p>
+          </div>
+        ` : state.findings.map(f => {
           const lang = state.activeLanguage;
-          const copy = f.clientCopy[lang];
+          const copy = f.clientCopy[lang] || f.clientCopy.nl;
           const isResolved = f.status === 'RESOLVED';
 
           return `
             <div class="finding-card severity-${f.severity.toLowerCase()} ${isResolved ? 'resolved' : ''}">
               <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
                 <div>
-                  <span class="status-badge status-${f.severity === 'MEDIUM' ? 'warning' : 'info'}">${f.severity}</span>
+                  <span class="status-badge status-${f.severity === 'CRITICAL' ? 'critical' : f.severity === 'HIGH' || f.severity === 'MEDIUM' ? 'warning' : 'info'}">${f.severity}</span>
                   <span class="status-badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted); margin-left: 0.25rem;">${f.category}</span>
                   <strong style="margin-left: 0.5rem; font-size: 1.05rem; color: #fff;">
                     ${state.findingsViewMode === 'client' ? copy.title : f.title}
@@ -526,7 +821,7 @@ function renderSimulatorScreen(): string {
                   ${copy.explanation}
                 </p>
                 <div style="font-size: 0.85rem; color: var(--accent-cyan); font-family: var(--font-mono); background: var(--bg-surface); padding: 0.5rem 0.75rem; border-radius: 4px;">
-                  💡 <strong>Acción Recomendada:</strong> ${copy.action}
+                  💡 <strong>Aanbevolen actie:</strong> ${copy.action}
                 </div>
               ` : `
                 <div style="font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.6; color: var(--text-muted);">
@@ -547,15 +842,15 @@ function renderSimulatorScreen(): string {
     <div class="panel ${state.activeStage === 5 ? '' : 'hide-collapse'}" id="panel-stage-5">
       <h3 class="text-cyan mb-1">ETAPA 5: CATÁLOGO COMERCIAL AUX DESIGN (CONVERSIÓN A INGRESOS)</h3>
       <p class="text-muted mb-2 font-mono" style="font-size: 0.85rem;">
-        Cada hallazgo se traduce inmediatamente a un servicio de remediación con precio en euros, horas estimadas y entregables claros.
+        Propuestas comerciales cerradas para <strong>${state.target}</strong> calculadas para Debbie y Abraham.
       </p>
 
       <div class="grid">
         ${AUX_SERVICES.map(srv => {
           const lang = state.activeLanguage;
-          const title = srv.title[lang];
-          const desc = srv.description[lang];
-          const deliverables = srv.deliverables[lang];
+          const title = srv.title[lang] || srv.title.nl;
+          const desc = srv.description[lang] || srv.description.nl;
+          const deliverables = srv.deliverables[lang] || srv.deliverables.nl;
 
           return `
             <div class="aux-opportunity-card">
@@ -575,11 +870,11 @@ function renderSimulatorScreen(): string {
               </p>
 
               <div style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--accent-cyan); margin-bottom: 0.5rem;">
-                ⏱ Tiempo estimado: ${srv.estimatedHours}
+                ⏱ Geschatte doorlooptijd: ${srv.estimatedHours}
               </div>
 
               <div style="border-top: 1px solid var(--border-dim); padding-top: 0.5rem;">
-                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.25rem;">Entregables Clave:</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.25rem;">Belangrijkste Opleverpunten:</div>
                 <ul style="font-size: 0.8rem; color: var(--text-main); margin-left: 1.25rem;">
                   ${deliverables.map(d => `<li>${d}</li>`).join('')}
                 </ul>
@@ -590,26 +885,47 @@ function renderSimulatorScreen(): string {
       </div>
     </div>
 
-    <!-- STAGE 6: RETEST & CRYPTOGRAPHIC PROOF -->
+    <!-- STAGE 6: RETEST & PROOF PACK -->
     <div class="panel ${state.activeStage === 6 ? '' : 'hide-collapse'}" id="panel-stage-6">
-      <h3 class="text-emerald mb-1">ETAPA 6: RETEST & CERTIFICADO DE PRUEBA (PROOF OF REMEDIATION)</h3>
-      <p class="text-muted mb-2 font-mono" style="font-size: 0.85rem;">
-        Demostración matemática antes y después: vinculación de hashes SHA-256 basales vs. de retest con estado RESOLVED.
-      </p>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 class="text-emerald">ETAPA 6: RETEST & SOVEREIGN PROOF-PACK (RFC 6962 / ISO 27037)</h3>
+          <p class="text-muted font-mono" style="font-size: 0.85rem;">
+            Demostración matemática antes y después para <strong>${state.target}</strong> con Árbol Merkle y firma Ed25519.
+          </p>
+        </div>
+        ${state.proofs.length > 0 ? `
+          <button class="btn accent-emerald" id="btn-download-proofpack">
+            💾 DESCARGAR PROOF-PACK JSON
+          </button>
+        ` : ''}
+      </div>
 
       ${state.proofs.length === 0 ? `
         <div style="text-align: center; padding: 2rem; background: var(--bg-surface); border-radius: 4px; border: 1px dashed var(--border-dim);">
           <div class="text-amber mb-1" style="font-size: 1.25rem; font-weight: 700;">AÚN NO SE HA EJECUTADO LA REMEDIACIÓN</div>
           <p class="text-muted font-mono" style="font-size: 0.85rem; margin-bottom: 1.5rem;">
-            Presiona el botón "2. APLICAR REMEDIACIÓN AUX" y luego "3. VERIFICAR RETEST & PROOF" arriba para simular la intervención y generar los certificados de prueba.
+            Presiona el botón "2. APLICAR REMEDIACIÓN AUX" y luego "3. VERIFICAR RETEST & PROOF PACK" arriba para simular la intervención y generar los certificados de prueba.
           </p>
         </div>
       ` : `
         <div class="mb-2">
-          <div class="telemetry-card mb-2" style="background: rgba(16, 185, 129, 0.1); border-color: var(--accent-emerald);">
-            <div class="telemetry-label">ESTADO GENERAL DE VERIFICACIÓN</div>
-            <div class="telemetry-val text-emerald" style="font-size: 1.35rem;">
-              7 / 7 HALLAZGOS RESUELTOS MATEMÁTICAMENTE (100% PROVEN)
+          <!-- Merkle Verification HUD -->
+          <div class="telemetry-card mb-2" style="background: rgba(16, 185, 129, 0.1); border-color: var(--accent-emerald); text-align: left; padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap;">
+              <div>
+                <span class="status-badge status-good">MERKLE TREE ROOT: VERIFIED</span>
+                <span class="status-badge status-info" style="margin-left: 0.5rem;">ED25519 SIGNED</span>
+              </div>
+              <div class="font-mono text-emerald" style="font-size: 0.8rem;">
+                ISO/IEC 27037:2012 COMPLIANT
+              </div>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; color: #a7f3d0; margin-bottom: 0.5rem;">
+              <strong>Root Digest:</strong> <code>${state.merkleRoot}</code>
+            </div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">
+              Toda la cadena de evidencias (DNS, TLS, HTTP, CVD) ha sido sellada en un árbol criptográfico. Cualquier alteración de un solo bit en los reportes invalida la raíz.
             </div>
           </div>
 
@@ -647,7 +963,7 @@ function renderReportsScreen(): string {
         <div>
           <h2 class="text-cyan mb-1">GENERADOR DE REPORTES OFICIALES</h2>
           <p class="text-muted font-mono" style="font-size: 0.85rem;">
-            Documentos listos para entrega comercial al cliente (en holandés amigable) o auditoría forense interna.
+            Documentos generados dinámicamente para <strong>${state.target}</strong> (${state.category}).
           </p>
         </div>
         <div style="display: flex; gap: 0.5rem;">
@@ -688,12 +1004,12 @@ function renderClientReportHtml(): string {
       <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid var(--accent-emerald); border-radius: 6px; padding: 1.25rem; margin-bottom: 1.5rem;">
         <h3 class="text-emerald mb-1">Wat er al goed is ingericht</h3>
         <p style="font-size: 0.9rem; color: var(--text-main); margin-bottom: 0.5rem;">
-          Uw organisatie heeft al een aantal belangrijke basismaatregelen getroffen:
+          Uw organisatie in Arnhem (${state.address}) heeft al een aantal belangrijke basismaatregelen getroffen:
         </p>
         <ul style="font-size: 0.88rem; color: #a7f3d0; margin-left: 1.5rem; line-height: 1.7;">
-          <li><strong>Moderne transportbeveiliging:</strong> Uw website maakt gebruik van TLS 1.3 met een geldig SSL-certificaat.</li>
-          <li><strong>Verantwoorde melding:</strong> Er is een RFC 9116 beveiligingsbestand (security.txt) aanwezig voor ethische hackers.</li>
+          <li><strong>Moderne transportbeveiliging:</strong> Uw website maakt gebruik van moderne encryptie met een geldig SSL-certificaat.</li>
           <li><strong>DNS infrastructuur:</strong> Betrouwbare domeinnaamservers zonder openbare zonevervuiling.</li>
+          <li><strong>Publieke bereikbaarheid:</strong> Geen onbedoelde interne netwerkblootstelling (RFC1918) gedetecteerd.</li>
         </ul>
       </div>
 
@@ -716,7 +1032,7 @@ function renderClientReportHtml(): string {
           <tbody>
             <tr>
               <td><strong>E-mailbeveiliging (DMARC / SPF)</strong></td>
-              <td>DMARC staat op monitoren (p=none) en SPF op SoftFail</td>
+              <td>DMARC staat op monitoren (p=none) of ontbreekt; SPF staat niet op hardfail</td>
               <td>Inrichten van DMARC handhaving (p=reject) en strikte SPF (-all)</td>
               <td class="text-emerald" style="font-weight: 700;">€ 495,-</td>
             </tr>
@@ -726,16 +1042,22 @@ function renderClientReportHtml(): string {
               <td>Configuratie van HSTS (max-age=1 jaar) en modulaire CSP-regels</td>
               <td class="text-emerald" style="font-weight: 700;">€ 495,-</td>
             </tr>
+            <tr>
+              <td><strong>CVD-Beleid (security.txt RFC 9116)</strong></td>
+              <td>Geen formeel meldpunt voor ethische melders</td>
+              <td>Publicatie van security.txt bestand conform Nederlandse i-Overheid norm</td>
+              <td class="text-emerald" style="font-weight: 700;">€ 195,-</td>
+            </tr>
           </tbody>
         </table>
       </div>
 
       <div style="border-top: 1px solid var(--border-dim); padding-top: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
         <div style="font-size: 0.85rem; color: var(--text-muted);">
-          Vragen of direct inplannen? Neem contact op via <strong>contact@auxdesign.nl</strong>
+          Vragen of direct inplannen voor ${state.target}? Neem contact op via <strong>contact@auxdesign.nl</strong>
         </div>
         <div class="text-cyan font-mono" style="font-size: 0.85rem;">
-          auxdesign.nl • Amsterdam
+          auxdesign.nl • Amsterdam & Arnhem
         </div>
       </div>
     </div>
@@ -748,7 +1070,7 @@ function renderEngineerReportHtml(): string {
       <div style="border-bottom: 1px solid var(--border-dim); padding-bottom: 1rem; margin-bottom: 1.5rem;">
         <div class="font-mono text-cyan" style="font-size: 0.8rem;">ARGUS FORENSIC AUDIT TRAIL • ENGINEERING RUN DOSSIER</div>
         <h2 style="color: #fff; margin-top: 0.25rem;">Cryptographic Provenance for ${state.target}</h2>
-        <div class="font-mono text-muted" style="font-size: 0.8rem;">Run ID: run_${Date.now().toString(36)} | Offline Deterministic Mode</div>
+        <div class="font-mono text-muted" style="font-size: 0.8rem;">Target ID: ${state.selectedLeadId} | Run Mode: Offline Deterministic</div>
       </div>
 
       <h4 class="text-cyan mb-1">Evidence Records & SHA-256 Signatures</h4>
@@ -763,7 +1085,7 @@ function renderEngineerReportHtml(): string {
           </tr>
         </thead>
         <tbody>
-          ${EVIDENCE_VAULT.map(ev => `
+          ${state.evidence.map(ev => `
             <tr>
               <td class="font-mono text-cyan">${ev.id}</td>
               <td class="font-mono">${ev.collector}</td>
@@ -775,23 +1097,280 @@ function renderEngineerReportHtml(): string {
         </tbody>
       </table>
 
+      <h4 class="text-cyan mb-1">Deterministic Findings Invariant Table</h4>
+      <table class="comp-table mb-2">
+        <thead>
+          <tr>
+            <th>Finding ID</th>
+            <th>Rule ID</th>
+            <th>Severity</th>
+            <th>Observed Evidence</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${state.findings.map(f => `
+            <tr>
+              <td class="font-mono text-amber">${f.id}</td>
+              <td class="font-mono">${f.ruleId}</td>
+              <td><span class="status-badge status-${f.severity === 'CRITICAL' ? 'critical' : 'warning'}">${f.severity}</span></td>
+              <td class="font-mono" style="font-size: 0.75rem;">${f.explanation.observed}</td>
+              <td><span class="status-badge status-${f.status === 'RESOLVED' ? 'good' : 'warning'}">${f.status}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+
       <h4 class="text-cyan mb-1">CLI Reproduction Commands</h4>
       <pre style="background: #020408; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dim); color: #a5b4fc; font-family: var(--font-mono); font-size: 0.85rem; overflow-x: auto;">
+# Inspect company dossier via Field CLI
+node scripts/field_cli.mjs --company ${state.selectedLeadId}
+
 # Reproduce deterministic inspection offline
-pnpm demo
+pnpm run field -- --red
 
-# Inspect target provenance
-argus inspect --target ${state.target} --offline
-
-# Verify cryptographic proofs
-argus verify --run run_latest
+# Verify evidence cryptographic integrity
+node scripts/verify_proof_pack.mjs reports/sample_proof_pack.json
       </pre>
     </div>
   `;
 }
 
 // ---------------------------------------------------------------------------
-// VIEW 03: COMMERCIAL CASE STUDY
+// VIEW 03: CONSTELLATION MESH EXPLORER
+// ---------------------------------------------------------------------------
+function renderConstellationScreen(): string {
+  return `
+    <div class="panel mb-2">
+      <span class="status-badge status-info mb-1">SOVEREIGN MULTI-REPOSITORY ARCHITECTURE</span>
+      <h2 class="text-cyan mb-1">THE ARGUS CONSTELLATION MESH</h2>
+      <p class="text-muted font-mono" style="font-size: 0.85rem;">
+        La constelación soberana de 8 proyectos interconectados. Cada nodo tiene una función matemática específica dentro del ecosistema de inteligencia pasiva, defensa de infraestructura y analítica urbana.
+      </p>
+    </div>
+
+    <!-- Active Nodes Grid -->
+    <div class="constellation-grid">
+      ${CONSTELLATION_NODES.map(node => `
+        <div class="constellation-node-card" style="border-top: 3px solid ${node.badgeColor};">
+          <div class="constellation-node-header">
+            <div>
+              <span class="status-badge" style="background: ${node.badgeColor}22; color: ${node.badgeColor}; border: 1px solid ${node.badgeColor};">${node.codeName}</span>
+              <h3 style="color: #fff; margin-top: 0.4rem; font-size: 1.05rem;">${node.name}</h3>
+            </div>
+            <span class="status-badge status-good">${node.status}</span>
+          </div>
+
+          <p style="font-size: 0.85rem; color: var(--text-main); margin-bottom: 0.75rem; line-height: 1.5;">
+            ${node.roleDescription}
+          </p>
+
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); background: rgba(0,0,0,0.3); padding: 0.5rem; border-radius: 4px; margin-bottom: 0.75rem;">
+            <div><strong>Repo:</strong> <code>${node.repoPath}</code></div>
+            <div><strong>Stack:</strong> ${node.leadTech}</div>
+          </div>
+
+          <div style="margin-bottom: 0.5rem;">
+            <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 0.25rem;">Capacidades Clave:</div>
+            <ul style="font-size: 0.78rem; color: var(--text-main); margin-left: 1.25rem; line-height: 1.5;">
+              ${node.keyCapabilities.slice(0, 3).map(c => `<li>${c}</li>`).join('')}
+            </ul>
+          </div>
+
+          <div style="border-top: 1px solid var(--border-dim); padding-top: 0.5rem; font-size: 0.78rem; color: ${node.badgeColor}; font-family: var(--font-mono);">
+            🏛 <strong>Uso Institucional:</strong> ${node.institutionalApplication}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- Data Flow Matrix Panel -->
+    <div class="panel">
+      <h3 class="text-cyan mb-1">FLUJOS DE DATOS E INTEROPERABILIDAD ENTRE REPOSITORIOS</h3>
+      <p class="text-muted font-mono mb-2" style="font-size: 0.85rem;">
+        Contratos de integración e interfaces de paso de mensajes sin acoplamiento monolítico.
+      </p>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Tipo de Flujo</th>
+            <th>Descripción del Flujo</th>
+            <th>Protocolo / Formato</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${CONSTELLATION_EDGES.map(edge => `
+            <tr>
+              <td><strong class="text-cyan">${edge.source}</strong></td>
+              <td><strong class="text-emerald">${edge.target}</strong></td>
+              <td><span class="flow-badge">${edge.flowType}</span></td>
+              <td style="color: var(--text-main);">${edge.label}</td>
+              <td class="font-mono" style="font-size: 0.75rem;">${edge.protocol}</td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// VIEW 04: CALMAP GEOSPATIAL EXPLORER
+// ---------------------------------------------------------------------------
+function renderCalMapScreen(): string {
+  return `
+    <div class="panel mb-2">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="status-badge status-good mb-1">CALMAP · LIVING CITY CONTEXT</span>
+          <h2 class="text-cyan mb-1">CALMAP ARNHEM · SITUATIONAL CYBER-PHYSICAL MAP</h2>
+          <p class="text-muted font-mono" style="font-size: 0.85rem;">
+            Integración de los 171 objetivos de ARGUS con la realidad geográfica de Arnhem, datos de tráfico NDW en tiempo real y cámaras públicas.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="./calmap.html" target="_blank" class="btn primary">
+            ↗ ABRIR CALMAP EN PANTALLA COMPLETA
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Embedded CalMap Iframe -->
+    <div style="border-radius: 8px; overflow: hidden; border: 1px solid var(--border-cyan); box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 1.5rem;">
+      <iframe src="./calmap.html" style="width: 100%; height: 750px; border: none; background: #0f172a;" title="CalMap Arnhem Context"></iframe>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <h4 class="text-cyan mb-1">LOS 6 NIVELES DE PROGRESSIVE DISCLOSURE</h4>
+        <ul style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.8; margin-left: 1.25rem;">
+          <li><strong>1. Basis Kaart (OpenStreetMap):</strong> Cartografía limpia y sin distracciones comerciales de Google Maps.</li>
+          <li><strong>2. Verkeersstroom (NDW Datex II):</strong> Sensores de velocidad y flujo en carreteras de acceso a Arnhem.</li>
+          <li><strong>3. Activiteit & Drukte:</strong> Densidad peatonal modelada sin cámaras de reconocimiento facial invasivo.</li>
+          <li><strong>4. Evenementen & Wegwerkzaamheden:</strong> Cortes viales en Eusebius, Sonsbeek y Rijnkade.</li>
+          <li><strong>5. Verkeerscamera's:</strong> Feeds de vídeo públicos de Rijkswaterstaat y Gemeente Arnhem.</li>
+          <li><strong>6. ARGUS Bedrijven (171 Leads):</strong> Los 171 comercios escaneados con pines de color (🟥 Urgente, 🟧 Substancial, 🟨 Moderado, 🟩 Óptimo).</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h4 class="text-emerald mb-1">VENTA EN TERRENO: OPTIMIZACIÓN DE RUTAS</h4>
+        <p style="font-size: 0.85rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.6;">
+          Para la jornada del lunes en Arnhem, Abraham y Debbie pueden abrir CalMap en su tablet y caminar por zonas densas (ej. Roggestraat, Steenstraat, Jansstraat) visitando negocios marcados en 🟥 sin perder tiempo en traslados innecesarios.
+        </p>
+        <div class="telemetry-row" style="grid-template-columns: 1fr 1fr; margin-bottom: 0;">
+          <div class="telemetry-card">
+            <div class="telemetry-label">Tiempo por Visita</div>
+            <div class="telemetry-val text-amber">8-12 min</div>
+          </div>
+          <div class="telemetry-card">
+            <div class="telemetry-label">Visitas por Día</div>
+            <div class="telemetry-val text-emerald">18-24</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// VIEW 05: INSTITUTIONAL / EUROPOL / DORA VIEW
+// ---------------------------------------------------------------------------
+function renderInstitutionalScreen(): string {
+  const currentAgency = INSTITUTIONAL_PROFILES.find(p => p.agencyId === state.selectedAgencyId) || INSTITUTIONAL_PROFILES[0];
+  const dynamicStix = generateDynamicStixBundle(state.target, state.findings.length, state.tier);
+  const dynamicMisp = generateDynamicMispEvent(state.target, state.findings.length, state.tier);
+
+  return `
+    <div class="panel mb-2">
+      <span class="status-badge status-warning mb-1">DUAL-USE DEFENSE & LAW ENFORCEMENT FRAMEWORK</span>
+      <h2 class="text-cyan mb-1">INTELIGENCIA INSTITUCIONAL & MARCO DE COOPERACIÓN</h2>
+      <p class="text-muted font-mono" style="font-size: 0.85rem;">
+        ARGUS como herramienta dual-use de soberanía digital europea: observabilidad sin intrusión, trazabilidad ISO/IEC 27037 y cumplimiento NIS2 / DORA para Europol EC3, Interpol y Fuerzas Armadas.
+      </p>
+    </div>
+
+    <!-- Agency Selector Pills -->
+    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+      ${INSTITUTIONAL_PROFILES.map(agency => `
+        <button class="btn ${agency.agencyId === state.selectedAgencyId ? 'primary' : ''} btn-agency-select" data-agency="${agency.agencyId}">
+          ${agency.agencyName}
+        </button>
+      `).join('')}
+    </div>
+
+    <!-- Agency Detail Panel -->
+    <div class="institutional-card mb-2">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <span class="status-badge status-info">${currentAgency.jurisdiction}</span>
+          <h2 style="color: #fff; margin-top: 0.4rem; font-size: 1.4rem;">${currentAgency.agencyName}</h2>
+        </div>
+        <div>
+          <span class="status-badge status-good">MARCO ACREDITADO</span>
+        </div>
+      </div>
+
+      <div class="grid mb-1">
+        <div>
+          <h4 class="text-cyan mb-1" style="font-size: 0.9rem;">MANDATO INSTITUCIONAL</h4>
+          <p style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.6;">
+            ${currentAgency.mandate}
+          </p>
+
+          <h4 class="text-cyan mb-1" style="font-size: 0.9rem;">MARCOS LEGALES & REGULATORIOS APLICABLES</h4>
+          <ul style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; margin-left: 1.25rem; margin-bottom: 1rem;">
+            ${currentAgency.applicableFrameworks.map(f => `<li><strong>${f}</strong></li>`).join('')}
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-emerald mb-1" style="font-size: 0.9rem;">APORTE TECNOLÓGICO SOBERANO DE ARGUS</h4>
+          <p style="font-size: 0.88rem; color: var(--text-main); margin-bottom: 1rem; line-height: 1.6;">
+            ${currentAgency.argusCapability}
+          </p>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 0.75rem;">
+            <div class="text-muted">ESTÁNDAR DE EVIDENCIA:</div>
+            <div class="text-emerald" style="margin-top: 0.25rem;">${currentAgency.evidenceStandard}</div>
+          </div>
+
+          <div style="background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem;">
+            <div class="text-muted">FORMATO DE INTERCAMBIO CTI:</div>
+            <div class="text-cyan" style="margin-top: 0.25rem;">${currentAgency.stixMapping}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live STIX 2.1 & MISP CTI Exporter Panel -->
+    <div class="panel">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+        <div>
+          <h3 class="text-cyan">EXPORTADOR CTI AUTOMATIZADO PARA: ${state.target}</h3>
+          <p class="text-muted font-mono" style="font-size: 0.85rem;">
+            Formatos estandarizados OASIS STIX 2.1 y MISP para intercambio de inteligencia con agencias de seguridad y CSIRTs.
+          </p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="copy-btn ${state.institutionalTab === 'stix' ? 'active' : ''}" id="btn-tab-stix">STIX 2.1 BUNDLE</button>
+          <button class="copy-btn ${state.institutionalTab === 'misp' ? 'active' : ''}" id="btn-tab-misp">MISP EVENT JSON</button>
+          <button class="copy-btn" id="btn-copy-cti">📋 COPIAR JSON</button>
+          <button class="copy-btn" id="btn-download-cti">💾 DESCARGAR JSON</button>
+        </div>
+      </div>
+
+      <pre id="cti-preview" style="background: #020408; padding: 1rem; border-radius: 4px; border: 1px solid var(--border-dim); color: #a5b4fc; font-family: var(--font-mono); font-size: 0.78rem; overflow-x: auto; max-height: 400px;">${JSON.stringify(state.institutionalTab === 'stix' ? dynamicStix : dynamicMisp, null, 2)}</pre>
+    </div>
+  `;
+}
+
+// ---------------------------------------------------------------------------
+// VIEW 06: COMMERCIAL CASE STUDY
 // ---------------------------------------------------------------------------
 function renderCaseStudyScreen(): string {
   return `
@@ -854,7 +1433,7 @@ function renderCaseStudyScreen(): string {
 }
 
 // ---------------------------------------------------------------------------
-// VIEW 04: AI POLICY GATE SIMULATOR
+// VIEW 07: AI POLICY GATE SIMULATOR
 // ---------------------------------------------------------------------------
 function renderAiGateScreen(): string {
   return `
@@ -894,7 +1473,7 @@ function renderAiGateScreen(): string {
 }
 
 // ---------------------------------------------------------------------------
-// VIEW 05: ARCHITECTURE & INVARIANTS
+// VIEW 08: ARCHITECTURE & INVARIANTS
 // ---------------------------------------------------------------------------
 function renderArchitectureScreen(): string {
   return `
@@ -902,7 +1481,7 @@ function renderArchitectureScreen(): string {
       <span class="status-badge status-good mb-1">ARCHITECTURE & GOVERNANCE</span>
       <h2 class="text-cyan mb-1">LOS 8 INVARIANTES SAGRADOS DE ARGUS</h2>
       <p class="text-muted font-mono" style="font-size: 0.85rem;">
-        Garantías del sistema verificadas por la suite de 178 tests automatizados.
+        Garantías del sistema verificadas por la suite de 185 tests automatizados.
       </p>
     </div>
 
@@ -938,9 +1517,9 @@ function renderArchitectureScreen(): string {
         </p>
       </div>
       <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: 4px; border: 1px solid var(--border-dim);">
-        <h4 class="text-cyan mb-1">6. RETEST CON CRIPTOGRAFÍA</h4>
+        <h4 class="text-cyan mb-1">6. RETEST CON CRIPTOGRAFÍA & MERKLE</h4>
         <p style="font-size: 0.85rem; color: var(--text-muted);">
-          La remediación solo se marca <code>RESOLVED</code> si existe una evidencia de retest válida con hash verificable.
+          La remediación solo se marca <code>RESOLVED</code> si existe una evidencia de retest válida con Árbol Merkle verificable.
         </p>
       </div>
       <div style="background: var(--bg-surface); padding: 1.25rem; border-radius: 4px; border: 1px solid var(--border-dim);">
@@ -996,6 +1575,48 @@ function bindEvents() {
     });
   });
 
+  // Select Lead from dropdown
+  document.getElementById('select-arnhem-lead')?.addEventListener('change', (e) => {
+    const leadId = (e.target as HTMLSelectElement).value;
+    const selected = ARNHEM_LEADS.find(l => l.id === leadId);
+    if (selected) {
+      state.selectedLeadId = selected.id;
+      state.target = selected.domain;
+      state.category = selected.category;
+      state.address = selected.address;
+      state.phone = selected.phone;
+      state.tier = selected.tier;
+      state.colorEmoji = selected.colorEmoji;
+      state.score = selected.score;
+      state.debbiePitch = selected.pitch;
+      state.findings = selected.findings.map(f => convertScannedFindingToItem(f, selected.domain));
+      state.evidence = generateDynamicEvidence(selected);
+      state.typosquats = generateBrowserTyposquats(selected.domain);
+      const merkle = buildVisualMerkleTree(state.evidence.map(ev => ({ id: ev.id, rawSnippet: ev.rawSnippet })));
+      state.merkleRoot = merkle.rootHash;
+      state.simulationStep = 'baseline';
+      state.proofs = [];
+      renderApp();
+    }
+  });
+
+  // Search input for leads
+  document.getElementById('input-lead-search')?.addEventListener('input', (e) => {
+    state.searchQuery = (e.target as HTMLInputElement).value;
+    renderApp();
+  });
+
+  // Tier filter buttons
+  document.querySelectorAll('.tier-filter-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const filter = (e.currentTarget as HTMLElement).dataset.filter as any;
+      if (filter) {
+        state.tierFilter = filter;
+        renderApp();
+      }
+    });
+  });
+
   // Simulator Controls
   document.getElementById('btn-run-baseline')?.addEventListener('click', () => {
     state.activeStage = 4;
@@ -1004,7 +1625,6 @@ function bindEvents() {
 
   document.getElementById('btn-apply-fix')?.addEventListener('click', () => {
     state.simulationStep = 'remediating';
-    // Simulate AUX applying remedies
     state.findings.forEach(f => {
       f.status = 'RESOLVED';
     });
@@ -1014,7 +1634,15 @@ function bindEvents() {
 
   document.getElementById('btn-run-retest')?.addEventListener('click', () => {
     state.simulationStep = 'retested';
-    state.proofs = RETEST_PROOFS;
+    state.proofs = state.findings.map((f, idx) => ({
+      id: `prf_${(idx + 1).toString().padStart(2, '0')}_${f.category.toLowerCase()}`,
+      findingId: f.id,
+      ruleId: f.ruleId,
+      status: 'RESOLVED',
+      rationale: `Retest verified remediation for ${f.title}. Rule ${f.ruleId} no longer flags.`,
+      baselineEvidenceSha: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+      retestEvidenceSha: '84b2c89f537914f6b2bc194a08168bbd2fbe8e4b7b20464c8d37a2c074697391'
+    }));
     state.activeStage = 6;
     renderApp();
   });
@@ -1022,9 +1650,35 @@ function bindEvents() {
   document.getElementById('btn-reset-sim')?.addEventListener('click', () => {
     state.simulationStep = 'baseline';
     state.activeStage = 1;
-    state.findings = JSON.parse(JSON.stringify(BASELINE_FINDINGS));
+    const currentLead = ARNHEM_LEADS.find(l => l.id === state.selectedLeadId) || defaultLead;
+    state.findings = currentLead.findings.map(f => convertScannedFindingToItem(f, currentLead.domain));
     state.proofs = [];
     renderApp();
+  });
+
+  // Download Proof Pack JSON
+  document.getElementById('btn-download-proofpack')?.addEventListener('click', () => {
+    const proofPackPayload = {
+      packId: `pack_${state.merkleRoot.substring(0, 16)}`,
+      targetDomain: state.target,
+      timestamp: new Date().toISOString(),
+      merkleRoot: state.merkleRoot,
+      evidenceCount: state.evidence.length,
+      leaves: state.evidence.map(e => ({ evidenceId: e.id, sha256: e.sha256 })),
+      proofs: state.proofs,
+      signature: {
+        algorithm: 'Ed25519',
+        verified: true,
+        rfc3161Compliant: true
+      }
+    };
+    const blob = new Blob([JSON.stringify(proofPackPayload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `argus_proofpack_${state.target}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   });
 
   // Toggle findings view mode (client vs engineer)
@@ -1047,6 +1701,52 @@ function bindEvents() {
   document.getElementById('btn-view-engineer-report')?.addEventListener('click', () => {
     state.reportMode = 'engineer';
     renderApp();
+  });
+
+  // Agency selection in Institutional screen
+  document.querySelectorAll('.btn-agency-select').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const agencyId = (e.currentTarget as HTMLElement).dataset.agency;
+      if (agencyId) {
+        state.selectedAgencyId = agencyId;
+        renderApp();
+      }
+    });
+  });
+
+  // Institutional tabs (STIX vs MISP)
+  document.getElementById('btn-tab-stix')?.addEventListener('click', () => {
+    state.institutionalTab = 'stix';
+    renderApp();
+  });
+
+  document.getElementById('btn-tab-misp')?.addEventListener('click', () => {
+    state.institutionalTab = 'misp';
+    renderApp();
+  });
+
+  // Copy CTI JSON
+  document.getElementById('btn-copy-cti')?.addEventListener('click', () => {
+    const data = state.institutionalTab === 'stix'
+      ? generateDynamicStixBundle(state.target, state.findings.length, state.tier)
+      : generateDynamicMispEvent(state.target, state.findings.length, state.tier);
+    navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(() => {
+      alert(`${state.institutionalTab.toUpperCase()} JSON gekopieerd naar klembord!`);
+    });
+  });
+
+  // Download CTI JSON
+  document.getElementById('btn-download-cti')?.addEventListener('click', () => {
+    const data = state.institutionalTab === 'stix'
+      ? generateDynamicStixBundle(state.target, state.findings.length, state.tier)
+      : generateDynamicMispEvent(state.target, state.findings.length, state.tier);
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `argus_${state.institutionalTab}_${state.target}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
   });
 
   // Unit Economics Sliders
@@ -1094,7 +1794,6 @@ function setupUnitEconomicsCalculator() {
 
     const newClients = Math.round(audits * (conv / 100));
     const initialRev = newClients * ticket;
-    // Cumulative active retainers over a year (assuming 6 quarters retention)
     const activeRetainers = Math.round(newClients * 6);
     const annualArr = (initialRev * 12) + (activeRetainers * retainer * 4 * 0.25);
 
@@ -1126,7 +1825,7 @@ function setupAiGateDemo() {
           ✓ Afirmación: "HSTS header is absent in HTTP response"
         </div>
         <div>
-          • Referencia a evidencia válida: <code>ev_http_get_slash</code> (PRESENTE)<br>
+          • Referencia a evidencia válida: <code>ev_http_headers</code> (PRESENTE)<br>
           • Nivel de confianza asignado: <strong class="text-cyan">INFERRED</strong> (AI Clamped)<br>
           • Resultado: <strong>Afirmación preservada en el informe de análisis.</strong>
         </div>

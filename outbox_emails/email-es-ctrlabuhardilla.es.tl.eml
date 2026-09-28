@@ -1,0 +1,28 @@
+To: contacto@ctrlabuhardilla.es.tl
+Subject: [Revisión Técnica] Incidencias de entregabilidad DMARC y captación en Centro de Turismo Rural La Buhardilla
+X-Unsent: 1
+Content-Type: text/plain; charset=utf-8
+
+Estimada dirección / socios de Centro de Turismo Rural La Buhardilla,
+
+Nos ponemos en contacto desde nuestro equipo de auditoría de ciberseguridad y captación web en Madrid tras haber analizado técnicamente el dominio ctrlabuhardilla.es.tl.
+
+Hemos detectado dos incidencias operativas críticas que os están costando clientes e ingresos en este momento:
+
+1. Ausencia de autenticación DMARC en vuestro correo corporativo:
+Vuestro dominio carece de política DMARC. Con las normativas de seguridad actuales aplicadas por Google (Gmail) y Microsoft (Outlook), vuestras minutas, presupuestos y contratos entran con frecuencia en la carpeta de correo no deseado (SPAM) de los clientes, impidiendo el cierre ágil de operaciones. Además, vuestro dominio queda desprotegido frente a suplantaciones de identidad (fraude del CEO / facturas falsas).
+
+2. Falta de sistema de cita previa o intake digital para clientes:
+El 65% de los potenciales clientes en Madrid consultan servicios profesionales por la tarde-noche desde el móvil. Al no poder solicitar o agendar una consulta preliminar de forma directa en la web, rebotan y acuden a otros despachos o clínicas de la zona que sí disponen de agenda digital 24/7.
+
+Nuestro director técnico Abraham soluciona ambas incidencias en 48 horas sin interrumpir vuestro correo actual, blindando vuestra reputación e instalando un módulo de intake cifrado y adaptado a la LOPDGDD / AEPD.
+
+Inversión: setup cerrado de € 2850 (sin contratos abusivos).
+
+¿Os viene bien que mantengamos una breve conversación telefónica de 10 minutos mañana por la mañana para mostrároslo?
+
+Atentamente,
+
+Equipo ARGUS Madrid
+Teléfono de atención: +34 91 000 00 00 / Canal Directo
+Expediente de referencia: ARGUS-ES-ctrlabuhardilla.es.tl

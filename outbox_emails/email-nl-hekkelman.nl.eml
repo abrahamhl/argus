@@ -1,0 +1,29 @@
+To: contact@hekkelman.nl
+Subject: [Vertrouwelijk] Beveiligings- & e-mailauthenticatie audit voor Hekkelman
+X-Unsent: 1
+Content-Type: text/plain; charset=utf-8
+
+Geachte directie / maatschap van Hekkelman,
+
+Tijdens een periodieke veiligheidsaudit onder zakelijke dienstverleners in Nijmegen hebben wij uw publieke domein hekkelman.nl geanalyseerd volgens de actuele standaarden van het NCSC en de privacyrichtlijnen.
+
+Hierbij stuitten wij op een tweetal kwetsbaarheden die momenteel direct invloed hebben op uw kantoordoorloop:
+
+1. E-mailbeveiliging & DMARC-beleid:
+Uw domein mist een geconfigureerd DMARC-beveiligingsslot (v=DMARC1 ontbreekt). Sinds recente updates door Google (Gmail) en Microsoft (Outlook) worden zakelijke declaraties, offertes en vertrouwelijke processtukken van domeinen zonder DMARC automatisch gefilterd naar de spambox van de ontvanger. Daarnaast maakt het ontbreken van dit slot uw kantoor kwetsbaar voor spoofing (verzending van valse betaalverzoeken uit naam van uw kantoor).
+
+2. Conversie & Cliënten-intake:
+Potentiële cliënten die buiten kantooruren ('s avonds tussen 19:00 en 23:00 uur) uw website bezoeken via hun smartphone, kunnen nergens direct een verkennend intake-gesprek plannen. Meer dan 65% van de zoekers haakt hierdoor af en benadert een kantoor met een directe agenda-koppeling.
+
+Onze technical lead Abraham (voormalig defensie & security engineer) lost dit binnen 48 uur permanent voor u op met volledige DMARC-certificering, een modern AVG-veilig intake-portaal en SMS-herinneringen.
+
+Investering: eenmalig € 4250 (geen langlopende wurgcontracten).
+
+Schikt het om morgenmiddag om 14:00 uur een korte telefonische toelichting van 10 minuten in te plannen?
+
+Met vriendelijke groet,
+
+Debbie & Abraham
+ARGUS Intelligence & Web Engineering — Arnhem
+Telefoon: +31 26 361 1411 (Arnhem Desk)
+Dossier-referentie: ARGUS-NL-hekkelman.nl

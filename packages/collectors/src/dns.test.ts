@@ -1,4 +1,4 @@
-import test from 'node:test';
+import { test } from 'vitest';
 import assert from 'node:assert';
 import dnsPromises from 'node:dns/promises';
 import { collectDns } from './dns.js';
@@ -31,3 +31,5 @@ test('collectDns enforces ARGUS_OFFLINE_MODE and performs zero network calls', a
     (dnsPromises as any).resolveTxt = originalResolveTxt;
   }
 });
+
+

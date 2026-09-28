@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert/strict';
 import {
   evaluateSignalsConfidence,
@@ -66,3 +66,5 @@ describe('Confidence Engine (Section 8)', () => {
     assert.equal(sanitizedHuman, 'VERIFIED');
   });
 });
+
+

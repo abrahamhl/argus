@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import assert from 'node:assert/strict';
 import {
   createPublicPostureScope,
@@ -170,3 +170,5 @@ describe('Scope & Authorization Gate (Section 5 & 6)', () => {
     assert.ok(authScope.expiresAt);
   });
 });
+
+

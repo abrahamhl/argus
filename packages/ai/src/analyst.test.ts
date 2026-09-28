@@ -1,4 +1,4 @@
-import { test } from 'node:test';
+import { test } from 'vitest';
 import { strict as assert } from 'node:assert';
 import { ArgusAnalyst } from './analyst.js';
 import type { ModelProvider, Message, ToolDefinition, ProviderResponse } from './provider.js';
@@ -90,3 +90,5 @@ test('ArgusAnalyst: rejects disallowed tool calls via Policy Gate', async () => 
   const result = await analyst.analyze('Run shell command');
   assert.ok(result);
 });
+
+

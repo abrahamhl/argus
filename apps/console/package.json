@@ -11,9 +11,10 @@
     "start": "node dist/index.js"
   },
   "dependencies": {
-    "@argus/schema": "workspace:*",
-    "@argus/core": "workspace:*",
+    "@argus/ai": "workspace:*",
     "@argus/collectors": "workspace:*",
-    "@argus/ai": "workspace:*"
+    "@argus/core": "workspace:*",
+    "@argus/schema": "workspace:*",
+    "exceljs": "^4.4.0"
   }
 }

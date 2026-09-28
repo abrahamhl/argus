@@ -1,4 +1,5 @@
-import { test } from 'node:test';
+import { describe, it, expect } from 'vitest';
+const test = it;
 import { strict as assert } from 'node:assert';
 import { Evidence } from '@argus/schema';
 import {
@@ -308,3 +309,4 @@ test('all deterministic rules are registered', () => {
     'rule-http-redirect-loop'
   ].sort());
 });
+

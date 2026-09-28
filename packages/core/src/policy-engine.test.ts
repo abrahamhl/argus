@@ -1,4 +1,4 @@
-import { describe, it } from 'node:test';
+import { describe, it } from 'vitest';
 import * as assert from 'node:assert/strict';
 import { PolicyEngine, validateIPAddress, isLocalhost } from './policy-engine.js';
 
@@ -313,3 +313,5 @@ describe('isLocalhost', () => {
   it('detects ::1', () => assert.equal(isLocalhost('::1'), true));
   it('does not match example.com', () => assert.equal(isLocalhost('example.com'), false));
 });
+
+

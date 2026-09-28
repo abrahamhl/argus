@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@argus/ai": "workspace:*",
-    "@argus/core": "workspace:^",
+    "@argus/core": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.0.0"
   }
 }

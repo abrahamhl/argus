@@ -1,4 +1,4 @@
-import { test } from 'node:test';
+import { test } from 'vitest';
 import { strict as assert } from 'node:assert';
 import type { ArgusBundle, Finding, Evidence } from '@argus/schema';
 import { compareRuns } from './retest.js';
@@ -170,3 +170,5 @@ test('compareRuns: generates REGRESSED proof when severity worsens', () => {
   assert.equal(proofs[0].status, 'REGRESSED');
   assert.ok(proofs[0].comparisonNote?.includes('worsened from LOW to HIGH'));
 });
+
+

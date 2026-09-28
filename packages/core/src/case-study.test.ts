@@ -1,4 +1,4 @@
-import { test } from 'node:test';
+import { test } from 'vitest';
 import { strict as assert } from 'node:assert';
 import type { ArgusBundle } from '@argus/schema';
 import { generateCaseStudyMarkdown } from './case-study.js';
@@ -88,3 +88,5 @@ test('generateCaseStudyMarkdown: generates English case study', () => {
   assert.ok(md.includes('Retest & Cryptographic Verification (VERIFY)'));
   assert.ok(md.includes('RESOLVED'));
 });
+
+

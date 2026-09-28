@@ -273,7 +273,15 @@ async function runDemo() {
     console.log(`  - [${p.status}] Finding ${p.originalFindingId}: ${p.comparisonNote}`);
   }
 
-  console.log('\n================================================================================');
+  const { existsSync, mkdirSync } = await import('node:fs');
+  const examplesDir = resolve(process.cwd(), '../../examples');
+  if (!existsSync(examplesDir)) {
+    mkdirSync(examplesDir, { recursive: true });
+  }
+  const mdContent = `# ARGUS Demo Report\n\n## Target: ${domain}\n\n### Findings:\n${baselineFindings.map((f: any) => `- [${f.severity}] ${f.title}`).join('\n')}\n\n### Retest Proofs:\n${proofs.map((p: any) => `- [${p.status}] ${p.comparisonNote}`).join('\n')}\n`;
+  writeFileSync(resolve(examplesDir, 'demo-report.md'), mdContent, 'utf-8');
+
+  console.log('================================================================================');
   console.log(' ARGUS DEMO SUMMARY: Complete Offline Lifecycle Verified');
   console.log('  • Fail-Closed Scope Authorization: VERIFIED');
   console.log('  • Offline Fixture Pipeline: VERIFIED (0 Network Calls)');
@@ -281,6 +289,7 @@ async function runDemo() {
   console.log('  • Client Report (Dutch-First, Zero-Fear): .argus_data/runs/run_baseline_fixture/report-client.html');
   console.log('  • Engineer Provenance Report: .argus_data/runs/run_baseline_fixture/report-engineer.html');
   console.log('  • Retest Before/After Cryptographic Proof: VERIFIED (RESOLVED)');
+  console.log('  • Demo Markdown Report: examples/demo-report.md');
   console.log('================================================================================\n');
 }
 
